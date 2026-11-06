@@ -1,0 +1,19 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/api/:match*",
+      "destination": "https://YOUR_BACKEND_HOST/api/:match*"
+    },
+    {
+      "source": "/media/:match*",
+      "destination": "https://YOUR_BACKEND_HOST/media/:match*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
