@@ -1,0 +1,17 @@
+{
+  "name": "neet-pg-qbank",
+  "version": "1.0.0",
+  "description": "A high-performance medical education question-bank application inspired by Marrow and PrepLadder, built with **Flutter**, **FastAPI**, **PostgreSQL**, and **React**.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

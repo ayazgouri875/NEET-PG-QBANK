@@ -1,0 +1,42 @@
+# Python virtual environments & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.venv
+**/.venv
+build/
+dist/
+*.egg-info/
+
+# Frontend Node modules and production builds
+node_modules/
+admin/node_modules/
+admin/dist/
+npm-debug.log*
+yarn-debug.log*
+
+# Environment and sensitive keys
+.env
+.env.local
+
+# Large Database, APKG, and Clinical Media (1.8GB - transferred directly via rsync to avoid GitHub 100MB limit)
+data/neet_pg.db
+data/neet_pg.db-journal
+data/neet_pg.db-wal
+data/neet_pg.db-shm
+data/imports/*.apkg
+data/extracted_media/
+data/extracted_meta/
+data/media/images/*
+!data/media/images/.gitkeep
+!data/imports/.gitkeep
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride

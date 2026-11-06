@@ -1,0 +1,1158 @@
+[
+  {
+    "source_nid": 1776674141591,
+    "mcq_id": "Q865383",
+    "category": "Clinical",
+    "subject": "Anaesthesia",
+    "topic": "Neuromuscular Blockade",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Anaesthesia::04_Neuromuscular Blockade::008_Previous Year Questions",
+    "question_text": "A 50-year-old male patient underwent lower abdominal surgery under general anaesthesia. Vecuronium was administered as a muscle relaxant during the procedure. At the end of the surgery, which of the following is the most appropriate agent to reverse the effects of vecuronium?",
+    "question_html": "<p>A 50-year-old male patient underwent lower abdominal surgery under general anaesthesia. Vecuronium was administered as a muscle relaxant during the procedure. At the end of the surgery, which of the following is the most appropriate agent to reverse the effects of vecuronium?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Neostigmine",
+        "html": "<p>Neostigmine</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Baclofen",
+        "html": "<p>Baclofen</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Atropine",
+        "html": "<p>Atropine</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Drotaverine",
+        "html": "<p>Drotaverine</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "ecuronium is an intermediate-acting Nondepolarizing Muscle Relaxant, and its action is reversed by cholinesterase inhibitors that increase acetylcholine levels.\n\nVecuronium acts by blocking acetylcholine by competitively binding to nicotinic acetylcholine receptors at the neuromuscular junction, preventing depolarisation.\n\nCholinesterase inhibitors, like neostigmine, increase the levels of acetylcholine at the neuromuscular junction by inhibiting the enzyme that breaks it down, increasing its concentration and restoring muscle activity.\n\nCommonly given along with atropine or glycopyrrolate to counteract muscarinic side effects. (Option C)\n\nBaclofen (Option B) is a GABA-B receptor agonist used as a muscle relaxant in spasticity. It has no role in reversing neuromuscular blockade, in fact, it causes relaxation, not reversal.\n\nDrotaverine (Option D) is an antispasmodic drug used for smooth muscle spasms, like in renal colic or dysmenorrhea. It has no effect on skeletal muscle or neuromuscular blockers.\n\n@Neet_pg_bot",
+    "explanation_html": "ecuronium is an intermediate-acting <strong>Nondepolarizing Muscle Relaxant</strong>, and its action is reversed by cholinesterase inhibitors that<strong> increase acetylcholine levels</strong><strong>.</strong>\n<li><strong>Vecuronium </strong>acts by <strong>blocking acetylcholine by competitively binding to nicotinic acetylcholine receptors</strong> at the neuromuscular junction, preventing depolarisation.</li>\n<li>Cholinesterase inhibitors, like neostigmine, increase the levels of acetylcholine at the neuromuscular junction by inhibiting the enzyme that breaks it down, increasing its concentration and restoring muscle activity.</li>\n<li>Commonly given <strong>along with atropine or glycopyrrolate</strong> to counteract muscarinic side effects.<strong> (Option C)</strong></li>\n\n<p><strong>Baclofen </strong><strong>(Option B) </strong>is a <strong>GABA-B receptor agonist</strong> used as a <strong>muscle relaxant</strong> in spasticity. It has <strong>no role</strong> in reversing neuromuscular blockade, in fact, it <strong>causes relaxation</strong>, not reversal.<br/>\n<strong>Drotaverine </strong><strong>(Option D) </strong>is an <strong>antispasmodic</strong> drug used for <strong>smooth muscle spasms</strong>, like in renal colic or dysmenorrhea. It has <strong>no effect</strong> on skeletal muscle or neuromuscular blockers.</p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "Miller\u2019s Anaesthesia, 9th Edition, Page 342, 343, 792<br/>Understanding Neuromuscular Monitoring",
+    "images": [],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674142267,
+    "mcq_id": "Q848086",
+    "category": "Pre-clinical",
+    "subject": "Anatomy",
+    "topic": "General Embryology",
+    "subtopic": "Development Period",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Anatomy::01_General Embryology::002_Development Period",
+    "question_text": "Which day during Week 1 of embryonic development matches with the given image?",
+    "question_html": "<p>Which day during Week 1 of embryonic development matches with the given image?</p>\n<p style=\"text-align:center\"><img alt=\"\" data-author=\"DataBase Center for Life Science (DBCLS)\" data-hash=\"\" data-license=\"CC BY 4.0\" data-source=\"https://commons.wikimedia.org/wiki/File:201908_mouse_embryo_morula.svg\" data-tags=\"\" height=\"400\" src=\"12efd09e509ab32883ddae7176baeeb92fc3f1a1.jpg\" width=\"400\"/></p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Day 1",
+        "html": "<p>Day 1</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Day 2",
+        "html": "<p>Day 2</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Day 4",
+        "html": "<p>Day 4</p>",
+        "is_correct": true
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Day 5",
+        "html": "<p>Day 5</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 2,
+    "correct_option_label": "C",
+    "explanation_text": "order-top:1px solid #000000; vertical-align:top\"&gt;\n\nDay\n\nEvent\n\nDay 0\n\nFertilization: The sperm fertilizes the egg in the fallopian tube, forming a zygote (single diploid cell)\n\nDay 1\n\nTwo cell stage\n\nDay 2\n\nFour cell stage\n\nDay 3\n\nTwelve cell stage\n\nDay 4\n\nMorula Formation: The zygote becomes a solid ball of 16-32 cells.\n\nDay 5\n\nBlastocyst Formation: The morula continues to divide and develops a fluid-filled cavity (blastocoel), which consists of the outer trophoblast (future placenta) and the inner cell mass (future embryo).\n\nDay 6 & 7\n\nImplantation begins: Blastocyst attaches to the endometrial lining of the uterus and trophoblast begins to invade the uterine wall to start implantation.\n\n@Neet_pg_bot",
+    "explanation_html": "order-top:1px solid #000000; vertical-align:top\">\n\t\t\t<p style=\"text-align:center\"><strong>Day</strong></p>\n\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Event</strong></p>\n</td>\n\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Day 0</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Fertilization: The sperm fertilizes the egg in the fallopian tube, forming a zygote (single diploid cell)</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Day 1</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Two cell stage</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Day 2</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Four cell stage</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Day 3</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Twelve cell stage</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Day 4</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Morula Formation:</strong> The zygote becomes a solid ball of <strong>16-32 cells.</strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Day 5</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Blastocyst Formation:</strong> The morula continues to divide and develops a fluid-filled cavity (blastocoel), which consists of the outer trophoblast (future placenta) and the inner cell mass (future embryo).</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Day 6 &amp; 7</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Implantation begins: </strong>Blastocyst attaches to the endometrial lining of the uterus and trophoblast begins to invade the uterine wall to start implantation.</p>\n</td>\n</tr>\n\n\n<p><br/>\n\u00a0</p>\n<p style=\"text-align:center\"><img alt=\"\" data-author=\"OpenStax College\" data-hash=\"\" data-license=\"CC BY 3.0\" data-source=\"https://commons.wikimedia.org/wiki/File:2904_Preembryonic_Development-02.jpg\" data-tags=\"\" height=\"458\" src=\"3ff09542c95ea75902ab1b7a0b58f051c5afd65f.jpg\" width=\"500\"/></p>\n\n<br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "Langman\u2019s Medical Embryology, 14th Edition, Pages 42, 43,\u00a048<br/>First week of development",
+    "images": [
+      {
+        "type": "question",
+        "filename": "12efd09e509ab32883ddae7176baeeb92fc3f1a1.jpg",
+        "anki_key": "15246",
+        "extracted_path": "data/extracted_media/12efd09e509ab32883ddae7176baeeb92fc3f1a1.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "3ff09542c95ea75902ab1b7a0b58f051c5afd65f.jpg",
+        "anki_key": "5304",
+        "extracted_path": "data/extracted_media/3ff09542c95ea75902ab1b7a0b58f051c5afd65f.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674144193,
+    "mcq_id": "Q820383",
+    "category": "Pre-clinical",
+    "subject": "Biochemistry",
+    "topic": "Introduction",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Biochemistry::01_Introduction::001_Previous Year Questions",
+    "question_text": "In which organelle is DNA present?",
+    "question_html": "<p>In which organelle is DNA present?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Mitochondria",
+        "html": "<p>Mitochondria</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Lysosome",
+        "html": "<p>Lysosome</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Endoplasmic reticulum",
+        "html": "<p>Endoplasmic reticulum</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Cytoplasm",
+        "html": "<p>Cytoplasm</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "DNA is present in the mitochondria, which are double-membraned organelles found in the cells of most eukaryotic organisms. Mitochondrial DNA (mtDNA) is a small circular molecule separate from the nuclear DNA. It carries genetic information essential for the functioning of mitochondria and plays a crucial role in energy production through oxidative phosphorylation.\n\nLysosome (Option B): Lysosomes are membrane-bound organelles containing enzymes responsible for breaking down various cellular waste materials and substances. They do not contain DNA; their primary function is related to digestion and waste disposal within the cell.\n\nEndoplasmic Reticulum (Option C): The endoplasmic reticulum (ER) is an organelle involved in the synthesis, folding, modification, and transport of proteins and lipids. It does not contain DNA. The ER is composed of membranous structures and is mainly responsible for the manufacturing and transportation of molecules within the cell.\n\nCytoplasm (Option D): The cytoplasm is the gel-like substance found inside the cell, which includes various organelles and is the site of many cellular processes. While the cytoplasm contains various molecules and structures necessary for cell function, DNA itself is not typically present in the cytoplasm. DNA is primarily found within the nucleus of eukaryotic cells, where it houses the genetic information required for cell function and development.\n\n@Neet_pg_bot",
+    "explanation_html": "<p>DNA is present in the mitochondria, which are double-membraned organelles found in the cells of most eukaryotic organisms. Mitochondrial DNA (mtDNA) is a small circular molecule separate from the nuclear DNA. It carries genetic information essential for the functioning of mitochondria and plays a crucial role in energy production through oxidative phosphorylation.<br/>\n<br/>\n<strong>Lysosome (Option B):</strong> Lysosomes are membrane-bound organelles containing enzymes responsible for breaking down various cellular waste materials and substances. They do not contain DNA; their primary function is related to digestion and waste disposal within the cell.<br/>\n<br/>\n<strong>Endoplasmic Reticulum (Option C):</strong> The endoplasmic reticulum (ER) is an organelle involved in the synthesis, folding, modification, and transport of proteins and lipids. It does not contain DNA. The ER is composed of membranous structures and is mainly responsible for the manufacturing and transportation of molecules within the cell.<br/>\n<br/>\n<strong>Cytoplasm (Option D):</strong> The cytoplasm is the gel-like substance found inside the cell, which includes various organelles and is the site of many cellular processes. While the cytoplasm contains various molecules and structures necessary for cell function, DNA itself is not typically present in the cytoplasm. DNA is primarily found within the nucleus of eukaryotic cells, where it houses the genetic information required for cell function and development.</p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": null,
+    "images": [],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674145913,
+    "mcq_id": "Q841984",
+    "category": "Clinical",
+    "subject": "Dermatology",
+    "topic": "Introduction to Dermatology",
+    "subtopic": "Skin Lesions in Dermatology",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Dermatology::01_Introduction to Dermatology::002_Skin Lesions in Dermatology",
+    "question_text": "A 45-year-old patient presents with a small, flat, reddish-brown lesion on the palm of their hand. The lesion is non-palpable and measures approximately 5 mm in diameter. What is the most likely description of this lesion?",
+    "question_html": "<p>A 45-year-old patient presents with a small, flat, reddish-brown lesion on the palm of their hand. The lesion is non-palpable and measures approximately 5 mm in diameter. What is the most likely description of this lesion?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Papule",
+        "html": "<p>Papule</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Plaque",
+        "html": "<p>Plaque</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Macule",
+        "html": "<p>Macule</p>",
+        "is_correct": true
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Bulla",
+        "html": "<p>Bulla</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 2,
+    "correct_option_label": "C",
+    "explanation_text": "a-dictid=\"afb15e4a331692777186e495b370a1\"&gt;diameter characterized by a change in skin colour or pigmentation.\n\n{{caption_text}}\n\nSkin Lesions &lt;1 cm\n\nSkin Lesions &gt;1 cm\n\nMacule: Flat, non-raised lesion\u00a0(Option C)\n\n{{caption_text}}\n\nPatch: Flat, non-raised lesion\n\n{{caption_text}}\n\nPapule: Raised, circumscribed, solid lesion (Option A ruled out) &lt; 1cm\n\n{{caption_text}}\n\nPlaque: Elevated circumscribed lesion\n\n(Option B ruled out)\u00a0&gt; 1cm\n\n{{caption_text}}\n\nVesicle: Circumscribed elevation less than &lt; 1cm in diameter that contains fluid (clear, serous or haemorrhagic) and is often grouped\n\n{{caption_text}}\n\nBullae: Bullae are more than &gt; 1cm in diameter (Option D ruled out).\n\n{{caption_text}}\n\nPetechiae: Punctate haemorrhagic spot, approximately 1\u20132 mm in diameter.\n\n{{caption_text}}\n\nEcchymoses: A macular area of haemorrhage more than 1cm (bruise) in diameter.\n\n{{caption_text}}\n\nPurpura: Haemorrhagic spots more than 3mm but less than 1cm caused by bleeding underneath the skin\n\n@Neet_pg_bot",
+    "explanation_html": "a-dictid=\"afb15e4a331692777186e495b370a1\">diameter characterized by a change in skin colour or pigmentation.\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"CNX OpenStax,\" data-hash=\"\" data-license=\"CC BY 4.0\" data-source=\"https://commons.wikimedia.org/wiki/File:OSC_Microbio_21_01_LesionLine.jpg\" data-tags=\"\" height=\"2081\" src=\"29306664ac7ad4715f2fd44d03a89b1d4dd9032e.jpg\" width=\"3765\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n<table align=\"center\" cellspacing=\"0\" style=\"border-collapse:collapse; width:620px\">\n<tbody>\n<tr>\n<td style=\"border-color:#000000; border-style:solid; border-width:1px; vertical-align:top; width:350px\">\n<p><strong>Skin Lesions <1 cm</strong></p>\n</td>\n<td style=\"border-color:#000000; border-style:solid; border-width:1px; vertical-align:top; width:350px\">\n<p><strong>Skin Lesions >1 cm</strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-color:#000000; border-style:solid; border-width:1px; vertical-align:top; width:350px\">\n<p><strong>Macule:</strong> Flat, non-raised lesion\u00a0<strong>(Option C)</strong></p>\n\n\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"Sarahrosenau \" data-hash=\"\" data-license=\"CC BY SA 2.0\" data-source=\"https://en.wikipedia.org/wiki/Tinea_versicolor\" data-tags=\"\" height=\"1851\" src=\"7e63b1bbbc36effff658b95100c6da654fcccdd7.jpg\" width=\"3870\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n</td>\n<td style=\"border-color:#000000; border-style:solid; border-width:1px; vertical-align:top; width:350px\">\n<p><strong>Patch:</strong> Flat, non-raised lesion</p>\n\n\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"Madhero88,\" data-hash=\"\" data-license=\"CC BY-SA 4.0\" data-source=\"https://commons.wikimedia.org/wiki/File:Macule_and_Patch.svg\" data-tags=\"\" height=\"2947\" src=\"9fdb5748ef2bd63bb185762d2ea46cfdfc436f3f.jpg\" width=\"4050\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Papule:</strong> Raised, circumscribed, solid lesion <strong>(Option A ruled out)</strong> < 1cm</p>\n\n\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"Madhero88,\" data-hash=\"\" data-license=\"CC BY-SA 3.0\" data-source=\"https://commons.wikimedia.org/wiki/File:Papule_and_Plaque.svg\" data-tags=\"\" height=\"2771\" src=\"7d4c3b19ed16bf720a775d6756ffede7502a221c.jpg\" width=\"3859\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Plaque: </strong>Elevated circumscribed lesion</p>\n<p><strong>(Option B ruled out)\u00a0</strong>> 1cm</p>\n\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"Madhero88,\" data-hash=\"\" data-license=\"CC BY-SA 3.0\" data-source=\"https://commons.wikimedia.org/wiki/File:Papule_and_Plaque.svg\" data-tags=\"\" height=\"2771\" src=\"3c3a800aa9d846b03a5d85c2d780389a095ce1f6.jpg\" width=\"3859\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Vesicle:</strong> Circumscribed elevation less than < 1cm in diameter that contains fluid (clear, serous or haemorrhagic) and is often grouped</p>\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"gentgeen\" data-hash=\"\" data-license=\"CC BY-SA 3.0\" data-source=\"https://en.wikipedia.org/wiki/Shingles\" data-tags=\"\" height=\"3732\" src=\"e4836e4801af0d039c3bdf2832232251d2160001.jpg\" width=\"3954\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Bullae:</strong> Bullae are more than > 1cm in diameter <strong>(Option D ruled out).</strong></p>\n\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"Novakreo,\" data-hash=\"\" data-license=\"CC BY-SA 3.0\" data-source=\"https://commons.wikimedia.org/wiki/File:Blister.jpg\" data-tags=\"\" height=\"3517\" src=\"a506afb1e30180cbfc378993d943f759924b814f.jpg\" width=\"4054\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Petechiae:</strong> Punctate haemorrhagic spot, approximately 1\u20132 mm in diameter.</p>\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"Candelli, Marcello &amp; Rossi, Elena &amp; Valletta, Federico &amp; De Stefano, Valerio &amp; Franceschi, Francesco.\" data-hash=\"\" data-license=\"NA\" data-source=\"https://www.researchgate.net/figure/Petechiae-on-the-patients-right-leg-in-the-Emergency-Room-Colour-figure-can-be-viewed_fig1_351284881\" data-tags=\"\" height=\"870\" src=\"1b89b538fa3033d74322c1b2874302c45ed6dd92.jpg\" width=\"521\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Ecchymoses:</strong> A macular area of haemorrhage more than 1cm (bruise) in diameter.</p>\n<div style=\"text-align:center\">\n<figure class=\"caption_element\" style=\"display:inline-block\"><img alt=\"\" data-author=\"Leonardo M. Lustosa, \" data-hash=\"\" data-license=\"CC BY-SA 4.0\" data-source=\"https://commons.wikimedia.org/wiki/File:Kirmisson%27s_and_pucker_sign.jpg\" data-tags=\"\" height=\"683\" src=\"a5f35349bdc7891915037bcd15ca70250579c323.jpg\" width=\"888\"/>\n<figcaption>{{caption_text}}</figcaption>\n</figure>\n</div>\n\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\"><strong>Purpura: </strong>Haemorrhagic spots more than 3mm but less than 1cm caused by bleeding underneath the skin</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\u00a0</td>\n</tr>\n</tbody>\n</table><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Rook\u2019s Textbook of Dermatology, 9th Edition, Page 4.11, 4.12, 4.13</p>",
+    "images": [
+      {
+        "type": "explanation",
+        "filename": "29306664ac7ad4715f2fd44d03a89b1d4dd9032e.jpg",
+        "anki_key": "16419",
+        "extracted_path": "data/extracted_media/29306664ac7ad4715f2fd44d03a89b1d4dd9032e.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "7e63b1bbbc36effff658b95100c6da654fcccdd7.jpg",
+        "anki_key": "1263",
+        "extracted_path": "data/extracted_media/7e63b1bbbc36effff658b95100c6da654fcccdd7.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "9fdb5748ef2bd63bb185762d2ea46cfdfc436f3f.jpg",
+        "anki_key": "9122",
+        "extracted_path": "data/extracted_media/9fdb5748ef2bd63bb185762d2ea46cfdfc436f3f.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "7d4c3b19ed16bf720a775d6756ffede7502a221c.jpg",
+        "anki_key": "4495",
+        "extracted_path": "data/extracted_media/7d4c3b19ed16bf720a775d6756ffede7502a221c.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "3c3a800aa9d846b03a5d85c2d780389a095ce1f6.jpg",
+        "anki_key": "3995",
+        "extracted_path": "data/extracted_media/3c3a800aa9d846b03a5d85c2d780389a095ce1f6.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "e4836e4801af0d039c3bdf2832232251d2160001.jpg",
+        "anki_key": "13210",
+        "extracted_path": "data/extracted_media/e4836e4801af0d039c3bdf2832232251d2160001.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "a506afb1e30180cbfc378993d943f759924b814f.jpg",
+        "anki_key": "12697",
+        "extracted_path": "data/extracted_media/a506afb1e30180cbfc378993d943f759924b814f.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "1b89b538fa3033d74322c1b2874302c45ed6dd92.jpg",
+        "anki_key": "63",
+        "extracted_path": "data/extracted_media/1b89b538fa3033d74322c1b2874302c45ed6dd92.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "a5f35349bdc7891915037bcd15ca70250579c323.jpg",
+        "anki_key": "14683",
+        "extracted_path": "data/extracted_media/a5f35349bdc7891915037bcd15ca70250579c323.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674147521,
+    "mcq_id": "Q847738",
+    "category": "Clinical",
+    "subject": "ENT",
+    "topic": "Ear",
+    "subtopic": "Vestibular System  Physiology  Assessment  and Associated Diseases",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::ENT::01_Ear::003_Vestibular System_ Physiology_ Assessment_ and Associated Diseases",
+    "question_text": "The inner ear, or the labyrinth has a central chamber called the vestibule with a spherical and elliptical recess, each accommodating important structures of the membranous labyrinth. What structure does the elliptical recess accommodate?",
+    "question_html": "<p>The inner ear, or the labyrinth has a central chamber called the vestibule with a spherical and elliptical recess, each accommodating important structures of the membranous labyrinth. What structure does the elliptical recess accommodate?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Saccule",
+        "html": "<p>Saccule</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Openings of the semicircular canals",
+        "html": "<p>Openings of the semicircular canals</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Oval window",
+        "html": "<p>Oval window</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Utricle",
+        "html": "<p>Utricle</p>",
+        "is_correct": true
+      }
+    ],
+    "correct_option_index": 3,
+    "correct_option_label": "D",
+    "explanation_text": "p&gt;\n\nExplanation:\n\nThe utricle is accommodated in the elliptical recess that is situated in the medial wall of the central chamber.\n\nThe vestibular system is divided into\n\nPeripheral: made of membranous labyrinth (SCC, utricle, and saccule) and vestibular nerve\n\nMembranous labyrinth: \n\nIt is present in the labyrinth/inner ear enclosed by the bony labyrinth.\n\nThe lateral wall of the vestibule (central chamber) of the bony labyrinth has the oval window (Option C)\n\nThe medial wall has two recesses,\n\nA spherical recess that carries the saccule (Option A)\n\nAn elliptical recess that carries the utricle\n\nThe opening of the aqueduct of the vestibule is located below the elliptical recess which has the endolymphatic duct.\n\nThe posterosuperior part of the vestibule has 5 openings of semicircular canals (Option B).\n\nVestibular nerve:\n\nCentral processes of the vestibular or Scarpa\u2019s ganglion forms the vestibular nerve.\n\nTransmits the signals from hair cells in the inner ear to the vestibular nuclei\n\nCentral: made of the nuclei (superior, medial, lateral, descending nuclei) and fiber tracts in CNS.\n\n@Neet_pg_bot",
+    "explanation_html": "p>\n\n\n<p><strong>Explanation:</strong></p>\n<p>The <strong>utricle</strong> is accommodated in the <strong>elliptical recess</strong> that is situated in the medial wall of the central chamber.</p>\n\n<p><strong>The vestibular system </strong>is divided into</p>\n<p><strong>Peripheral:</strong> made of membranous labyrinth (SCC, utricle, and saccule) and vestibular nerve</p>\n<ul>\n<li><strong>Membranous labyrinth: </strong>\n<ul>\n<li>It is present in the labyrinth/inner ear enclosed by the bony labyrinth.</li>\n<li>The lateral wall of the <strong>vestibule </strong>(central chamber) of the bony labyrinth has the oval window <strong> (Option C)</strong></li>\n<li>The medial wall has two <strong>recesses</strong>,\n\t\t<ul>\n<li>A <strong>spherical recess</strong> that carries the <strong>saccule (Option A)</strong></li>\n<li>An <strong>elliptical recess</strong> that carries the <strong>utricle</strong></li>\n</ul>\n</li>\n<li>The opening of the aqueduct of the vestibule is located below the elliptical recess which has the endolymphatic duct.</li>\n<li>The posterosuperior part of the vestibule has 5 openings of <strong>semicircular canals </strong><strong> </strong><strong>(Option B)</strong>.</li>\n</ul>\n</li>\n<li><strong>Vestibular nerve:</strong>\n<ul>\n<li>Central processes of the vestibular or Scarpa\u2019s ganglion forms the vestibular nerve.</li>\n<li>Transmits the signals from hair cells in the inner ear to the vestibular nuclei</li>\n</ul>\n</li>\n</ul>\n<p><strong>Central: </strong>made of the nuclei (superior, medial, lateral, descending nuclei) and fiber tracts in CNS.</p>\n<p><img alt=\"\" data-author=\"NA\" data-hash=\"\" data-license=\"NA\" data-source=\"NA\" data-tags=\"\" height=\"500\" src=\"d762d1a9b88969f921414e70c49438bdbe75f5eb.jpg\" width=\"500\"/></p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Diseases of Ear, Nose, Throat - PL Dhingra, 8th edition, Pg: 11, 21.</p>\n<p>\u00a0</p>",
+    "images": [
+      {
+        "type": "explanation",
+        "filename": "d762d1a9b88969f921414e70c49438bdbe75f5eb.jpg",
+        "anki_key": "4329",
+        "extracted_path": "data/extracted_media/d762d1a9b88969f921414e70c49438bdbe75f5eb.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674148423,
+    "mcq_id": "Q865333",
+    "category": "Para-clinical",
+    "subject": "Forensic Medicine",
+    "topic": "Forensic Identification",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Forensic Medicine::01_Forensic Identification::003_Previous Year Questions",
+    "question_text": "Which of the following dental notation systems is shown in this image?",
+    "question_html": "<p>Which of the following dental notation systems is shown in this image?</p>\n<p><img alt=\"\" data-author=\"\" data-hash=\"\" data-license=\"\" data-source=\"\" data-tags=\"\" height=\"450\" src=\"6abea62fd664e557170d121e509ef247ae0fc297.jpg\" width=\"936\"/></p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Palmer Notation",
+        "html": "<p>Palmer Notation</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Haderup System",
+        "html": "<p>Haderup System</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Universal Numbering System",
+        "html": "<p>Universal Numbering System</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Federation Dentaire Internationale (FDI)",
+        "html": "<p>Federation Dentaire Internationale (FDI)</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top\"&gt;\n\nLeft Upper Quadrant \n\n8\n\n7\n\n6\n\n5\n\n4\n\n3\n\n2\n\n1\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7\n\n8\n\nRight Lower Quadrant \n\nLeft Lower Quadrant \n\n8\n\n7\n\n6\n\n5\n\n4\n\n3\n\n2\n\n1\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7\n\n8\n\nDeciduous/Primary Teeth:\n\nRight Upper Quadrant \n\nLeft Upper Quadrant \n\nE\n\nD\n\nC\n\nB\n\nA\n\nA\n\nB\n\nC\n\nD\n\nE\n\nRight Lower Quadrant\n\nLeft Lower Quadrant \n\nE\n\nD\n\nC\n\nB\n\nA\n\nA\n\nB\n\nC\n\nD\n\nE\n\nHaderup System (Option B): In this system, values for upper jaw teeth are indicated with a \u2018+\u2019 sign (and a \u2018-\u2019 sign for lower jaw teeth). These signs are placed to the left (for left-side teeth) or right (for right-side teeth), followed by numbers 1 through 8 for permanent teeth.\n\nPermanent Teeth:\n\nRight Upper Quadrant \n\nLeft Upper Quadrant \n\n8+\n\n7+\n\n6+\n\n5+\n\n4+\n\n3+\n\n2+\n\n1+\n\n+1\n\n+2\n\n+3\n\n+4\n\n+5\n\n+6\n\n+7\n\n+8\n\nRight Lower Quadrant \n\nLeft Lower Quadrant \n\n8-\n\n7-\n\n6-\n\n5-\n\n4-\n\n3-\n\n2-\n\n1-\n\n-1\n\n-2\n\n-3\n\n-4\n\n-5\n\n-6\n\n-7\n\n-8\n\nDeciduous/Primary Teeth:\n\nRight Upper Quadrant \n\nLeft Upper Quadrant \n\n5+\n\n4+\n\n3+\n\n2+\n\n1+\n\n+1\n\n+2\n\n+3\n\n+4\n\n+5\n\nRight Lower Quadrant\n\nLeft Lower Quadrant \n\n5-\n\n4-\n\n3-\n\n2-\n\n1-\n\n-1\n\n-2\n\n-3\n\n-4\n\n-5\n\nUniversal Numbering System (Option C): In this system, for Permanent Dentition, each of the 32 permanent teeth is numbered from 1 to 32. The numbering starts from the upper right third molar (tooth 1), moves across to the upper left third molar (16), then continues to the lower left third molar (17), and ends at the lower right third molar (32).\n\nRight Left\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7\n\n8\n\n9\n\n10\n\n11\n\n12\n\n13\n\n14\n\n15\n\n16\n\n32\n\n31\n\n30\n\n29\n\n28\n\n27\n\n26\n\n25\n\n24\n\n23\n\n22\n\n21\n\n20\n\n19\n\n18\n\n17\n\nFor Primary Dentition: The 20 primary teeth are labeled using uppercase letters A to T.\n\nA\n\nB\n\nC\n\nD\n\nE\n\nF\n\nG\n\nH\n\nI\n\nJ\n\nT\n\nS\n\nR\n\nQ\n\nP\n\nO\n\nN\n\nM\n\nL\n\nK\n\nFederation Dentaire Internationale (Option D): In this system teeth are numbered by a two-digit code: the first digit indicates the quadrant (1 for upper right, 2 for upper left, 3 for lower left, and 4 for lower right), and the second digit indicates the tooth within the quadrant (1 to 8 for permanent teeth).\n\nFDI System (Permanent Teeth):\n\nQuadrant 1 (Right Upper)\n\nQuadrant 2 (Left Upper)\n\n18\n\n17\n\n16\n\n15\n\n14\n\n13\n\n12\n\n11\n\n21\n\n22\n\n23\n\n24\n\n25\n\n26\n\n27\n\n28\n\nQuadrant 4 (Right Lower)\n\nQuadrant 3 (Left Lower)\n\n48\n\n47\n\n46\n\n45\n\n44\n\n43\n\n42\n\n41\n\n31\n\n32\n\n33\n\n34\n\n35\n\n36\n\n37\n\n38\n\n@Neet_pg_bot",
+    "explanation_html": "left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n\t\t\t<p><strong>Left Upper Quadrant </strong></p>\n\n\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>8</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>7</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>6</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>5</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>5</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>6</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>7</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>8</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Right Lower Quadrant </strong></p>\n</td>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Left Lower Quadrant </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>8</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>7</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>6</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>5</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>5</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>6</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>7</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>8</p>\n</td>\n</tr>\n\n\n\n<p><strong>Deciduous/Primary Teeth:</strong></p>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:624px\">\n<tbody>\n<tr>\n<td colspan=\"5\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Right Upper Quadrant </strong></p>\n</td>\n<td colspan=\"5\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Left Upper Quadrant </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>E</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>D</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>C</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>B</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>A</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>A</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>B</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>C</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>D</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>E</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"5\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Right Lower Quadrant</strong></p>\n</td>\n<td colspan=\"5\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Left Lower Quadrant </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>E</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>D</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>C</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>B</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>A</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>A</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>B</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>C</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>D</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>E</p>\n</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Haderup System (Option B): </strong>In this system, values for upper jaw teeth are indicated with a \u2018+\u2019 sign (and a \u2018-\u2019 sign for lower jaw teeth). These signs are placed to the left (for left-side teeth) or right (for right-side teeth), followed by numbers 1 through 8 for permanent teeth.</p>\n<p><strong>Permanent Teeth:</strong></p>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:624px\">\n<tbody>\n<tr>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Right Upper Quadrant </strong></p>\n</td>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Left Upper Quadrant </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>8+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>7+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>6+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>5+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>4+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>3+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>2+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>1+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+5</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+6</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+7</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+8</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Right Lower Quadrant </strong></p>\n</td>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Left Lower Quadrant </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>8-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>7-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>6-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>5-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>4-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>3-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>2-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>1-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-5</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-6</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-7</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-8</p>\n</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Deciduous/Primary Teeth:</strong></p>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:624px\">\n<tbody>\n<tr>\n<td colspan=\"5\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Right Upper Quadrant </strong></p>\n</td>\n<td colspan=\"5\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Left Upper Quadrant </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>5+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>4+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>3+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>2+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>1+</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>+5</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"5\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Right Lower Quadrant</strong></p>\n</td>\n<td colspan=\"5\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Left Lower Quadrant </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>5-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>4-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>3-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>2-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>1-</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>-5</p>\n</td>\n</tr>\n</tbody>\n</table>\n\n<p><strong>Universal Numbering System (Option C): </strong>In this system, <strong>for Permanent Dentition, </strong>each of the 32 permanent teeth is numbered from 1 to 32. The numbering starts from the upper right third molar (tooth 1), moves across to the upper left third molar (16), then continues to the lower left third molar (17), and ends at the lower right third molar (32).</p>\n<p><strong>Right Left</strong></p>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:624px\">\n<tbody>\n<tr>\n<td style=\"border-bottom:1px; border-left:2px; border-right:1px; border-top:2px; vertical-align:top\">\n<p>1</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>2</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>3</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>4</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>5</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>6</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>7</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:2px solid black; border-top:2px solid black; vertical-align:top\">\n<p>8</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>9</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>10</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>11</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>12</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>13</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>14</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>15</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:2px solid black; border-top:2px solid black; vertical-align:top\">\n<p>16</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:2px solid black; border-left:2px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>32</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>31</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>30</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>29</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>28</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>27</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>26</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:2px solid black; border-top:none; vertical-align:top\">\n<p>25</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>24</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>23</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>22</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>21</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>20</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>19</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>18</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:2px solid black; border-top:none; vertical-align:top\">\n<p>17</p>\n</td>\n</tr>\n</tbody>\n</table>\n\n<p><strong>For Primary Dentition:</strong> The 20 primary teeth are labeled using uppercase letters A to T.</p>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:624px\">\n<tbody>\n<tr>\n<td style=\"border-bottom:1px; border-left:2px; border-right:1px; border-top:2px; vertical-align:top\">\n<p>A</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>B</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>C</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>D</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:2px solid black; border-top:2px solid black; vertical-align:top\">\n<p>E</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>F</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>G</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>H</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:2px solid black; vertical-align:top\">\n<p>I</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:2px solid black; border-top:2px solid black; vertical-align:top\">\n<p>J</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:2px solid black; border-left:2px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>T</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>S</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>R</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>Q</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:2px solid black; border-top:none; vertical-align:top\">\n<p>P</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>O</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>N</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>M</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>L</p>\n</td>\n<td style=\"border-bottom:2px solid black; border-left:none; border-right:2px solid black; border-top:none; vertical-align:top\">\n<p>K</p>\n</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Federation Dentaire Internationale (Option D): </strong>In this system teeth are numbered by a two-digit code: the first digit indicates the quadrant (1 for upper right, 2 for upper left, 3 for lower left, and 4 for lower right), and the second digit indicates the tooth within the quadrant (1 to 8 for permanent teeth).</p>\n<p><strong>FDI System (Permanent Teeth):</strong></p>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:624px\">\n<tbody>\n<tr>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Quadrant 1 (Right Upper)</strong></p>\n</td>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Quadrant 2 (Left Upper)</strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>18</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>17</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>16</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>15</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>14</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>13</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>12</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>11</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>21</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>22</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>23</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>24</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>25</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>26</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>27</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>28</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Quadrant 4 (Right Lower)</strong></p>\n</td>\n<td colspan=\"8\" style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p><strong>Quadrant 3 (Left Lower)</strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>48</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>47</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>46</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>45</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>44</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>43</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>42</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>41</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>31</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>32</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>33</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>34</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>35</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>36</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>37</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>38</p>\n</td>\n</tr>\n</tbody>\n</table><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "K S Narayan Reddy, OP Murty, The Essentials of Forensic Medicine and Toxicology, 35th Edition, Page 72, 73.<br/>https://www.fortunejournals.com/ijabpt/pdf/63045-II-Mahesh%20Singh-forensic%20dentistry[1].pdf",
+    "images": [
+      {
+        "type": "question",
+        "filename": "6abea62fd664e557170d121e509ef247ae0fc297.jpg",
+        "anki_key": "11610",
+        "extracted_path": "data/extracted_media/6abea62fd664e557170d121e509ef247ae0fc297.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674150069,
+    "mcq_id": "Q854663",
+    "category": "Clinical",
+    "subject": "Obstetrics & Gynaecology",
+    "topic": "Relevant Clinical Anatomy",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Gynaecology _ Obstetrics::01_Relevant Clinical Anatomy::001_Previous Year Questions",
+    "question_text": "A 28-year-old multigravida presents to the emergency department at night with acute uterine inversion following the delivery of the baby, after the nurse waited until the placenta was delivered. Her blood pressure is 110/70 mmHg, and her pulse is 90 bpm. What is the appropriate management in this case?",
+    "question_html": "<p>A 28-year-old multigravida presents to the emergency department at night with acute uterine inversion following the delivery of the baby, after the nurse waited until the placenta was delivered. Her blood pressure is 110/70 mmHg, and her pulse is 90 bpm. What is the appropriate management in this case?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Manually remove the placenta and reposition the uterus",
+        "html": "<p>Manually remove the placenta and reposition the uterus</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Reposition the uterus inside without removing the placenta",
+        "html": "<p>Reposition the uterus inside without removing the placenta</p>",
+        "is_correct": true
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Shift to the operating theatre and reinsert the uterus under general anesthesia",
+        "html": "<p>Shift to the operating theatre and reinsert the uterus under general anesthesia</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Start oxytocin infusion",
+        "html": "<p>Start oxytocin infusion</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 1,
+    "correct_option_label": "B",
+    "explanation_text": "ff8b38191692777201150e72ebc3\"&gt;uterine inversion with the placenta still attached, the immediate priority is to reposition the uterus without removing the placenta to prevent further hemorrhage and uterine contraction, which would complicate repositioning.\n\nThe management of uterine inversion should follow the following steps:\n\nImmediate call for assistance (obstetric and anaesthesia personnel)\n\nBlood is brought to the delivery room to use when needed\n\nTwo large bore IV lines are secured, and crystalloids are given to treat hypovolemia till the blood is brought\n\nThe woman is evaluated for emergency general anaesthesia\n\nStop tocolytics\n\nStart oxytocin\n\nGive antibiotics\n\nThe steps of management of uterine inversion according to certain factors are as follows:\n\nCondition \n\nMethod \n\nInverted uterus not contracted and retracted completely\n\nThe placenta has already separated\n\nReplace the uterus by pushing the inverted fundus using your palm and fingers\n\nThe placenta is still attached\n\nReposition the uterus with the placenta in situ\n\nTocolytics may be used for uterine relaxation\n\nIf they fail, general anaesthesia (inhalational) is used\n\nThe uterus is replaced, and the placenta removed\n\nFailed uterine reposition with attached placenta\n\nThe placenta is peeled off, and repositioning is attempted again\n\nFailed manual repositioning\n\nSurgical repositioning (Huntington\u2019s procedure)\n\nManually removing the placenta and repositioning the uterus (Option A) will lead to increased haemorrhage and faster contraction of the uterus, making it difficult to replace the uterus. Hence, this is not the preferred step.\n\nShift to the operating theatre (OT) and reinsert the uterus under general anaesthesia (Option C): General anesthesia and surgical repositioning are reserved for failed manual repositioning attempts.\n\nStart oxytocin infusion (Option D): If oxytocin infusion is continued, the uterus will contract and lead to difficulty in its repositioning, so tocolytics are used to relax the uterus, and then once the repositioning is completed, oxytocin infusion and bimanual compression are started to aid uterine contraction.\n\n@Neet_pg_bot",
+    "explanation_html": "ff8b38191692777201150e72ebc3\">uterine inversion <strong>with the placenta still attached,</strong><strong> </strong>the immediate priority is to <strong>reposition the uterus without removing the placenta </strong>to prevent further hemorrhage and uterine contraction, which would complicate repositioning.\n<p>The management of uterine inversion should follow the following steps:</p>\n<ul>\n<li>Immediate call for assistance (obstetric and anaesthesia personnel)</li>\n<li>Blood is brought to the delivery room to use when needed</li>\n<li>Two large bore IV lines are secured, and crystalloids are given to treat hypovolemia till the blood is brought</li>\n<li>The woman is evaluated for emergency general anaesthesia</li>\n<li>Stop tocolytics</li>\n<li>Start oxytocin</li>\n<li>Give antibiotics</li>\n</ul>\n\n<p>The steps of management of uterine inversion according to certain factors are as follows:</p>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:624px\">\n<tbody>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Condition </strong></p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top\">\n<p><strong>Method </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<ul>\n<li>Inverted uterus not contracted and retracted completely</li>\n<li>The placenta has already separated</li>\n</ul>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>Replace the uterus by pushing the inverted fundus using your palm and fingers</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>The placenta is still attached</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<ul>\n<li><strong>Reposition the uterus with the placenta in situ</strong></li>\n<li>Tocolytics may be used for uterine relaxation</li>\n<li>If they fail, general anaesthesia (inhalational) is used</li>\n<li>The uterus is replaced, and the placenta removed</li>\n</ul>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>Failed uterine reposition with attached placenta</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>The placenta is peeled off, and repositioning is attempted again</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>Failed manual repositioning</p>\n</td>\n<td style=\"border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top\">\n<p>Surgical repositioning (Huntington\u2019s procedure)</p>\n</td>\n</tr>\n</tbody>\n</table>\n\n<p style=\"text-align:center\"><img alt=\"\" data-author=\"\" data-hash=\"\" data-license=\"\" data-source=\"\" data-tags=\"\" height=\"2171\" src=\"01b09259fdf22b6214aa597be80c2dd36a1bdfe4.jpg\" width=\"2238\"/></p>\n\n<p><strong>Manually removing the placenta and repositioning the uterus (Option A) </strong>will lead to increased haemorrhage and faster contraction of the uterus, making it difficult to replace the uterus. Hence, this is not the preferred step.</p>\n<p><strong>Shift to the operating theatre (OT) and reinsert the uterus under general anaesthesia (Option C): </strong>General anesthesia and surgical repositioning are reserved for failed manual repositioning attempts.</p>\n<p><strong>Start oxytocin infusion (Option D)</strong>: If oxytocin infusion is continued, the uterus will contract and lead to difficulty in its repositioning, so tocolytics are used to relax the uterus, and then once the repositioning is completed, oxytocin infusion and bimanual compression are started to aid uterine contraction.</p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Williams Obstetrics, 26th edition, Page: 738, 739.</p>",
+    "images": [
+      {
+        "type": "explanation",
+        "filename": "01b09259fdf22b6214aa597be80c2dd36a1bdfe4.jpg",
+        "anki_key": "8585",
+        "extracted_path": "data/extracted_media/01b09259fdf22b6214aa597be80c2dd36a1bdfe4.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674153095,
+    "mcq_id": "Q850501",
+    "category": "Clinical",
+    "subject": "Medicine",
+    "topic": "Cardiology",
+    "subtopic": "Systemic HTN   Pulmonary HTN",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Medicine::01_Cardiology::006_Systemic HTN _ Pulmonary HTN",
+    "question_text": "A 55-year-old male presented to the clinic for a routine check-up last week.\u00a0Automated Office Blood Pressure (AoBP)\u00a0readings of 142/94, 138/86, and 138/90 mmHg.\u00a0Ambulatory blood pressure monitoring (ABPM) was advised and the average 24-hour blood pressure is 138/86 mmHg.\u00a0According to the ACC/AHA hypertension classification, what category does his blood pressure fall into?",
+    "question_html": "<p>A 55-year-old male presented to the clinic for a routine check-up last week.\u00a0Automated Office Blood Pressure (AoBP)\u00a0readings of 142/94, 138/86, and 138/90 mmHg.\u00a0Ambulatory blood pressure monitoring (ABPM) was advised and the average 24-hour blood pressure is 138/86 mmHg.\u00a0According to the ACC/AHA hypertension classification, what category does his blood pressure fall into?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Normal blood pressure",
+        "html": "<p>Normal blood pressure</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Elevated blood pressure",
+        "html": "<p>Elevated blood pressure</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Stage 1 hypertension",
+        "html": "<p>Stage 1 hypertension</p>",
+        "is_correct": true
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Stage 2 hypertension",
+        "html": "<p>Stage 2 hypertension</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 2,
+    "correct_option_label": "C",
+    "explanation_text": "139 mmHg or diastolic blood pressure between 80-89 mmHg.\n\nThe patient\u2019s ABPM shows systolic readings between 138-142 mmHg and diastolic values between 86-90 mmHg.\n\nHypertension category based on the American College of Cardiology (ACC) \n\nBlood pressure category\n\nSystolic (mm Hg)\n\nDiastolic (mm Hg)\n\nNormal\n\n&lt; 120\n\n&lt; 80\n\nElevated\u00a0\n\n120-129\n\n&lt;80\n\nStage 1 hypertension\u00a0\n\n130 \u2013 139\n\n80 \u2013 89\n\nStage 2 hypertension\u00a0\n\n\u2265140\n\n\u226590\n\nHypertensive crisis\n\n&gt;180\n\n&gt;120\n\n@Neet_pg_bot",
+    "explanation_html": "139 mmHg or diastolic blood pressure between 80-89 mmHg.\n<li>The patient\u2019s ABPM shows systolic readings between 138-142 mmHg and diastolic values between 86-90 mmHg.</li>\n\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:576px\">\n<tbody>\n<tr>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Hypertension category based on the American College of Cardiology (ACC) </strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Blood pressure category</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Systolic (mm Hg)</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Diastolic (mm Hg)</strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Normal</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>< 120</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>< 80</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Elevated\u00a0</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>120-129</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><80</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Stage 1 hypertension\u00a0</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>130 \u2013 139</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>80 \u2013 89</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Stage 2 hypertension\u00a0</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>\u2265140</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>\u226590</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Hypertensive crisis</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>>180</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>>120</p>\n</td>\n</tr>\n</tbody>\n</table>\n\n<p><br/>\n\u00a0</p>\n<br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Harrison's Principles of Internal Medicine, 22nd Edition, Page 2134.</p>",
+    "images": [],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674156873,
+    "mcq_id": "Q876237",
+    "category": "Para-clinical",
+    "subject": "Microbiology",
+    "topic": "General Microbiology",
+    "subtopic": "Bacterial genetics",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Microbiology::01_General Microbiology::003_Bacterial genetics",
+    "question_text": "Which of the following is a real-world example of a phage display application?",
+    "question_html": "<p>Which of the following is a real-world example of a phage display application?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Identification of SARS-CoV-2 neutralizing antibodies",
+        "html": "<p>Identification of SARS-CoV-2 neutralizing antibodies<br/>\n</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Producing insulin in bacterial cells",
+        "html": "<p>Producing insulin in bacterial cells<br/>\n</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Studying DNA polymerase fidelity",
+        "html": "<p>Studying DNA polymerase fidelity<br/>\n</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Detecting RNA viruses in patient serum",
+        "html": "<p>Detecting RNA viruses in patient serum</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "Correct Option A - Identification of SARS-CoV-2 neutralizing antibodies:\n\nPhage display has been used to screen antibodies that bind the SARS-CoV-2 spike protein, facilitating therapeutic development.\n\nIncorrect Options:\n\nOption B - Producing insulin in bacterial cells:\n\nDone by bacterial expression systems, not phage display.\n\nOption C - Studying DNA polymerase fidelity:\n\nMolecular biology research, not phage display.\n\nOption D - Detecting RNA viruses in patient serum:\n\nDone by molecular diagnostic tests (PCR, ELISA), not phage display.\n\n@Neet_pg_bot",
+    "explanation_html": "<p><strong>Correct Option A - Identification of SARS-CoV-2 neutralizing antibodies:</strong></p>\n<ul>\n<li>Phage display has been used to screen antibodies that bind the SARS-CoV-2 spike protein, facilitating therapeutic development.</li>\n</ul>\n<p><strong>Incorrect Options:</strong></p>\n<p><strong>Option B - Producing insulin in bacterial cells:</strong></p>\n<ul>\n<li>Done by bacterial expression systems, not phage display.</li>\n</ul>\n<p><strong>Option C - Studying DNA polymerase fidelity:</strong></p>\n<ul>\n<li>Molecular biology research, not phage display.</li>\n</ul>\n<p><strong>Option D - Detecting RNA viruses in patient serum:</strong></p>\n<ul>\n<li>Done by molecular diagnostic tests (PCR, ELISA), not phage display.</li>\n</ul><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": null,
+    "images": [],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674159407,
+    "mcq_id": "Q866349",
+    "category": "Clinical",
+    "subject": "Ophthalmology",
+    "topic": "Orbit",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Ophthalmology::01_Orbit::002_Previous Year Questions",
+    "question_text": "A 15-year-old female presents with a painless, gradually increasing mass located lateral to the lateral canthus, present for the past 10 years. On examination, the mass is non-tender and slowly progressive. What is the most likely diagnosis?",
+    "question_html": "<p>A 15-year-old female presents with a painless, gradually increasing mass located lateral to the lateral canthus, present for the past 10 years. On examination, the mass is non-tender and slowly progressive. What is the most likely diagnosis?</p>\n<p><img alt=\"\" data-author=\"\" data-hash=\"\" data-license=\"\" data-source=\"\" data-tags=\"\" height=\"235\" src=\"32749a8eceff500191d1751dadfaa0e45a8714db.jpg\" width=\"348\"/></p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Dermoid cyst",
+        "html": "<p>Dermoid cyst</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Capillary hemangioma",
+        "html": "<p>Capillary hemangioma</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Lacrimal gland tumor",
+        "html": "<p>Lacrimal gland tumor</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Epidermoid cyst",
+        "html": "<p>Epidermoid cyst</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "Correct Answer: A. Dermoid cyst\n\nA painless, slowly progressive, lateral canthal mass present since childhood suggests a congenital lesion at a suture line, which is most characteristic of a dermoid cyst.\n\nDermoid cysts are congenital choristomas caused by ectodermal tissue being trapped along embryonic suture lines, most commonly at the frontozygomatic suture. They contain epidermis and dermal appendages like hair follicles and sebaceous glands. The lesion is firm, non-tender, and slow-growing.\n\nImaging (CT/MRI) shows a well-circumscribed cyst with fat density.\n\nDefinitive management is surgical excision with intact capsule to prevent recurrence and inflammation.\n\nCapillary hemangioma (Option B): Appears in infancy, is vascular, red/bluish, and rapidly proliferates before involution \u2014 not a 10-year static mass.\n\nLacrimal gland tumor (Option C): Usually in adults, causes superolateral orbital swelling with globe displacement; may have pain.\n\nEpidermoid cyst (Option D): Contains only epidermis without dermal appendages; location and imaging features make dermoid more likely in this case.\n\n@Neet_pg_bot",
+    "explanation_html": "<p><strong>Correct Answer: A. Dermoid cyst</strong></p>\n<ul>\n<li>A painless, slowly progressive, lateral canthal mass present since childhood suggests a congenital lesion at a suture line, which is most characteristic of a <strong>dermoid cyst.</strong></li>\n<li>Dermoid cysts are <strong>congenital choristomas</strong> caused by ectodermal tissue being trapped along embryonic suture lines, most commonly at the<strong> frontozygomatic suture. </strong>They contain epidermis and dermal appendages like hair follicles and sebaceous glands. The lesion is firm, non-tender, and slow-growing.</li>\n<li>Imaging (CT/MRI) shows a well-circumscribed cyst with fat density.</li>\n<li>Definitive management is surgical excision with intact capsule to prevent recurrence and inflammation.</li>\n</ul>\n<p><strong>Capillary hemangioma (Option B):</strong> Appears in infancy, is vascular, red/bluish, and rapidly proliferates before involution \u2014 not a 10-year static mass.</p>\n<p><strong>Lacrimal gland tumor (Option C):</strong> Usually in adults, causes superolateral orbital swelling with globe displacement; may have pain.</p>\n<p><strong>Epidermoid cyst (Option D):</strong> Contains only epidermis without dermal appendages; location and imaging features make dermoid more likely in this case.<br/>\n\u00a0</p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": null,
+    "images": [
+      {
+        "type": "question",
+        "filename": "32749a8eceff500191d1751dadfaa0e45a8714db.jpg",
+        "anki_key": "712",
+        "extracted_path": "data/extracted_media/32749a8eceff500191d1751dadfaa0e45a8714db.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674162225,
+    "mcq_id": "Q866936",
+    "category": "Clinical",
+    "subject": "Orthopedics",
+    "topic": "Fracture Principles",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Orthopaedics::01_Fracture Principles::002_Previous Year Questions",
+    "question_text": "An elderly woman involved in a road traffic accident presents with difficulty in breathing and altered mental status. D-Dimer is elevated. X-ray findings are suggestive. What is the most likely diagnosis?",
+    "question_html": "<p>An elderly woman involved in a road traffic accident presents with difficulty in breathing and altered mental status. D-Dimer is elevated. X-ray findings are suggestive. What is the most likely diagnosis?</p>\n<p style=\"text-align:center\"><img alt=\"\" data-author=\"\" data-hash=\"\" data-license=\"\" data-source=\"\" data-tags=\"\" height=\"519\" src=\"5a2c231e8d3097aef432053b80c11194e23708f4.jpg\" width=\"500\"/></p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Gas gangrene",
+        "html": "<p>Gas gangrene</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Fat embolism",
+        "html": "<p>Fat embolism</p>",
+        "is_correct": true
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Infection",
+        "html": "<p>Infection</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Pulmonary embolism",
+        "html": "<p>Pulmonary embolism</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 1,
+    "correct_option_label": "B",
+    "explanation_text": "trong&gt;\n\nThe patient's presentation following a road traffic accident is highly suggestive of a fat embolism syndrome. This condition occurs when fat globules from the bone marrow are released into the bloodstream after a long bone fracture, traveling to the lungs and brain. The classic triad of symptoms includes:\n\nRespiratory Distress: This is the most common symptom, typically occurring 24-72 hours after the trauma. The fat emboli obstruct the pulmonary capillaries, leading to hypoxia and respiratory failure. The chest X-ray often shows bilateral patchy infiltrates, mimicking acute respiratory distress syndrome (ARDS), as seen in the image provided.\n\nNeurologic Changes: These can range from altered mental status to confusion, agitation, and even coma, as the fat emboli affect the cerebral circulation.\n\nPetechial Rash: A characteristic, but not always present, rash of tiny red spots on the chest, neck, and axilla is a classic finding.\n\nAn elevated D-dimer is a non-specific finding that can be seen in both fat embolism and pulmonary embolism, as it indicates a breakdown of a clot. However, the combination of respiratory distress and neurological changes following a long bone fracture (common in road traffic accidents) makes a fat embolism the most likely diagnosis.\n\nIncorrect Options:\n\nGas gangrene (Option A) is a severe bacterial infection that would present with crepitus (a crackling sensation under the skin) and a foul-smelling discharge, not the respiratory and neurological symptoms described.\n\nInfection (Option C) would typically present with fever and leukocytosis, which are not the primary features of this acute post-traumatic event.\n\nPulmonary embolism (Option D) is a similar condition but lacks the characteristic petechial rash and is less likely to cause the specific neurological changes associated with fat embolism. While a D-dimer would be elevated, the clinical picture points more strongly to fat embolism.\n\n@Neet_pg_bot",
+    "explanation_html": "trong>\n<p>The patient's presentation following a road traffic accident is highly suggestive of a fat embolism syndrome. This condition occurs when fat globules from the bone marrow are released into the bloodstream after a long bone fracture, traveling to the lungs and brain. The classic triad of symptoms includes:</p>\n<ul>\n<li><strong>Respiratory Distress:</strong> This is the most common symptom, typically occurring <strong>24-72 hours after the trauma</strong>. The fat emboli obstruct the pulmonary capillaries, leading to hypoxia and respiratory failure. The chest X-ray often shows bilateral patchy infiltrates, mimicking acute respiratory distress syndrome (ARDS), as seen in the image provided.</li>\n<li><strong>Neurologic Changes:</strong> These can range from altered mental status to confusion, agitation, and even coma, as the fat emboli affect the cerebral circulation.</li>\n<li><strong>Petechial Rash:</strong> A characteristic, but not always present, rash of tiny red spots on the chest, neck, and axilla is a classic finding.</li>\n</ul>\n<p>An <strong>elevated D-dimer</strong> is a non-specific finding that can be seen in both fat embolism and pulmonary embolism, as it indicates a breakdown of a clot. However, the combination of respiratory distress and neurological changes following a long bone fracture (common in road traffic accidents) makes a fat embolism the most likely diagnosis.</p>\n<p><strong>Incorrect Options:</strong></p>\n<p><strong>Gas gangrene (Option A)</strong> is a severe bacterial infection that would present with crepitus (a crackling sensation under the skin) and a foul-smelling discharge, not the respiratory and neurological symptoms described.</p>\n<p><strong>Infection (Option C)</strong> would typically present with fever and leukocytosis, which are not the primary features of this acute post-traumatic event.</p>\n<p><strong>Pulmonary embolism (Option D)</strong> is a similar condition but lacks the characteristic petechial rash and is less likely to cause the specific neurological changes associated with fat embolism. While a D-dimer would be elevated, the clinical picture points more strongly to fat embolism.</p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>.</p>",
+    "images": [
+      {
+        "type": "question",
+        "filename": "5a2c231e8d3097aef432053b80c11194e23708f4.jpg",
+        "anki_key": "11874",
+        "extracted_path": "data/extracted_media/5a2c231e8d3097aef432053b80c11194e23708f4.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674163329,
+    "mcq_id": "Q879510",
+    "category": "Para-clinical",
+    "subject": "Pathology",
+    "topic": "Cell Injury",
+    "subtopic": "Cell Injury  Free Radical Injury  and ER Stress Related",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Pathology::01_Cell Injury::001_Cell Injury_ Free Radical Injury_ and ER Stress Related",
+    "question_text": "Which of the following are pathological factors that contribute to the development of thrombosis?",
+    "question_html": "<p>Which of the following are pathological factors that contribute to the development of thrombosis?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Endothelial injury, abnormal blood flow, hypercoagulability",
+        "html": "<p>Endothelial injury, abnormal blood flow, hypercoagulability</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Increased vascular compliance, reduced platelet activity, and fibrinolysis",
+        "html": "<p>Increased vascular compliance, reduced platelet activity, and fibrinolysis</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Decreased vascular tone, enhanced anticoagulant proteins, and vasodilation",
+        "html": "<p>Decreased vascular tone, enhanced anticoagulant proteins, and vasodilation</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Smooth muscle hypertrophy, hypocoagulability, and increased tissue perfusion",
+        "html": "<p>Smooth muscle hypertrophy, hypocoagulability, and increased tissue perfusion</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "l&gt;\n\nThe primary abnormalities that lead to intravascular thrombosis are the so-called \u201cVirchow triad\u201d. \n\nComponents of Virchow triad:\n\nEndothelial injury- Leads to platelet activation, which almost inevitably underlies thrombus formation in the heart and the arterial circulation.\n\nAbnormal blood flow- Turbulence (chaotic blood flow) contributes to arterial and cardiac thrombosis by causing endothelial injury or dysfunction.\n\nHypercoagulability- Refers to an abnormally high tendency of the blood to clot and is usually caused by alterations in coagulation factors.\n\n@Neet_pg_bot",
+    "explanation_html": "l>\n\t<li>The primary abnormalities that lead to intravascular thrombosis are the so-called <strong>\u201cVirchow triad\u201d. </strong></li>\n\n<p><strong>Components of Virchow triad:</strong></p>\n<ul>\n<li><strong>Endothelial injury- </strong>Leads to platelet activation, which almost inevitably underlies thrombus formation in the heart and the arterial circulation.</li>\n<li><strong>Abnormal blood flow- </strong>Turbulence (chaotic blood flow) contributes to arterial and cardiac thrombosis by causing endothelial injury or dysfunction.</li>\n<li><strong>Hypercoagulability-</strong> Refers to an abnormally high tendency of the blood to clot and is usually caused by alterations in coagulation factors.</li>\n</ul><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Robbins &amp; Kumar Pathologic Basis of Disease, 11th Edition, Page no. 66</p>",
+    "images": [],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674166513,
+    "mcq_id": "Q866745",
+    "category": "Clinical",
+    "subject": "Pediatrics",
+    "topic": "Developmental and Behavioral Disorders",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Pediatrics::03_Developmental and Behavioral Disorders::009_Previous Year Questions",
+    "question_text": "A 12-year-old child presents with short stature. On evaluation, the bone age is found to be less than the chronological age. There are no dysmorphic features, and the child is otherwise healthy. What is the most likely diagnosis?",
+    "question_html": "<p>A 12-year-old child presents with short stature. On evaluation, the bone age is found to be less than the chronological age. There are no dysmorphic features, and the child is otherwise healthy. What is the most likely diagnosis?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Constitutional delay of growth and puberty",
+        "html": "<p>Constitutional delay of growth and puberty</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Familial short stature",
+        "html": "<p>Familial short stature</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Achondroplasia",
+        "html": "<p>Achondroplasia</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Chondrodysplasia",
+        "html": "<p>Chondrodysplasia</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "growth and puberty (CDGP) is the most common cause of short stature in otherwise healthy children. It is characterized by:\n\nNormal birth length and weight\n\nSlowing of growth velocity during early childhood\n\nBone age delayed compared to chronological age\n\nNo dysmorphic features\n\nNormal growth potential \u2014 eventual catch-up and normal adult height\n\nOften a family history of \u201clate bloomers\u201d\n\nIncorrect Options:\n\nFamilial short stature (Option B): Bone age is typically equal to chronological age; height is short but consistent with genetic potential.\n\nAchondroplasia (Option C): Disproportionate short stature with rhizomelia (short limbs), frontal bossing, and characteristic facies.\n\nChondrodysplasia (Option D): A group of genetic disorders causing disproportionate short stature and skeletal abnormalities, usually evident early and with bone deformities.\n\n@Neet_pg_bot",
+    "explanation_html": "growth and puberty (CDGP) is the most common cause of short stature in otherwise healthy children. It is characterized by:\n<ul>\n<li>Normal birth length and weight</li>\n<li>Slowing of growth velocity during early childhood</li>\n<li>Bone age <strong>delayed</strong> compared to chronological age</li>\n<li>No dysmorphic features</li>\n<li>Normal growth potential \u2014 eventual catch-up and normal adult height</li>\n<li>Often a family history of \u201clate bloomers\u201d</li>\n</ul>\n<p><strong>Incorrect Options:</strong></p>\n<p><strong>Familial short stature</strong> <strong>(Option B):</strong> Bone age is typically <strong>equal to</strong> chronological age; height is short but consistent with genetic potential.</p>\n<p><strong>Achondroplasia</strong> <strong>(Option C):</strong> Disproportionate short stature with rhizomelia (short limbs), frontal bossing, and characteristic facies.</p>\n<p><strong>Chondrodysplasia</strong> <strong>(Option D):</strong> A group of genetic disorders causing disproportionate short stature and skeletal abnormalities, usually evident early and with bone deformities.</p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": null,
+    "images": [],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674168787,
+    "mcq_id": "Q843665",
+    "category": "Para-clinical",
+    "subject": "Pharmacology",
+    "topic": "ANS Pharmacology",
+    "subtopic": "Anticholinergic Drugs",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Pharmacology::02_ANS Pharmacology::006_Anticholinergic Drugs",
+    "question_text": "A 67-year-old male patient with a known history of primary open-angle glaucoma presents to the clinic for a routine eye examination. He reports no new symptoms, and his intraocular pressure (IOP) has been well controlled. Which of the following medications is preferred in this patient for dilating the pupils?",
+    "question_html": "<p>A 67-year-old male patient with a known history of primary open-angle glaucoma presents to the clinic for a routine eye examination. He reports no new symptoms, and his intraocular pressure (IOP) has been well controlled. Which of the following medications is preferred in this patient for dilating the pupils?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Atropine",
+        "html": "<p>Atropine</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Phenylephrine",
+        "html": "<p>Phenylephrine</p>",
+        "is_correct": true
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Homatropine",
+        "html": "<p>Homatropine</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Cyclopentolate",
+        "html": "<p>Cyclopentolate</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 1,
+    "correct_option_label": "B",
+    "explanation_text": "ce is phenylephrine.\n\nPhenylephrine is an alpha-1 adrenergic agonist, causing pupil dilation without increasing the intraocular pressure.\n\nMydriatics and cycloplegics:\n\nDrug\n\nIndications\n\nOcular side effects\n\nAtropine\n\nCycloplegia, mydriasis, iritis, uveitis\n\nPhotosensitivity, blurred vision, open-angle glaucoma\n\nHomatropine\n\nCyclopentolate\n\nCycloplegiaa, mydriasis\n\nPhotosensitivity, blurred vision, open-angle glaucoma\n\nPhenylephrine\n\nMydriasis, vasoconstriction, uveitis, glaucoma\n\nActs for several hours\n\n@Neet_pg_bot",
+    "explanation_html": "ce is phenylephrine.\n<ul>\n<li>Phenylephrine is an alpha-1 adrenergic agonist, causing pupil dilation without increasing the intraocular pressure.</li>\n</ul>\n<p><strong>Mydriatics and cycloplegics:</strong></p>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:624px\">\n<tbody>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Drug</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Indications</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Ocular side effects</strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Atropine</p>\n</td>\n<td rowspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Cycloplegia, mydriasis, iritis, uveitis</p>\n</td>\n<td rowspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Photosensitivity, blurred vision, open-angle glaucoma</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Homatropine</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Cyclopentolate</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Cycloplegiaa, mydriasis</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Photosensitivity, blurred vision, open-angle glaucoma</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Phenylephrine</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Mydriasis, vasoconstriction, uveitis, glaucoma</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:middle\">\n<p style=\"text-align:center\">Acts for several hours</p>\n</td>\n</tr>\n</tbody>\n</table><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Goodman and Gilman's- The Pharmacological Basis of Therapeutics, 14th Edition, Page 119-20</p>",
+    "images": [],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674171409,
+    "mcq_id": "Q842547",
+    "category": "Pre-clinical",
+    "subject": "Physiology",
+    "topic": "Cardiovascular System",
+    "subtopic": "Hemodynamics   Circulation - I",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Physiology::04_Cardiovascular System::008_Hemodynamics _ Circulation - I",
+    "question_text": "A physiologist is studying blood flow in a network of four parallel blood vessels. The effective resistance of the network of vessels is 4.8 R units. The pressure at the proximal end of the network is 150 mmHg, and the pressure at the distal end is 90 mmHg. What is the total blood flow rate through the network of vessels?",
+    "question_html": "<p>A physiologist is studying blood flow in a network of four parallel blood vessels. The effective resistance of the network of vessels is 4.8 R units. The pressure at the proximal end of the network is 150 mmHg, and the pressure at the distal end is 90 mmHg. What is the total blood flow rate through the network of vessels?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "8 L/s",
+        "html": "<p>8 L/s</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "12.5 L/s",
+        "html": "<p>12.5 L/s</p>",
+        "is_correct": true
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "10.5 L/s",
+        "html": "<p>10.5 L/s</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "20 L/s",
+        "html": "<p>20 L/s</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 1,
+    "correct_option_label": "B",
+    "explanation_text": "&gt;\n\nEffective Perfusion Pressure = 150 mmHg \u2212 90 mmHg= 60 mmHg\n\nUsing the blood flow analogue of Ohm's law:\u00a0Blood flow (F) in any part of the circulatory system is determined by the effective perfusion pressure (P) and the resistance (R) it encounters: F = P/R\n\n5E total = 4.8R units\n\nFlow = Pressure / Resistance = 60/4.8 =12.5 L/s\n\n@Neet_pg_bot",
+    "explanation_html": ">\n\t<li>Effective Perfusion Pressure = 150 mmHg \u2212 90 mmHg= 60 mmHg</li>\n<li>Using the blood flow analogue of <strong>Ohm's law:\u00a0</strong>Blood flow (F) in any part of the circulatory system is determined by the effective perfusion pressure (P) and the resistance (R) it encounters:<strong> F = P/R</strong>\n<ul>\n<li>5E total = 4.8R units</li>\n<li>Flow = Pressure / Resistance = 60/4.8 =12.5 L/s</li>\n</ul>\n</li>\n\n\n<p><img alt=\"\" data-author=\"\" data-hash=\"\" data-license=\"\" data-source=\"\" data-tags=\"\" height=\"884\" src=\"391303dbefff49bb1f7c10fcc3a28ac5cb31a891.jpg\" width=\"1796\"/></p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Ganong's Review of Medical Physiology, 26th Edition, Page 561-563</p>\n<p>\u00a0</p>",
+    "images": [
+      {
+        "type": "explanation",
+        "filename": "391303dbefff49bb1f7c10fcc3a28ac5cb31a891.jpg",
+        "anki_key": "15095",
+        "extracted_path": "data/extracted_media/391303dbefff49bb1f7c10fcc3a28ac5cb31a891.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674173165,
+    "mcq_id": "Q840595",
+    "category": "Para-clinical",
+    "subject": "Community Medicine (PSM)",
+    "topic": "Concept of Health and Disease",
+    "subtopic": "Disease Control  Monitoring and Surveillance",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::PSM::01_ Concept of Health and Disease::002_Disease Control_ Monitoring and Surveillance",
+    "question_text": "All of the following diseases are targeted by India for elimination in the future, except?",
+    "question_html": "<p>All of the following diseases are targeted by India for elimination in the future, except?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Neonatal tetanus by 2025",
+        "html": "<p>Neonatal tetanus by 2025</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "HIV/AIDS by 2024",
+        "html": "<p>HIV/AIDS by 2024</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "TB by 2025",
+        "html": "<p>TB by 2025</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Malaria by 2030",
+        "html": "<p>Malaria by 2030</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "li&gt;The World Health Organization defines the elimination of neonatal tetanus as the incidence of less than one case per 1,000 live births annually in every district nationwide.\n\nElimination of a disease is defined as interrupting modes of transmission of disease in the environment, although the causative agent persists in the community.\n\nDiseases that have been eliminated from India.\n\nDISEASE\n\nYEAR\n\nLeprosy \n\n2005\n\nOccurrence of less than 1 case per 10,000 at subnational and district level.\n\nMaternal and neonatal tetanus \n\nMay, 2015\n\nOccurrence of less than 1 case per 1,000 live births annually.\n\nPolio \n\nLast case in 2011\n\nFebruary 24, 2012\n\nIndia was removed from the list of polio-endemic countries by WHO\n\nMarch 27, 2014\n\nIndia is certified polio-free by the Regional Certification Commission (RCC), WHO\n\nDracunculiasis \n\n(Guinea worm infection)\n\n2000\n\nZero cases continuously for three consecutive years.\n\nYaws \n\n2004\n\nInfectious trachoma \n\n2017\n\nPrevalence in children aged 1\u20139 years of less than 5%, sustained for at least two years without ongoing mass antibiotic treatment, in each formerly endemic district.\n\nDiseases targeted to be eliminated from India.\n\nDISEASE\n\nTARGETED YEAR\n\nKala-azar \n\n2023 by India\n\n2030 by WHO\n\nIncidence less than 1 case per 10,000 population at the Block PHC level.\n\nFilariasis\n\n2027 by India\n\n2030 by WHO\n\nLess than 1% microfilariae carrier rate\n\nMeasles \n\n2023\n\nAbsence of endemic measles transmission in a defined geographical area &gt; 12 months\n\nHIV/AIDS \n\n2024\n\nTuberculosis \n\n2025\n\nMalaria \n\n2030\n\nZero indigenous cases and deaths due to malaria for 10 years in the whole country\n\n@Neet_pg_bot",
+    "explanation_html": "li>The World Health Organization defines the elimination of neonatal tetanus as the incidence of less than one case per 1,000 live births annually in every district nationwide.\n\n<p><strong>Elimination of a disease</strong> is defined as <strong>interrupting modes of transmission of disease</strong> in the environment, although the causative agent persists in the community.</p>\n<table align=\"center\" cellspacing=\"0\" style=\"border-collapse:collapse; width:522px\">\n<tbody>\n<tr>\n<td colspan=\"9\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">Diseases that have been <strong>eliminated </strong>from India.</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>DISEASE</strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>YEAR</strong></p>\n</td>\n<td colspan=\"4\" style=\"border-color:#000000; border-style:solid; border-width:1px; text-align:center; vertical-align:top\">\u00a0</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Leprosy </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2005</p>\n</td>\n<td colspan=\"4\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">Occurrence of less than <strong>1 case per 10,000</strong> at subnational and district level.</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Maternal and neonatal tetanus </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">May, 2015</p>\n</td>\n<td colspan=\"4\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">Occurrence of less than <strong>1 case per 1,000</strong> live births annually.</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Polio </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Last case in 2011</strong></p>\n</td>\n<td colspan=\"4\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<ul>\n<li style=\"text-align:center\"><strong>February 24, 2012</strong></li>\n</ul>\n<p style=\"text-align:center\">India was removed from the list of polio-endemic countries by WHO</p>\n<ul>\n<li style=\"text-align:center\"><strong>March 27, 2014</strong></li>\n</ul>\n<p style=\"text-align:center\">India is certified polio-free by the Regional Certification Commission (RCC), WHO</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Dracunculiasis </strong></p>\n<p style=\"text-align:center\"><strong>(Guinea worm infection)</strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2000</p>\n</td>\n<td colspan=\"4\" rowspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Zero cases</strong> continuously for three consecutive years.</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Yaws </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2004</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Infectious trachoma </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2017</p>\n</td>\n<td colspan=\"4\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">Prevalence in children aged 1\u20139 years of<strong> less than 5%</strong>, sustained for at least two years without ongoing mass antibiotic treatment, in each formerly endemic district.</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"9\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">Diseases<strong> targeted</strong> to be <strong>eliminated </strong>from India.</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>DISEASE</strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>TARGETED YEAR</strong></p>\n</td>\n<td colspan=\"3\" style=\"border-color:#000000; border-style:solid; border-width:1px; text-align:center; vertical-align:top\">\u00a0</td>\n</tr>\n<tr>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Kala-azar </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2023 by India</p>\n<p style=\"text-align:center\">2030 by WHO</p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">Incidence less than <strong>1 case per 10,000 </strong>population at the Block PHC level.</p>\n</td>\n</tr>\n<tr>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Filariasis</strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2027 by India</p>\n<p style=\"text-align:center\">2030 by WHO</p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">Less than<strong> 1% microfilariae carrier rate</strong></p>\n</td>\n</tr>\n<tr>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Measles </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2023</p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Absence</strong> of endemic measles transmission in a defined geographical area <strong>> 12 months</strong></p>\n</td>\n</tr>\n<tr>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>HIV/AIDS </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2024</p>\n</td>\n<td colspan=\"3\" style=\"border-color:#000000; border-style:solid; border-width:1px; text-align:center; vertical-align:top\">\u00a0</td>\n</tr>\n<tr>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Tuberculosis </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2025</p>\n</td>\n<td colspan=\"3\" style=\"border-color:#000000; border-style:solid; border-width:1px; text-align:center; vertical-align:top\">\u00a0</td>\n</tr>\n<tr>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Malaria </strong></p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\">2030</p>\n</td>\n<td colspan=\"3\" style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p style=\"text-align:center\"><strong>Zero indigenous cases</strong> and deaths due to malaria for 10 years in the whole country</p>\n</td>\n</tr>\n</tbody>\n</table><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "Park\u2019s Textbook of Preventive and Social Medicine, 27th edition, Page: 46<br/>www.ncbi.nlm.nih.gov/pmc/articles/PMC5353766/<br/>tbcindia.gov.in/WriteReadData/National%20Strategic%20Plan%202017-25.pdf<br/>pib.gov.in/Pressreleaseshare.aspx?PRID=1522781#<br/>ncvbdc.mohfw.gov.in/WriteReadData/l892s/National-framework-for-malaria-elimination-in-India-2016%E2%80%932030.pdf<br/>www.ncbi.nlm.nih.gov/pmc/articles/PMC5433268/<br/>pib.gov.in/Pressreleaseshare.aspx?PRID=1519322<br/>naco.gov.in/sites/default/files/India%20HIV%20Estimates%202022%20Technical%20Report.pdf<br/>www.ncbi.nlm.nih.gov/pmc/articles/PMC9893201/<br/>cms.pib.gov.in/WriteReadData/userfiles/PIB%20Mumbai/Roadmap%20towards%20Measles%20and%20Rubella%20Elimination%20in%20India%20by%202023%20.pdf<br/>pib.gov.in/PressReleasePage.aspx?PRID=1898092<br/>ncvbdc.mohfw.gov.in/index1.php?lang=1&amp;level=2&amp;sublinkid=5946&amp;lid=3752<br/>main.mohfw.gov.in/sites/default/files/Pulse%20Polio%20Programme.pdf<br/>www.who.int/india/footer/quick-links/media/yaws-elimination-story#<br/>pib.gov.in/newsite/PrintRelease.aspx?relid=174210<br/>ncdc.mohfw.gov.in/department-of-parasitic-diseases/",
+    "images": [],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674175765,
+    "mcq_id": "Q866847",
+    "category": "Clinical",
+    "subject": "Psychiatry",
+    "topic": "Basics of Psychiatry",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Psychiatry::01_Basics of Psychiatry::002_Previous Year Questions",
+    "question_text": "A person has a false belief that he owns a lot of property and that someone he knows is trying to take it away from him. Which of the following best describes the type of delusions he is experiencing?",
+    "question_html": "<p>A person has a false belief that he owns a lot of property and that someone he knows is trying to take it away from him. Which of the following best describes the type of delusions he is experiencing?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Delusion of grandeur and persecution",
+        "html": "<p>Delusion of grandeur and persecution</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Delusion of grandeur and reference",
+        "html": "<p>Delusion of grandeur and reference</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Delusion of nihilism",
+        "html": "<p>Delusion of nihilism</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Delusion of grandeur and nihilism",
+        "html": "<p>Delusion of grandeur and nihilism</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "185e6f4f5b8bc\"&gt;Delusion of grandeur and persecution:\n\nExplanation: \n\nThis patient is experiencing two distinct types of delusions simultaneously:\n\nDelusion of Grandeur: This is a false and exaggerated belief in one's own importance, power, or identity. The belief that he owns a lot of property is an example of a grandiose delusion, as it exaggerates his financial or social status.\n\nDelusion of Persecution: This is the most common type of delusion, characterized by the false belief that one is being harassed, harmed, or conspired against. The belief that someone is trying to take his property away from him is a classic example of a persecutory delusion.\n\nIncorrect Options:\n\nDelusion of reference (Option B) involves the belief that neutral events or gestures are personally directed at oneself. For example, believing that a news reporter is speaking directly to them. This is not present in the scenario.\n\nDelusion of nihilism (Options C and D) is the false belief that the self, a part of the self, or the world does not exist. This is not relevant to the patient's beliefs about property and being targeted.\n\n@Neet_pg_bot",
+    "explanation_html": "185e6f4f5b8bc\">Delusion of grandeur and persecution:\n<p><strong>Explanation: </strong></p>\n<p>This patient is experiencing two distinct types of delusions simultaneously:</p>\n<ul>\n<li><strong>Delusion of Grandeur:</strong> This is a false and exaggerated belief in one's own importance, power, or identity. The belief that he <strong>owns a lot of property</strong> is an example of a grandiose delusion, as it exaggerates his financial or social status.</li>\n<li><strong>Delusion of Persecution:</strong> This is the most common type of delusion, characterized by the false belief that one is being harassed, harmed, or conspired against. The belief that <strong>someone is trying to take his property away from him</strong> is a classic example of a persecutory delusion.</li>\n</ul>\n<p><strong>Incorrect Options:</strong></p>\n<p><strong>Delusion of reference (Option B)</strong> involves the belief that neutral events or gestures are personally directed at oneself. For example, believing that a news reporter is speaking directly to them. This is not present in the scenario.</p>\n<p><strong>Delusion of nihilism (Options C and D)</strong> is the false belief that the self, a part of the self, or the world does not exist. This is not relevant to the patient's beliefs about property and being targeted.</p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": null,
+    "images": [],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674177081,
+    "mcq_id": "Q852931",
+    "category": "Clinical",
+    "subject": "Radiology",
+    "topic": "Basics of Radiology",
+    "subtopic": "Radiation Exposure  Hazards  Protection Guidelines  and Contrast Media",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Radiology::01_Basics of Radiology::003_Radiation Exposure_ Hazards_ Protection Guidelines_ and Contrast Media",
+    "question_text": "A patient exposed to radiation presents with severe nausea, vomiting, and diarrhoea within a few days. Based on these symptoms, what is the expected radiation dose that has likely caused this Gastrointestinal Syndrome?",
+    "question_html": "<p>A patient exposed to radiation presents with severe nausea, vomiting, and diarrhoea within a few days. Based on these symptoms, what is the expected radiation dose that has likely caused this Gastrointestinal Syndrome?</p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "1-5 Gy",
+        "html": "<p>1-5 Gy</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "5-20 Gy",
+        "html": "<p>5-20 Gy<br/>\n</p>",
+        "is_correct": true
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "20-30 Gy",
+        "html": "<p>20-30 Gy<br/>\n</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "&gt;30 Gy",
+        "html": "<p>>30 Gy</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 1,
+    "correct_option_label": "B",
+    "explanation_text": "t radiation doses greater than 5 Gy, with significant symptoms emerging primarily in the 5-20 Gy range. It is characterised by severe nausea, vomiting, and diarrhea, indicating serious gastrointestinal distress from radiation exposure.\n\nAcute Radiation Syndrome (ARS):\n\nIt refers to symptoms following whole-body or significant partial-body exposure to high doses of radiation (&gt;1 Gy).\n\nLD50/60, or Lethal Dose 50/60, is the radiation dose expected to cause death in 50% of the exposed population within 60 days.\n\nAn LD50/60 of approximately 4.5 Gy indicates that this level of whole-body radiation can lead to 50% mortality without medical intervention.\n\nClinical Phases of ARS:\n\nPhase\n\nTime Post-Exposure\n\nSymptoms/Outcomes\n\nProdromal Phase\n\n0\u20132 days\n\nNausea, vomiting, anorexia, fever, headache, early skin erythema (suggesting significant exposure &gt;2 Gy)\n\nLatent Phase\n\n2\u201320 days\n\nTemporary symptom improvement; abnormal lab results (lymphopenia, granulocytopenia) despite feeling well\n\nManifest Illness Phase\n\n21\u201360 days\n\nSymptoms vary by syndrome:\n\nHematopoietic syndrome (1-8 Gy, death in months):\n\nGastrointestinal syndrome (&gt;5 Gy, death in 2 weeks)\n\nNeurovascular syndrome (&gt;20 Gy, death within 48 hours)\n\nFinal Phase\n\nRecovery or Death\n\nThe outcome depends on the absorbed dose, dose rate, and exposure heterogeneity.\n\n@Neet_pg_bot",
+    "explanation_html": "t radiation doses greater than <strong>5 Gy</strong>, with significant symptoms emerging primarily in the <strong>5-20 Gy</strong> range. It is characterised by severe nausea, vomiting, and diarrhea, indicating serious gastrointestinal distress from radiation exposure.\n\n<p><strong>Acute Radiation Syndrome (ARS):</strong></p>\n<ul>\n<li>It refers to symptoms following whole-body or significant partial-body exposure to high doses of radiation<strong> (>1 Gy).</strong></li>\n<li><strong>LD50/60, or Lethal Dose 50/60</strong>, is the radiation dose expected to cause death in 50% of the exposed population within 60 days.</li>\n<li>An LD50/60 of approximately <strong>4.5 Gy </strong>indicates that this level of whole-body radiation can lead to 50% mortality without medical intervention.</li>\n</ul>\n<ul>\n<li><strong>Clinical Phases of ARS:</strong></li>\n</ul>\n<table cellspacing=\"0\" style=\"border-collapse:collapse; width:665px\">\n<tbody>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Phase</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Time Post-Exposure</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Symptoms/Outcomes</strong></p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Prodromal Phase</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>0\u20132 days</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Nausea, vomiting, anorexia, fever, headache, early skin erythema (suggesting significant exposure<strong> >2 Gy</strong>)</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Latent Phase</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>2\u201320 days</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Temporary symptom improvement; abnormal lab results (lymphopenia, granulocytopenia) despite feeling well</p>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Manifest Illness Phase</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>21\u201360 days</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Symptoms vary by syndrome:</p>\n<ul>\n<li><strong>Hematopoietic syndrome </strong>(<strong>1-8 Gy</strong>, death in months):</li>\n<li><strong>Gastrointestinal syndrome</strong> (<strong>>5 Gy</strong>, death in 2 weeks)</li>\n<li><strong>Neurovascular syndrome</strong> (<strong>>20 Gy</strong>, death within 48 hours)</li>\n</ul>\n</td>\n</tr>\n<tr>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p><strong>Final Phase</strong></p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>Recovery or Death</p>\n</td>\n<td style=\"border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top\">\n<p>The outcome depends on the absorbed dose, dose rate, and exposure heterogeneity.</p>\n</td>\n</tr>\n</tbody>\n</table><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3863169/<br/>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3863296/",
+    "images": [],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": false,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674178041,
+    "mcq_id": "Q849163",
+    "category": "Clinical",
+    "subject": "Surgery",
+    "topic": "Neurosurgery",
+    "subtopic": "Cerebrovascular Diseases",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Surgery::01_Neurosurgery::001_Cerebrovascular Diseases",
+    "question_text": "A 25-year-old asymptomatic patient undergoes a routine lumbar spine X-ray for an unrelated complaint. The radiologist notices an incidental finding on the image. Which of the following findings would be inconsistent with spina bifida occulta?",
+    "question_html": "<p>A 25-year-old asymptomatic patient undergoes a routine lumbar spine X-ray for an unrelated complaint. The radiologist notices an incidental finding on the image. Which of the following findings would be inconsistent with spina bifida occulta?</p>\n\n<p>\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0\u00a0<img alt=\"\" data-author=\"NA\" data-hash=\"\" data-license=\"NA\" data-source=\"NA\" data-tags=\"\" height=\"473\" src=\"5f6b8d702a999ef54bf09901836c2335ba3310c5.jpg\" width=\"473\"/>\u00a0<img alt=\"\" data-author=\"NA\" data-hash=\"\" data-license=\"NA\" data-source=\"https://radiopaedia.org/articles/spina-bifida-occulta\" data-tags=\"\" height=\"479\" src=\"797b4ae46076e068d42ecb2f76ab0e10fc8270ec.jpg\" width=\"362\"/></p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Tuft of hair or dimple over the affected area",
+        "html": "<p>Tuft of hair or dimple over the affected area</p>",
+        "is_correct": false
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Often asymptomatic and found incidentally on imaging",
+        "html": "<p>Often asymptomatic and found incidentally on imaging</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Failure of vertebral arches to fuse with intact spinal cord and meninges",
+        "html": "<p>Failure of vertebral arches to fuse with intact spinal cord and meninges</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Visible sac with cerebrospinal fluid and neural elements protruding through a defect",
+        "html": "<p>Visible sac with cerebrospinal fluid and neural elements protruding through a defect</p>",
+        "is_correct": true
+      }
+    ],
+    "correct_option_index": 3,
+    "correct_option_label": "D",
+    "explanation_text": "sed by:\n\nFailure of vertebral arches to fuse with the spinal cord and meninges remaining within the spinal canal (Option C).\n\nIt is often asymptomatic and discovered incidentally on imaging (Option B).\n\nExternal signs like a tuft of hair or dimple over the affected area (Option A).\n\nIn contrast, a visible sac containing cerebrospinal fluid and neural elements protruding through a defect (Option D) indicates spina bifida aperta, specifically meningocele and myelomeningocele, not spina bifida occulta.\n\n@Neet_pg_bot",
+    "explanation_html": "sed by:\n\n\t<ul>\n<li>Failure of vertebral arches to fuse with the spinal cord and meninges remaining within the spinal canal <strong>(Option C).</strong></li>\n<li>It is often asymptomatic and discovered incidentally on imaging <strong>(Option B).</strong></li>\n<li>External signs like a tuft of hair or dimple over the affected area <strong>(Option A).</strong></li>\n</ul>\n\n\n<ul>\n<li>In contrast, a visible sac containing cerebrospinal fluid and neural elements protruding through a defect <strong>(Option D) </strong>indicates<strong> spina bifida aperta</strong>, specifically meningocele and myelomeningocele, not spina bifida occulta.</li>\n</ul>\n<p style=\"text-align:center\"><img alt=\"\" data-author=\"\" data-hash=\"\" data-license=\"\" data-source=\"\" data-tags=\"\" height=\"1011\" src=\"0ca07556698f15c77c119238b13ef268039cc5fd.jpg\" width=\"1893\"/></p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Schwartz\u2019s Principles of Surgery, 11th edition, Pg 1872</p>\n<p>\u00a0</p>",
+    "images": [
+      {
+        "type": "question",
+        "filename": "5f6b8d702a999ef54bf09901836c2335ba3310c5.jpg",
+        "anki_key": "12163",
+        "extracted_path": "data/extracted_media/5f6b8d702a999ef54bf09901836c2335ba3310c5.jpg"
+      },
+      {
+        "type": "question",
+        "filename": "797b4ae46076e068d42ecb2f76ab0e10fc8270ec.jpg",
+        "anki_key": "13387",
+        "extracted_path": "data/extracted_media/797b4ae46076e068d42ecb2f76ab0e10fc8270ec.jpg"
+      },
+      {
+        "type": "explanation",
+        "filename": "0ca07556698f15c77c119238b13ef268039cc5fd.jpg",
+        "anki_key": "11167",
+        "extracted_path": "data/extracted_media/0ca07556698f15c77c119238b13ef268039cc5fd.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": true,
+    "has_images": true,
+    "pyq_year": null
+  },
+  {
+    "source_nid": 1776674141601,
+    "mcq_id": "Q855547",
+    "category": "Clinical",
+    "subject": "Anaesthesia",
+    "topic": "Neuromuscular Blockade",
+    "subtopic": "Previous Year Questions",
+    "deck_path": "@neet_pg_bot::PREP Medical PG Q banks::Anaesthesia::04_Neuromuscular Blockade::008_Previous Year Questions",
+    "question_text": "The image given below shows neuromuscular monitoring of the patient after anesthesia. What is the most commonly used nerve for monitoring?",
+    "question_html": "<p>The image given below shows neuromuscular monitoring of the patient after anesthesia. What is the most commonly used nerve for monitoring?</p>\n<p style=\"text-align:center\"><img alt=\"\" data-author=\"\" data-hash=\"\" data-license=\"\" data-source=\"\" data-tags=\"\" height=\"260\" src=\"caa295897d671b338dd45d6d02f8f007430aa90b.jpg\" width=\"443\"/></p>",
+    "options": [
+      {
+        "index": 0,
+        "label": "A",
+        "text": "Ulnar nerve",
+        "html": "<p>Ulnar nerve</p>",
+        "is_correct": true
+      },
+      {
+        "index": 1,
+        "label": "B",
+        "text": "Median nerve",
+        "html": "<p>Median nerve</p>",
+        "is_correct": false
+      },
+      {
+        "index": 2,
+        "label": "C",
+        "text": "Radial nerve",
+        "html": "<p>Radial nerve</p>",
+        "is_correct": false
+      },
+      {
+        "index": 3,
+        "label": "D",
+        "text": "Metacarpal nerve",
+        "html": "<p>Metacarpal nerve</p>",
+        "is_correct": false
+      }
+    ],
+    "correct_option_index": 0,
+    "correct_option_label": "A",
+    "explanation_text": "nar nerve\n\nExplanation:\n\nThe ulnar nerve is the most common choice for neuromuscular monitoring because it is easily accessible at the wrist and provides a reliable measure of muscle response, specifically of the adductor pollicis (thumb). Monitoring this nerve helps ensure proper assessment of neuromuscular blockade and recovery before extubation.\u200b\n\nMost reliable and accessible site.\n\nAssesses contraction of the thumb (adductor pollicis).\n\nHelps prevent residual paralysis and improve patient safety.\u200b\n\nThis nerve's stimulation remains the gold standard for confirming adequate neuromuscular function during anesthesia.\n\nMedian nerve (Option B): Stimulating the median nerve usually elicits thumb flexion, but it is less commonly used for neuromuscular monitoring as it\u2019s not as reliable for blockade assessment.\n\nRadial nerve (Option C): While the radial nerve controls wrist and finger extension, it is less commonly monitored because it\u2019s harder to standardize the response.\n\nMetacarpal nerve (Option D): This is not typically used for neuromuscular monitoring as it does not provide consistent or reliable muscle response for assessing blockade.\n\n@Neet_pg_bot",
+    "explanation_html": "nar nerve\n<p><strong>Explanation:</strong></p>\n<p>The ulnar nerve is the most common choice for neuromuscular monitoring because it is easily accessible at the wrist and provides a reliable measure of muscle response, specifically of the adductor pollicis (thumb). Monitoring this nerve helps ensure proper assessment of neuromuscular blockade and recovery before extubation.\u200b</p>\n<ul>\n<li>\n<p>Most reliable and accessible site.</p>\n</li>\n<li>\n<p>Assesses contraction of the thumb (adductor pollicis).</p>\n</li>\n<li>\n<p>Helps prevent residual paralysis and improve patient safety.\u200b</p>\n</li>\n</ul>\n<p>This nerve's stimulation remains the gold standard for confirming adequate neuromuscular function during anesthesia.</p>\n<p><strong>Median nerve (Option B): </strong>Stimulating the median nerve usually elicits thumb flexion, but it is less commonly used for neuromuscular monitoring as it\u2019s not as reliable for blockade assessment.</p>\n<p><strong>Radial nerve (Option C): </strong>While the radial nerve controls wrist and finger extension, it is less commonly monitored because it\u2019s harder to standardize the response.</p>\n<p><strong>Metacarpal nerve (Option D): </strong>This is not typically used for neuromuscular monitoring as it does not provide consistent or reliable muscle response for assessing blockade.</p><br/><br/><a href=\"http://t.me/Neet_pg_bot\" target=\"_blank\">@Neet_pg_bot</a>",
+    "references": "<p>Miller\u2019s Anaesthesia, Edition 9, Pg 1356, 1357, 1361</p>",
+    "images": [
+      {
+        "type": "question",
+        "filename": "caa295897d671b338dd45d6d02f8f007430aa90b.jpg",
+        "anki_key": "7349",
+        "extracted_path": "data/extracted_media/caa295897d671b338dd45d6d02f8f007430aa90b.jpg"
+      }
+    ],
+    "tags": [],
+    "is_clinical": false,
+    "has_images": true,
+    "pyq_year": null
+  }
+]
