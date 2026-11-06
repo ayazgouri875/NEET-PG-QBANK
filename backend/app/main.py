@@ -11,6 +11,7 @@ if _repo_root not in sys.path:
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.app.api.v1 import admin, analytics, auth, bookmarks, questions, subjects, tests
@@ -62,12 +63,26 @@ def health_check():
     return {"status": "healthy", "service": PROJECT_NAME, "version": "1.0.0"}
 
 
-@app.get("/", tags=["System"])
-def root():
-    """API Root documentation redirect."""
-    return {
-        "message": f"Welcome to {PROJECT_NAME} API",
-        "docs_url": "/docs",
-        "api_v1": API_V1_STR,
-    }
+# Serve built React frontend if available (e.g. in unified Docker / production)
+FRONTEND_DIST = Path(_repo_root) / "admin" / "dist"
+if FRONTEND_DIST.exists():
+    assets_dir = FRONTEND_DIST / "assets"
+    if assets_dir.exists():
+        app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="assets")
+
+    @app.get("/{full_path:path}", tags=["Frontend"])
+    async def serve_spa(full_path: str):
+        target = FRONTEND_DIST / full_path
+        if full_path and target.is_file():
+            return FileResponse(target)
+        return FileResponse(FRONTEND_DIST / "index.html")
+else:
+    @app.get("/", tags=["System"])
+    def root():
+        """API Root documentation redirect."""
+        return {
+            "message": f"Welcome to {PROJECT_NAME} API",
+            "docs_url": "/docs",
+            "api_v1": API_V1_STR,
+        }
 

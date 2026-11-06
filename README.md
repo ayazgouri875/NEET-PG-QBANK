@@ -1,6 +1,16 @@
+---
+title: NEET PG Master
+emoji: 🩺
+colorFrom: blue
+colorTo: teal
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # NEET PG Question Bank Platform
 
-A high-performance medical education question-bank application inspired by Marrow and PrepLadder, built with **Flutter**, **FastAPI**, **PostgreSQL**, and **React**.
+A high-performance medical education question-bank application inspired by Marrow and PrepLadder, built with **Flutter**, **FastAPI**, **SQLite**, and **React**.
 
 > [!IMPORTANT]
 > **Zero-AI & Zero-RAG Guarantee**: All 19,225 medical MCQs, option choices, explanations, and clinical diagrams originate strictly from verified imported source materials. No generative AI or vector databases are utilized.
