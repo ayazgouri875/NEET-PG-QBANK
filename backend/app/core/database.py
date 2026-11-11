@@ -24,12 +24,23 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def init_db() -> None:
     """Creates all database tables defined in SQLAlchemy models and runs lightweight migrations."""
+    # Ensure all model classes are imported before create_all
+    import backend.app.models  # noqa: F401
     Base.metadata.create_all(bind=engine)
-    with engine.begin() as conn:
-        try:
-            conn.execute(text("ALTER TABLE users ADD COLUMN is_verified BOOLEAN DEFAULT 1"))
-        except Exception:
-            pass  # Already exists or not supported
+    migrations = [
+        "ALTER TABLE users ADD COLUMN is_verified BOOLEAN DEFAULT 1",
+        "ALTER TABLE users ADD COLUMN email_verified BOOLEAN DEFAULT 1 NOT NULL",
+        "ALTER TABLE users ADD COLUMN token_version INTEGER DEFAULT 1 NOT NULL",
+        "ALTER TABLE users ADD COLUMN failed_login_attempts INTEGER DEFAULT 0 NOT NULL",
+        "ALTER TABLE users ADD COLUMN locked_until DATETIME",
+        "ALTER TABLE users ADD COLUMN last_login_at DATETIME",
+    ]
+    for stmt in migrations:
+        with engine.begin() as conn:
+            try:
+                conn.execute(text(stmt))
+            except Exception:
+                pass  # Column already exists or handled by create_all
 
 
 def get_db() -> Generator[Session, None, None]:

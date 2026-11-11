@@ -30,7 +30,6 @@ export const QuestionsManager: React.FC = () => {
 
   const loadSubjects = async () => {
     try {
-      await adminApi.ensureAuth();
       const data = await adminApi.fetchSubjects();
       setSubjects(data);
     } catch (e) {

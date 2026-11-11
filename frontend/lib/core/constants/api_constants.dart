@@ -30,6 +30,8 @@ class ApiConstants {
 
   // Endpoints
   static const String login = "/auth/login";
+  static const String forgotPassword = "/auth/forgot-password";
+  static const String resetPassword = "/auth/reset-password";
   static const String register = "/auth/register";
   static const String me = "/auth/me";
   static const String subjects = "/subjects/";
@@ -41,4 +43,3 @@ class ApiConstants {
   static const String analyticsDashboard = "/analytics/dashboard";
   static const String revisionRecommendations = "/analytics/recommendations";
 }
-

@@ -1,12 +1,15 @@
 import {
   AdminStats,
-  AttemptedQuestionItem,
+  AuthConfig,
+  AuthSessionItem,
   BookmarkItem,
   IntegrityAudit,
   OTPResponse,
   PaginatedAttemptedQuestions,
   PaginatedQuestions,
   QuestionItem,
+  RegistrationResponse,
+  StatusMessageResponse,
   StudentAnalytics,
   SubjectItem,
   SubmitAnswerResult,
@@ -18,76 +21,125 @@ import {
 const API_BASE = '/api/v1';
 
 class AdminApiClient {
-  private token: string | null = null;
   private currentUser: UserItem | null = null;
+  private refreshPromise: Promise<boolean> | null = null;
+  private onUnauthorized: (() => void) | null = null;
 
-  setToken(t: string | null) {
-    this.token = t;
-    if (t) {
-      localStorage.setItem('admin_token', t);
-    } else {
-      localStorage.removeItem('admin_token');
-    }
-  }
-
-  getToken(): string | null {
-    if (!this.token) {
-      this.token = localStorage.getItem('admin_token');
-    }
-    return this.token;
+  setOnUnauthorized(cb: (() => void) | null) {
+    this.onUnauthorized = cb;
   }
 
   getUser(): UserItem | null {
-    if (!this.currentUser) {
-      const raw = localStorage.getItem('user_info');
-      if (raw) {
-        try {
-          this.currentUser = JSON.parse(raw);
-        } catch {
-          this.currentUser = null;
-        }
-      }
-    }
     return this.currentUser;
   }
 
   setUser(u: UserItem | null) {
     this.currentUser = u;
-    if (u) {
-      localStorage.setItem('user_info', JSON.stringify(u));
-    } else {
-      localStorage.removeItem('user_info');
-    }
   }
 
-  logout() {
-    this.setToken(null);
-    this.setUser(null);
+  clearLocalSession() {
+    this.currentUser = null;
+    // Clean up any legacy token keys if present from older versions
     localStorage.removeItem('admin_token');
+    localStorage.removeItem('refresh_token');
     localStorage.removeItem('user_info');
   }
 
-  async ensureAuth(): Promise<void> {
-    if (!this.getToken()) {
-      // If no token exists, attempt auto-login or throw
-      try {
-        await this.login('admin@neetpg.com', 'AdminPassword123');
-      } catch (e) {
-        console.warn('Auto-login skipped:', e);
-      }
-    }
+  private getCsrfToken(): string | null {
+    if (typeof document === 'undefined') return null;
+    const match = document.cookie.match(/(?:^|;\s*)csrf_token=([^;]+)/);
+    return match ? decodeURIComponent(match[1]) : null;
   }
 
-  private getHeaders(): HeadersInit {
+  private getHeaders(method: string = 'GET', extra?: HeadersInit): Record<string, string> {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     };
-    const t = this.getToken();
-    if (t) {
-      headers['Authorization'] = `Bearer ${t}`;
+    if (extra && typeof extra === 'object' && !Array.isArray(extra)) {
+      Object.assign(headers, extra as Record<string, string>);
+    }
+    const upperMethod = method.toUpperCase();
+    if (upperMethod !== 'GET' && upperMethod !== 'HEAD' && upperMethod !== 'OPTIONS') {
+      const csrf = this.getCsrfToken();
+      if (csrf) {
+        headers['X-CSRF-Token'] = csrf;
+      }
     }
     return headers;
+  }
+
+  async logout(): Promise<void> {
+    try {
+      await fetch(`${API_BASE}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: this.getHeaders('POST'),
+        body: JSON.stringify({}),
+      });
+    } catch {
+      // Ignore network errors during sign-out
+    } finally {
+      this.clearLocalSession();
+    }
+  }
+
+  async refreshAccessToken(): Promise<boolean> {
+    if (this.refreshPromise) {
+      return this.refreshPromise;
+    }
+
+    this.refreshPromise = (async () => {
+      try {
+        const res = await fetch(`${API_BASE}/auth/refresh`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: this.getHeaders('POST'),
+          body: JSON.stringify({}),
+        });
+        if (!res.ok) {
+          return false;
+        }
+        const data = await res.json();
+        if (data.user) {
+          this.setUser(data.user);
+        }
+        return true;
+      } catch {
+        return false;
+      } finally {
+        this.refreshPromise = null;
+      }
+    })();
+
+    return this.refreshPromise;
+  }
+
+  private async authFetch(url: string, init: RequestInit = {}): Promise<Response> {
+    const method = init.method || 'GET';
+    let res = await fetch(url, {
+      ...init,
+      credentials: 'include',
+      headers: this.getHeaders(method, init.headers),
+    });
+
+    if (res.status === 401) {
+      const refreshed = await this.refreshAccessToken();
+      if (refreshed) {
+        res = await fetch(url, {
+          ...init,
+          credentials: 'include',
+          headers: this.getHeaders(method, init.headers),
+        });
+      } else {
+        this.clearLocalSession();
+        if (this.onUnauthorized) {
+          this.onUnauthorized();
+        }
+      }
+    }
+
+    return res;
   }
 
   private async parseErrorMessage(res: Response, fallback: string): Promise<string> {
@@ -107,45 +159,68 @@ class AdminApiClient {
     return fallback;
   }
 
-  async login(email: string, pass: string): Promise<UserItem> {
+  async fetchAuthConfig(): Promise<AuthConfig> {
+    const res = await fetch(`${API_BASE}/auth/config`, { credentials: 'include' });
+    if (!res.ok) {
+      return {
+        google_enabled: false,
+        google_client_id: null,
+        email_verification_enabled: true,
+        email_otp_enabled: true,
+      };
+    }
+    return res.json();
+  }
+
+  async login(email: string, pass: string, rememberMe: boolean = false): Promise<UserItem> {
     const res = await fetch(`${API_BASE}/auth/login`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: pass }),
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ email, password: pass, remember_me: rememberMe }),
     });
     if (!res.ok) {
-      const msg = await this.parseErrorMessage(res, 'Invalid email or password');
-      throw new Error(msg);
+      const msg = await this.parseErrorMessage(res, 'Invalid email or password.');
+      const err: any = new Error(msg);
+      err.status = res.status;
+      throw err;
     }
     const data = await res.json();
-    this.setToken(data.access_token);
     this.setUser(data.user);
     return data.user;
   }
 
-  async loginWithGoogle(email: string, fullName?: string): Promise<UserItem> {
+  async loginWithGoogleToken(credential: string): Promise<UserItem> {
     const res = await fetch(`${API_BASE}/auth/google`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, full_name: fullName || 'Medical Student' }),
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ credential }),
     });
     if (!res.ok) {
       const msg = await this.parseErrorMessage(res, 'Google sign-in failed');
       throw new Error(msg);
     }
     const data = await res.json();
-    this.setToken(data.access_token);
     this.setUser(data.user);
     return data.user;
   }
 
-  async register(email: string, pass: string, fullName: string, targetYear?: number): Promise<UserItem> {
+  async register(
+    email: string,
+    pass: string,
+    confirmPass: string,
+    fullName: string,
+    targetYear?: number
+  ): Promise<RegistrationResponse> {
     const res = await fetch(`${API_BASE}/auth/register`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         email,
         password: pass,
+        confirm_password: confirmPass,
         full_name: fullName,
         target_exam_year: targetYear || 2026,
       }),
@@ -154,10 +229,34 @@ class AdminApiClient {
       const msg = await this.parseErrorMessage(res, 'Registration failed');
       throw new Error(msg);
     }
-    const data = await res.json();
-    this.setToken(data.access_token);
-    this.setUser(data.user);
-    return data.user;
+    return res.json();
+  }
+
+  async verifyEmailToken(token: string): Promise<StatusMessageResponse> {
+    const res = await fetch(`${API_BASE}/auth/verify-email?token=${encodeURIComponent(token)}`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: { Accept: 'application/json' },
+    });
+    if (!res.ok) {
+      const msg = await this.parseErrorMessage(res, 'Invalid or expired verification link.');
+      throw new Error(msg);
+    }
+    return res.json();
+  }
+
+  async resendVerificationEmail(email: string): Promise<StatusMessageResponse> {
+    const res = await fetch(`${API_BASE}/auth/resend-verification`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    if (!res.ok) {
+      const msg = await this.parseErrorMessage(res, 'Failed to resend verification email.');
+      throw new Error(msg);
+    }
+    return res.json();
   }
 
   async requestRegistrationOTP(
@@ -168,6 +267,7 @@ class AdminApiClient {
   ): Promise<OTPResponse> {
     const res = await fetch(`${API_BASE}/auth/register-otp`, {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email,
@@ -186,57 +286,128 @@ class AdminApiClient {
   async verifyOTP(email: string, otpCode: string): Promise<UserItem> {
     const res = await fetch(`${API_BASE}/auth/verify-otp`, {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email,
-        otp_code: otpCode,
-      }),
+      body: JSON.stringify({ email, otp_code: otpCode }),
     });
     if (!res.ok) {
       const msg = await this.parseErrorMessage(res, 'Invalid or expired OTP code');
       throw new Error(msg);
     }
     const data = await res.json();
-    this.setToken(data.access_token);
     this.setUser(data.user);
     return data.user;
   }
 
-  async resendOTP(email: string): Promise<OTPResponse> {
-    const res = await fetch(`${API_BASE}/auth/resend-otp`, {
+  async forgotPassword(email: string): Promise<StatusMessageResponse> {
+    const res = await fetch(`${API_BASE}/auth/forgot-password`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({ email }),
     });
     if (!res.ok) {
-      const msg = await this.parseErrorMessage(res, 'Failed to resend verification code');
+      const msg = await this.parseErrorMessage(res, 'Failed to send password reset email');
+      throw new Error(msg);
+    }
+    return res.json();
+  }
+
+  async resetPasswordWithToken(
+    token: string,
+    newPassword: string,
+    confirmPassword: string
+  ): Promise<StatusMessageResponse> {
+    const res = await fetch(`${API_BASE}/auth/reset-password`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        token,
+        new_password: newPassword,
+        confirm_password: confirmPassword,
+      }),
+    });
+    if (!res.ok) {
+      const msg = await this.parseErrorMessage(res, 'Password reset failed');
       throw new Error(msg);
     }
     return res.json();
   }
 
   async fetchProfile(): Promise<UserItem> {
-    const res = await fetch(`${API_BASE}/auth/me`, {
-      headers: this.getHeaders(),
-    });
-    if (!res.ok) throw new Error('Failed to load profile');
+    const res = await this.authFetch(`${API_BASE}/auth/me`);
+    if (!res.ok) throw new Error('Not authenticated');
     const user = await res.json();
     this.setUser(user);
     return user;
   }
 
-  async fetchStats(): Promise<AdminStats> {
-    const res = await fetch(`${API_BASE}/admin/stats`, {
-      headers: this.getHeaders(),
+  async updateProfile(data: { full_name?: string; target_exam_year?: number }): Promise<UserItem> {
+    const res = await this.authFetch(`${API_BASE}/auth/me`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
     });
+    if (!res.ok) {
+      const msg = await this.parseErrorMessage(res, 'Failed to update profile');
+      throw new Error(msg);
+    }
+    const user = await res.json();
+    this.setUser(user);
+    return user;
+  }
+
+  async changePassword(currentPassword: string, newPassword: string): Promise<UserItem> {
+    const res = await this.authFetch(`${API_BASE}/auth/change-password`, {
+      method: 'POST',
+      body: JSON.stringify({
+        current_password: currentPassword,
+        new_password: newPassword,
+        confirm_password: newPassword,
+      }),
+    });
+    if (!res.ok) {
+      const msg = await this.parseErrorMessage(res, 'Failed to change password');
+      throw new Error(msg);
+    }
+    const data = await res.json();
+    this.setUser(data.user);
+    return data.user;
+  }
+
+  async fetchSessions(): Promise<AuthSessionItem[]> {
+    const res = await this.authFetch(`${API_BASE}/auth/sessions`);
+    if (!res.ok) throw new Error('Failed to load active sessions');
+    return res.json();
+  }
+
+  async revokeSession(sessionId: number): Promise<void> {
+    const res = await this.authFetch(`${API_BASE}/auth/sessions/${sessionId}`, {
+      method: 'DELETE',
+    });
+    if (!res.ok) throw new Error('Failed to revoke session');
+  }
+
+  async logoutAllDevices(): Promise<void> {
+    const res = await this.authFetch(`${API_BASE}/auth/logout-all`, {
+      method: 'POST',
+      body: JSON.stringify({}),
+    });
+    this.clearLocalSession();
+    if (this.onUnauthorized) {
+      this.onUnauthorized();
+    }
+    if (!res.ok) throw new Error('Failed to sign out all devices');
+  }
+
+  async fetchStats(): Promise<AdminStats> {
+    const res = await this.authFetch(`${API_BASE}/admin/stats`);
     if (!res.ok) throw new Error('Failed to load stats');
     return res.json();
   }
 
   async fetchIntegrityAudit(): Promise<IntegrityAudit> {
-    const res = await fetch(`${API_BASE}/admin/analytics/integrity`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/admin/analytics/integrity`);
     if (!res.ok) throw new Error('Failed to load integrity audit');
     return res.json();
   }
@@ -265,25 +436,20 @@ class AdminApiClient {
     if (params.has_images !== undefined) query.append('has_images', params.has_images.toString());
     if (params.q) query.append('q', params.q);
 
-    const res = await fetch(`${API_BASE}/questions/?${query.toString()}`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/questions/?${query.toString()}`);
     if (!res.ok) throw new Error('Failed to fetch questions');
     return res.json();
   }
 
   async fetchQuestionDetail(id: number): Promise<QuestionItem> {
-    const res = await fetch(`${API_BASE}/questions/${id}`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/questions/${id}`);
     if (!res.ok) throw new Error('Failed to load question details');
     return res.json();
   }
 
   async updateQuestion(id: number, data: Partial<QuestionItem>): Promise<void> {
-    const res = await fetch(`${API_BASE}/admin/questions/${id}`, {
+    const res = await this.authFetch(`${API_BASE}/admin/questions/${id}`, {
       method: 'PUT',
-      headers: this.getHeaders(),
       body: JSON.stringify(data),
     });
     if (!res.ok) throw new Error('Failed to update question');
@@ -293,9 +459,8 @@ class AdminApiClient {
     id: number,
     options: { id: number; text: string; is_correct: boolean }[]
   ): Promise<void> {
-    const res = await fetch(`${API_BASE}/admin/questions/${id}/options`, {
+    const res = await this.authFetch(`${API_BASE}/admin/questions/${id}/options`, {
       method: 'PUT',
-      headers: this.getHeaders(),
       body: JSON.stringify({ options }),
     });
     if (!res.ok) throw new Error('Failed to update options');
@@ -305,26 +470,22 @@ class AdminApiClient {
     id: number,
     data: { text: string; html_content: string; references?: string }
   ): Promise<void> {
-    const res = await fetch(`${API_BASE}/admin/questions/${id}/explanation`, {
+    const res = await this.authFetch(`${API_BASE}/admin/questions/${id}/explanation`, {
       method: 'PUT',
-      headers: this.getHeaders(),
       body: JSON.stringify(data),
     });
     if (!res.ok) throw new Error('Failed to update explanation');
   }
 
   async deactivateQuestion(id: number): Promise<void> {
-    const res = await fetch(`${API_BASE}/admin/questions/${id}`, {
+    const res = await this.authFetch(`${API_BASE}/admin/questions/${id}`, {
       method: 'DELETE',
-      headers: this.getHeaders(),
     });
     if (!res.ok) throw new Error('Failed to deactivate question');
   }
 
   async fetchSubjects(): Promise<SubjectItem[]> {
-    const res = await fetch(`${API_BASE}/subjects/`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/subjects/`);
     if (!res.ok) throw new Error('Failed to fetch subjects');
     return res.json();
   }
@@ -335,9 +496,8 @@ class AdminApiClient {
     category: string;
     display_order?: number;
   }): Promise<void> {
-    const res = await fetch(`${API_BASE}/admin/categories/subjects`, {
+    const res = await this.authFetch(`${API_BASE}/admin/categories/subjects`, {
       method: 'POST',
-      headers: this.getHeaders(),
       body: JSON.stringify(data),
     });
     if (!res.ok) throw new Error('Failed to create subject');
@@ -348,9 +508,8 @@ class AdminApiClient {
     subjectId: number,
     topicId?: number
   ): Promise<void> {
-    const res = await fetch(`${API_BASE}/admin/questions/bulk-categorize`, {
+    const res = await this.authFetch(`${API_BASE}/admin/questions/bulk-categorize`, {
       method: 'POST',
-      headers: this.getHeaders(),
       body: JSON.stringify({
         question_ids: questionIds,
         subject_id: subjectId,
@@ -361,9 +520,7 @@ class AdminApiClient {
   }
 
   async fetchTopics(subjectId: number): Promise<TopicItem[]> {
-    const res = await fetch(`${API_BASE}/subjects/${subjectId}/topics`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/subjects/${subjectId}/topics`);
     if (!res.ok) throw new Error('Failed to fetch topics');
     return res.json();
   }
@@ -380,9 +537,8 @@ class AdminApiClient {
     duration_minutes?: number;
     difficulty?: string;
   }): Promise<TestSession> {
-    const res = await fetch(`${API_BASE}/tests/custom`, {
+    const res = await this.authFetch(`${API_BASE}/tests/custom`, {
       method: 'POST',
-      headers: this.getHeaders(),
       body: JSON.stringify({
         title: params.title || 'Custom Practice Test',
         test_type: params.test_type || 'custom',
@@ -404,9 +560,7 @@ class AdminApiClient {
   }
 
   async fetchTestSession(sessionId: number): Promise<TestSession> {
-    const res = await fetch(`${API_BASE}/tests/${sessionId}`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/tests/${sessionId}`);
     if (!res.ok) throw new Error('Failed to load test session');
     return res.json();
   }
@@ -417,9 +571,8 @@ class AdminApiClient {
     selectedOptionIndex: number | null,
     timeSpentSeconds: number = 0
   ): Promise<SubmitAnswerResult> {
-    const res = await fetch(`${API_BASE}/tests/${sessionId}/answer`, {
+    const res = await this.authFetch(`${API_BASE}/tests/${sessionId}/answer`, {
       method: 'POST',
-      headers: this.getHeaders(),
       body: JSON.stringify({
         question_id: questionId,
         selected_option_index: selectedOptionIndex,
@@ -431,18 +584,17 @@ class AdminApiClient {
   }
 
   async completeTest(sessionId: number): Promise<TestSession> {
-    const res = await fetch(`${API_BASE}/tests/${sessionId}/complete`, {
+    const res = await this.authFetch(`${API_BASE}/tests/${sessionId}/complete`, {
       method: 'POST',
-      headers: this.getHeaders(),
+      body: JSON.stringify({}),
     });
     if (!res.ok) throw new Error('Failed to finalize test session');
     return res.json();
   }
 
   async toggleBookmark(questionId: number, notes?: string): Promise<{ bookmarked: boolean }> {
-    const res = await fetch(`${API_BASE}/bookmarks/toggle`, {
+    const res = await this.authFetch(`${API_BASE}/bookmarks/toggle`, {
       method: 'POST',
-      headers: this.getHeaders(),
       body: JSON.stringify({
         question_id: questionId,
         notes: notes || undefined,
@@ -453,17 +605,13 @@ class AdminApiClient {
   }
 
   async fetchBookmarks(): Promise<BookmarkItem[]> {
-    const res = await fetch(`${API_BASE}/bookmarks/`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/bookmarks/`);
     if (!res.ok) throw new Error('Failed to fetch bookmarks');
     return res.json();
   }
 
   async fetchStudentAnalytics(): Promise<StudentAnalytics> {
-    const res = await fetch(`${API_BASE}/analytics/dashboard`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/analytics/dashboard`);
     if (!res.ok) throw new Error('Failed to fetch analytics');
     return res.json();
   }
@@ -484,9 +632,7 @@ class AdminApiClient {
     if (params.difficulty) query.append('difficulty', params.difficulty);
     if (params.q) query.append('q', params.q);
 
-    const res = await fetch(`${API_BASE}/questions/attempted?${query.toString()}`, {
-      headers: this.getHeaders(),
-    });
+    const res = await this.authFetch(`${API_BASE}/questions/attempted?${query.toString()}`);
     if (!res.ok) throw new Error('Failed to fetch attempted questions');
     return res.json();
   }
@@ -496,9 +642,8 @@ class AdminApiClient {
     selectedOptionIndex: number,
     timeSpentSeconds: number = 10
   ): Promise<SubmitAnswerResult> {
-    const res = await fetch(`${API_BASE}/questions/${questionId}/solve`, {
+    const res = await this.authFetch(`${API_BASE}/questions/${questionId}/solve`, {
       method: 'POST',
-      headers: this.getHeaders(),
       body: JSON.stringify({
         selected_option_index: selectedOptionIndex,
         time_spent_seconds: timeSpentSeconds,
@@ -510,4 +655,3 @@ class AdminApiClient {
 }
 
 export const adminApi = new AdminApiClient();
-

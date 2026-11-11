@@ -135,7 +135,6 @@ export const StudentPractice: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
-      await adminApi.ensureAuth();
       const list = await adminApi.fetchSubjects();
       setSubjects(list);
     } catch (err: any) {

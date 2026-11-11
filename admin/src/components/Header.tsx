@@ -6,6 +6,7 @@ interface HeaderProps {
   subtitle?: string;
   user: UserItem | null;
   onLogout: () => void;
+  onOpenAccount?: () => void;
   onToggleMobileMenu?: () => void;
 }
 
@@ -14,6 +15,7 @@ export const Header: React.FC<HeaderProps> = ({
   subtitle,
   user,
   onLogout,
+  onOpenAccount,
   onToggleMobileMenu,
 }) => {
   const getInitials = (name?: string, email?: string) => {
@@ -95,7 +97,32 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Right: User Profile & Actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
         {user && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <button
+            type="button"
+            onClick={onOpenAccount}
+            title="Account & Security Settings"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'none',
+              border: '1px solid transparent',
+              borderRadius: '10px',
+              padding: '4px 8px',
+              cursor: onOpenAccount ? 'pointer' : 'default',
+              transition: 'background-color 0.15s ease, border-color 0.15s ease',
+            }}
+            onMouseEnter={(e) => {
+              if (onOpenAccount) {
+                e.currentTarget.style.backgroundColor = '#F8FAFC';
+                e.currentTarget.style.borderColor = '#E2E8F0';
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.borderColor = 'transparent';
+            }}
+          >
             {/* User Avatar */}
             <div style={{
               width: '36px',
@@ -117,13 +144,13 @@ export const Header: React.FC<HeaderProps> = ({
             {/* User Meta (hidden on small phones to conserve space) */}
             <div className="hide-on-mobile" style={{ display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
               <span style={{ fontSize: '12px', fontWeight: 700, color: '#0F172A', lineHeight: 1.2 }}>
-                {user.full_name || 'Medical Doctor'}
+                {user.full_name || 'Medical Doctor'} ▾
               </span>
               <span style={{ fontSize: '10px', color: '#64748B', lineHeight: 1.2 }}>
                 {user.email}
               </span>
             </div>
-          </div>
+          </button>
         )}
 
         {/* Log Out Button */}

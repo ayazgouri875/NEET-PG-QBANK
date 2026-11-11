@@ -8,11 +8,37 @@ from backend.app.main import app
 class TestSubtopicHierarchy(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        from unittest.mock import patch
         cls.client = TestClient(app)
+        email = "subtopic_tester@neetpg.com"
+        password = "DoctorPassword123"
+        login_res = cls.client.post("/api/v1/auth/login", json={"email": email, "password": password})
+        if login_res.status_code != 200:
+            captured_urls = []
+            with patch(
+                "backend.app.api.v1.auth.send_verification_email",
+                side_effect=lambda **kw: (captured_urls.append(kw["verification_url"]) or True, None),
+            ):
+                cls.client.post(
+                    "/api/v1/auth/register",
+                    json={
+                        "email": email,
+                        "password": password,
+                        "confirm_password": password,
+                        "full_name": "Dr. Subtopic Tester",
+                        "target_exam_year": 2026,
+                    },
+                )
+            if captured_urls:
+                tok = captured_urls[0].split("token=")[-1]
+                cls.client.get(f"/api/v1/auth/verify-email?token={tok}")
+            login_res = cls.client.post("/api/v1/auth/login", json={"email": email, "password": password})
+        token = login_res.json()["access_token"]
+        cls.headers = {"Authorization": f"Bearer {token}"}
 
     def test_subject_topics_returns_subtopics_with_progress(self):
         """Verify topics include detailed subtopics with question counts and user progress."""
-        res = self.client.get("/api/v1/subjects/1/topics")
+        res = self.client.get("/api/v1/subjects/1/topics", headers=self.headers)
         self.assertEqual(res.status_code, 200)
         topics = res.json()
         self.assertGreater(len(topics), 0)
@@ -33,10 +59,10 @@ class TestSubtopicHierarchy(unittest.TestCase):
     def test_questions_filtered_by_subtopic(self):
         """Verify questions can be filtered specifically by subtopic_id."""
         # Get a subtopic id
-        topics_res = self.client.get("/api/v1/subjects/1/topics")
+        topics_res = self.client.get("/api/v1/subjects/1/topics", headers=self.headers)
         sub_id = topics_res.json()[0]["subtopics"][0]["id"]
 
-        res = self.client.get(f"/api/v1/questions/?subtopic_id={sub_id}&page_size=10")
+        res = self.client.get(f"/api/v1/questions/?subtopic_id={sub_id}&page_size=10", headers=self.headers)
         self.assertEqual(res.status_code, 200)
         data = res.json()
         self.assertGreater(data["total"], 0)
@@ -46,11 +72,11 @@ class TestSubtopicHierarchy(unittest.TestCase):
 
     def test_create_subtopic_drill_test_session(self):
         """Verify students can start a custom test drill targeting a specific subtopic."""
-        topics_res = self.client.get("/api/v1/subjects/1/topics")
+        topics_res = self.client.get("/api/v1/subjects/1/topics", headers=self.headers)
         topic = topics_res.json()[0]
         sub = topic["subtopics"][0]
 
-        res = self.client.post("/api/v1/tests/custom", json={
+        res = self.client.post("/api/v1/tests/custom", headers=self.headers, json={
             "title": f"{sub['name']} Drill Test",
             "test_type": "topic",
             "test_mode": "practice",

@@ -1,5 +1,13 @@
 from backend.app.models.base import Base, TimestampMixin
-from backend.app.models.user import User, UserRole, EmailOTP
+from backend.app.models.user import (
+    EmailOTP,
+    EmailVerificationToken,
+    PasswordResetToken,
+    RefreshToken,
+    RevokedToken,
+    User,
+    UserRole,
+)
 from backend.app.models.category import SubjectCategory, Subject, Topic, Subtopic
 from backend.app.models.question import (
     DifficultyLevel,
@@ -28,6 +36,10 @@ __all__ = [
     "User",
     "UserRole",
     "EmailOTP",
+    "EmailVerificationToken",
+    "PasswordResetToken",
+    "RefreshToken",
+    "RevokedToken",
     "SubjectCategory",
     "Subject",
     "Topic",

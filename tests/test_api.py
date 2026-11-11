@@ -9,65 +9,93 @@ from backend.app.main import app
 class TestBackendAPI(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        from unittest.mock import patch
+        from backend.app.core.database import SessionLocal
+        from backend.app.models.user import User, UserRole
+        from backend.app.core.security import create_access_token
+        from backend.app.core.rate_limit import auth_rate_limiter
+        auth_rate_limiter.reset()
+
         cls.client = TestClient(app)
-        # Register a test student
         cls.test_email = f"student_{cls.__name__.lower()}@neetpg.com"
         cls.test_password = "DoctorPassword123"
 
-        reg_res = cls.client.post(
-            "/api/v1/auth/register",
-            json={
-                "email": cls.test_email,
-                "password": cls.test_password,
-                "full_name": "Dr. Aarav Sharma",
-                "target_exam_year": 2026,
-            },
+        login_res = cls.client.post(
+            "/api/v1/auth/login",
+            json={"email": cls.test_email, "password": cls.test_password},
         )
-        if reg_res.status_code == 201:
-            cls.token = reg_res.json()["access_token"]
-        else:
-            # Login if already exists
+        if login_res.status_code != 200:
+            captured_urls = []
+            def _capture_verify(**kwargs):
+                captured_urls.append(kwargs["verification_url"])
+                return (True, None)
+
+            with patch("backend.app.api.v1.auth.send_verification_email", side_effect=_capture_verify):
+                cls.client.post(
+                    "/api/v1/auth/register",
+                    json={
+                        "email": cls.test_email,
+                        "password": cls.test_password,
+                        "confirm_password": cls.test_password,
+                        "full_name": "Dr. Aarav Sharma",
+                        "target_exam_year": 2026,
+                    },
+                )
+            if captured_urls:
+                tok = captured_urls[0].split("token=")[-1]
+                cls.client.get(f"/api/v1/auth/verify-email?token={tok}")
             login_res = cls.client.post(
                 "/api/v1/auth/login",
                 json={"email": cls.test_email, "password": cls.test_password},
             )
-            cls.token = login_res.json()["access_token"]
-
+        cls.token = login_res.json()["access_token"]
         cls.headers = {"Authorization": f"Bearer {cls.token}"}
 
-        # Register an admin user
+        # Ensure an admin user exists
         cls.admin_email = f"admin_{cls.__name__.lower()}@neetpg.com"
         cls.admin_password = "AdminPassword123"
 
-        reg_admin = cls.client.post(
-            "/api/v1/auth/register",
-            json={
-                "email": cls.admin_email,
-                "password": cls.admin_password,
-                "full_name": "Dr. Administrator",
-            },
+        login_admin = cls.client.post(
+            "/api/v1/auth/login",
+            json={"email": cls.admin_email, "password": cls.admin_password},
         )
-        if reg_admin.status_code == 201:
-            admin_user_id = reg_admin.json()["user"]["id"]
-        else:
+        if login_admin.status_code != 200:
+            captured_admin_urls = []
+            with patch(
+                "backend.app.api.v1.auth.send_verification_email",
+                side_effect=lambda **kw: (captured_admin_urls.append(kw["verification_url"]) or True, None),
+            ):
+                cls.client.post(
+                    "/api/v1/auth/register",
+                    json={
+                        "email": cls.admin_email,
+                        "password": cls.admin_password,
+                        "confirm_password": cls.admin_password,
+                        "full_name": "Dr. Administrator",
+                    },
+                )
+            if captured_admin_urls:
+                tok = captured_admin_urls[0].split("token=")[-1]
+                cls.client.get(f"/api/v1/auth/verify-email?token={tok}")
             login_admin = cls.client.post(
                 "/api/v1/auth/login",
                 json={"email": cls.admin_email, "password": cls.admin_password},
             )
-            admin_user_id = login_admin.json()["user"]["id"]
 
-        # Elevate to ADMIN role in database
-        from backend.app.core.database import SessionLocal
-        from backend.app.models.user import User, UserRole
-        from backend.app.core.security import create_access_token
+        admin_user_id = login_admin.json()["user"]["id"]
+
         db = SessionLocal()
         u = db.query(User).filter(User.id == admin_user_id).first()
+        admin_ver = 1
         if u:
             u.role = UserRole.ADMIN
+            u.email_verified = True
+            u.is_verified = True
+            admin_ver = u.token_version
             db.commit()
         db.close()
 
-        cls.admin_token = create_access_token(admin_user_id, role="admin")
+        cls.admin_token = create_access_token(admin_user_id, role="admin", token_version=admin_ver)
         cls.admin_headers = {"Authorization": f"Bearer {cls.admin_token}"}
 
     def test_health_check(self):
@@ -75,16 +103,39 @@ class TestBackendAPI(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.json()["status"], "healthy")
 
-    def test_google_login_auto_provisions_and_authenticates(self):
-        res = self.client.post("/api/v1/auth/google", json={
-            "email": "dr.ayaz.test@gmail.com",
-            "full_name": "Dr. Ayaz Test",
-        })
-        self.assertEqual(res.status_code, 200)
-        data = res.json()
-        self.assertIn("access_token", data)
-        self.assertEqual(data["user"]["email"], "dr.ayaz.test@gmail.com")
-        self.assertEqual(data["user"]["full_name"], "Dr. Ayaz Test")
+    def test_unauthenticated_and_invalid_tokens_rejected(self):
+        anon_client = TestClient(app)
+        # Missing token must fail closed with 401
+        res_missing = anon_client.get("/api/v1/auth/me")
+        self.assertEqual(res_missing.status_code, 401)
+
+        # Garbage JWT must fail closed with 401
+        res_fake = anon_client.get("/api/v1/auth/me", headers={"Authorization": "Bearer fake.jwt.token"})
+        self.assertEqual(res_fake.status_code, 401)
+
+        # Student calling admin endpoint must return 403 Forbidden
+        res_forbidden = anon_client.get("/api/v1/admin/stats", headers=self.headers)
+        self.assertEqual(res_forbidden.status_code, 403)
+
+    def test_google_login_requires_verified_id_token(self):
+        from unittest.mock import patch
+
+        # Missing credential -> 400
+        res_bad = self.client.post("/api/v1/auth/google", json={})
+        self.assertEqual(res_bad.status_code, 400)
+
+        # Verified Google ID token succeeds
+        with patch(
+            "backend.app.api.v1.auth._verify_google_id_token",
+            return_value={"email": "dr.ayaz.test@gmail.com", "name": "Dr. Ayaz Test", "email_verified": "true"},
+        ):
+            res = self.client.post("/api/v1/auth/google", json={"credential": "mock-valid-google-id-token"})
+            self.assertEqual(res.status_code, 200)
+            data = res.json()
+            self.assertIn("access_token", data)
+            self.assertIn("refresh_token", data)
+            self.assertEqual(data["user"]["email"], "dr.ayaz.test@gmail.com")
+            self.assertEqual(data["user"]["full_name"], "Dr. Ayaz Test")
 
     def test_get_current_user_profile(self):
         res = self.client.get("/api/v1/auth/me", headers=self.headers)
@@ -293,6 +344,79 @@ class TestBackendAPI(unittest.TestCase):
             self.assertIsNotNone(matching_q["user_status"])
             self.assertTrue(matching_q["user_status"]["is_attempted"])
 
+    def test_password_reset_token_flow(self):
+        import uuid
+        from unittest.mock import patch
+        from backend.app.core.rate_limit import auth_rate_limiter
+
+        auth_rate_limiter.reset()
+        test_email = f"password_reset_{uuid.uuid4().hex[:8]}@neetpg.com"
+        old_password = "OldSecurePass2026!"
+        new_password = "NewSecurePass2026!"
+
+        verify_urls = []
+        with patch(
+            "backend.app.api.v1.auth.send_verification_email",
+            side_effect=lambda **kw: (verify_urls.append(kw["verification_url"]) or True, None),
+        ):
+            register_res = self.client.post(
+                "/api/v1/auth/register",
+                json={
+                    "email": test_email,
+                    "password": old_password,
+                    "confirm_password": old_password,
+                    "full_name": "Dr. Password Reset",
+                },
+            )
+        self.assertEqual(register_res.status_code, 201)
+        verify_token = verify_urls[0].split("token=")[-1]
+        self.assertEqual(self.client.get(f"/api/v1/auth/verify-email?token={verify_token}").status_code, 200)
+
+        reset_urls = []
+        with patch(
+            "backend.app.api.v1.auth.send_password_reset_email",
+            side_effect=lambda **kw: (reset_urls.append(kw["reset_url"]) or True, None),
+        ) as send_email:
+            forgot_res = self.client.post(
+                "/api/v1/auth/forgot-password",
+                json={"email": test_email},
+            )
+        self.assertEqual(forgot_res.status_code, 200)
+        self.assertEqual(forgot_res.json()["status"], "ok")
+        send_email.assert_called_once()
+        reset_token = reset_urls[0].split("token=")[-1]
+
+        invalid_res = self.client.post(
+            "/api/v1/auth/reset-password",
+            json={
+                "token": "invalid-token-123456",
+                "new_password": new_password,
+                "confirm_password": new_password,
+            },
+        )
+        self.assertEqual(invalid_res.status_code, 400)
+
+        reset_res = self.client.post(
+            "/api/v1/auth/reset-password",
+            json={
+                "token": reset_token,
+                "new_password": new_password,
+                "confirm_password": new_password,
+            },
+        )
+        self.assertEqual(reset_res.status_code, 200)
+
+        old_login = self.client.post(
+            "/api/v1/auth/login",
+            json={"email": test_email, "password": old_password},
+        )
+        self.assertEqual(old_login.status_code, 401)
+        new_login = self.client.post(
+            "/api/v1/auth/login",
+            json={"email": test_email, "password": new_password},
+        )
+        self.assertEqual(new_login.status_code, 200)
+
     def test_registration_otp_flow_and_login(self):
         import uuid
         from unittest.mock import patch
@@ -361,7 +485,117 @@ class TestBackendAPI(unittest.TestCase):
         )
         self.assertEqual(bad_pass_res.status_code, 401)
 
+    def test_production_auth_lifecycle_refresh_logout_and_lockout(self):
+        import uuid
+        from backend.app.core.rate_limit import auth_rate_limiter
+        auth_rate_limiter.reset()
+
+        email = f"prod_auth_{uuid.uuid4().hex[:8]}@gmail.com"
+        pw = "StrongPass123"
+
+        # 1. Weak password rejected
+        weak_res = self.client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "abc", "full_name": "Dr. Weak"},
+        )
+        self.assertEqual(weak_res.status_code, 422)
+
+        # 2. Register creates unverified account, then verify email and sign in
+        from unittest.mock import patch
+        verify_urls = []
+        with patch(
+            "backend.app.api.v1.auth.send_verification_email",
+            side_effect=lambda **kw: (verify_urls.append(kw["verification_url"]) or True, None),
+        ):
+            reg = self.client.post(
+                "/api/v1/auth/register",
+                json={
+                    "email": email,
+                    "password": pw,
+                    "confirm_password": pw,
+                    "full_name": "Dr. Production",
+                    "target_exam_year": 2026,
+                },
+            )
+        self.assertEqual(reg.status_code, 201)
+        self.assertFalse(reg.json()["email_verified"])
+        self.assertNotIn("access_token", reg.json())
+
+        # Verify email token
+        verify_tok = verify_urls[0].split("token=")[-1]
+        self.assertEqual(self.client.get(f"/api/v1/auth/verify-email?token={verify_tok}").status_code, 200)
+
+        first_login = self.client.post("/api/v1/auth/login", json={"email": email, "password": pw, "remember_me": True})
+        self.assertEqual(first_login.status_code, 200)
+        tokens = first_login.json()
+        access_1 = tokens["access_token"]
+        refresh_1 = tokens["refresh_token"]
+        self.assertIsNotNone(refresh_1)
+
+        # 3. Duplicate registration MUST fail with 409 Conflict (no account takeover)
+        dup_res = self.client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "AttackerPass99", "full_name": "Attacker"},
+        )
+        self.assertEqual(dup_res.status_code, 409)
+
+        # 4. Refresh rotation returns new pair and revokes old refresh token
+        ref_res = self.client.post("/api/v1/auth/refresh", json={"refresh_token": refresh_1})
+        self.assertEqual(ref_res.status_code, 200)
+        ref_data = ref_res.json()
+        access_2 = ref_data["access_token"]
+        refresh_2 = ref_data["refresh_token"]
+        self.assertNotEqual(refresh_1, refresh_2)
+
+        # 5. Reusing old refresh_1 triggers replay protection and revokes refresh_2 too
+        replay_res = self.client.post("/api/v1/auth/refresh", json={"refresh_token": refresh_1})
+        self.assertEqual(replay_res.status_code, 401)
+        revoked_after_replay = self.client.post("/api/v1/auth/refresh", json={"refresh_token": refresh_2})
+        self.assertEqual(revoked_after_replay.status_code, 401)
+
+        # 6. Login again, update profile, change password -> old access token invalidated
+        login_res = self.client.post("/api/v1/auth/login", json={"email": email, "password": pw})
+        self.assertEqual(login_res.status_code, 200)
+        access_3 = login_res.json()["access_token"]
+
+        upd = self.client.patch(
+            "/api/v1/auth/me",
+            headers={"Authorization": f"Bearer {access_3}"},
+            json={"full_name": "Dr. Production Updated", "target_exam_year": 2027},
+        )
+        self.assertEqual(upd.status_code, 200)
+        self.assertEqual(upd.json()["full_name"], "Dr. Production Updated")
+
+        chg = self.client.post(
+            "/api/v1/auth/change-password",
+            headers={"Authorization": f"Bearer {access_3}"},
+            json={"current_password": pw, "new_password": "NewStrongPass456"},
+        )
+        self.assertEqual(chg.status_code, 200)
+        access_4 = chg.json()["access_token"]
+        refresh_4 = chg.json()["refresh_token"]
+
+        # Old access_3 is invalidated due to token_version bump
+        old_me = self.client.get("/api/v1/auth/me", headers={"Authorization": f"Bearer {access_3}"})
+        self.assertEqual(old_me.status_code, 401)
+
+        # 7. Server-side logout immediately blacklists access_4
+        out = self.client.post(
+            "/api/v1/auth/logout",
+            headers={"Authorization": f"Bearer {access_4}"},
+            json={"refresh_token": refresh_4},
+        )
+        self.assertEqual(out.status_code, 200)
+        after_out = self.client.get("/api/v1/auth/me", headers={"Authorization": f"Bearer {access_4}"})
+        self.assertEqual(after_out.status_code, 401)
+
+        # 8. Brute-force lockout after 5 wrong password attempts
+        for _ in range(5):
+            r = self.client.post("/api/v1/auth/login", json={"email": email, "password": "WrongPassword99"})
+            self.assertEqual(r.status_code, 401)
+        locked = self.client.post("/api/v1/auth/login", json={"email": email, "password": "NewStrongPass456"})
+        self.assertEqual(locked.status_code, 429)
+
 
 if __name__ == "__main__":
     unittest.main()
-

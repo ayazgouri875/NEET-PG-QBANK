@@ -58,6 +58,54 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  Future<bool> requestPasswordReset(String email) async {
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      await _api.post(
+        ApiConstants.forgotPassword,
+        body: {"email": email},
+      );
+      return true;
+    } catch (e) {
+      _errorMessage = e.toString();
+      return false;
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<bool> resetPassword({
+    required String email,
+    required String otpCode,
+    required String newPassword,
+  }) async {
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      await _api.post(
+        ApiConstants.resetPassword,
+        body: {
+          "email": email,
+          "otp_code": otpCode,
+          "new_password": newPassword,
+        },
+      );
+      return true;
+    } catch (e) {
+      _errorMessage = e.toString();
+      return false;
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
   Future<bool> register({
     required String email,
     required String password,
@@ -98,4 +146,3 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-

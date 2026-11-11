@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../providers/auth_provider.dart';
+import 'forgot_password_screen.dart';
 import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,6 +16,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailCtrl = TextEditingController(text: "student@neetpg.com");
   final _passCtrl = TextEditingController(text: "DoctorPassword123");
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    _emailCtrl.dispose();
+    _passCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +111,30 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 24),
 
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () async {
+                        final reset = await Navigator.of(context).push<bool>(
+                          MaterialPageRoute(
+                            builder: (_) => ForgotPasswordScreen(
+                              initialEmail: _emailCtrl.text.trim(),
+                            ),
+                          ),
+                        );
+                        if (reset == true && mounted) {
+                          _passCtrl.clear();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Password reset. Please sign in with your new password."),
+                            ),
+                          );
+                        }
+                      },
+                      child: const Text("Forgot password?"),
+                    ),
+                  ),
+
                   // Login Button
                   ElevatedButton(
                     onPressed: auth.isLoading
@@ -146,4 +178,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

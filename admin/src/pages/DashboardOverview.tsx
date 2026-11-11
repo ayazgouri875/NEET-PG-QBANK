@@ -13,7 +13,6 @@ export const DashboardOverview: React.FC = () => {
   const loadStats = async () => {
     setLoading(true);
     try {
-      await adminApi.ensureAuth();
       const data = await adminApi.fetchStats();
       setStats(data);
     } catch (e) {

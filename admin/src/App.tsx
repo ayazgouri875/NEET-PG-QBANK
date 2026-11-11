@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { adminApi } from './api';
+import { AccountModal } from './components/AccountModal';
 import { Header } from './components/Header';
 import { NavTab, Sidebar } from './components/Sidebar';
 import { CategorizationManager } from './pages/CategorizationManager';
-import { ImportCenter } from './pages/ImportCenter';
 import { LoginPage } from './pages/LoginPage';
-import { QuestionsManager } from './pages/QuestionsManager';
 import { StudentPractice } from './pages/StudentPractice';
 import { UserItem } from './types';
 
@@ -14,31 +13,48 @@ export const App: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<NavTab>('student');
   const [authChecking, setAuthChecking] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showAccountModal, setShowAccountModal] = useState(false);
+
+  const isAuthTokenRoute = (() => {
+    const path = window.location.pathname.toLowerCase();
+    const params = new URLSearchParams(window.location.search);
+    return (path.includes('verify-email') || path.includes('reset-password')) && params.has('token');
+  })();
 
   useEffect(() => {
-    const token = adminApi.getToken();
-    if (token) {
-      adminApi.fetchProfile()
-        .then((user) => {
-          setCurrentUser(user);
-        })
-        .catch(() => {
-          // Token expired or invalid
-          adminApi.logout();
-          setCurrentUser(null);
-        })
-        .finally(() => {
-          setAuthChecking(false);
-        });
-    } else {
-      setAuthChecking(false);
-    }
-  }, []);
+    adminApi.setOnUnauthorized(() => {
+      setCurrentUser(null);
+      setShowAccountModal(false);
+      setIsMobileMenuOpen(false);
+    });
 
-  const handleLogout = () => {
-    adminApi.logout();
-    setCurrentUser(null);
+    if (isAuthTokenRoute) {
+      setAuthChecking(false);
+      return () => adminApi.setOnUnauthorized(null);
+    }
+
+    adminApi.fetchProfile()
+      .then((user) => {
+        setCurrentUser(user);
+      })
+      .catch(() => {
+        adminApi.clearLocalSession();
+        setCurrentUser(null);
+      })
+      .finally(() => {
+        setAuthChecking(false);
+      });
+
+    return () => {
+      adminApi.setOnUnauthorized(null);
+    };
+  }, [isAuthTokenRoute]);
+
+  const handleLogout = async () => {
+    setShowAccountModal(false);
     setIsMobileMenuOpen(false);
+    setCurrentUser(null);
+    await adminApi.logout();
   };
 
   if (authChecking) {
@@ -63,8 +79,8 @@ export const App: React.FC = () => {
     );
   }
 
-  // If user is not authenticated, render Login Page
-  if (!currentUser) {
+  // Render auth portal for unauthenticated users or email verification / password reset deep links
+  if (isAuthTokenRoute || !currentUser) {
     return <LoginPage onLoginSuccess={(user) => setCurrentUser(user)} />;
   }
 
@@ -120,6 +136,7 @@ export const App: React.FC = () => {
           subtitle={subtitle}
           user={currentUser}
           onLogout={handleLogout}
+          onOpenAccount={() => setShowAccountModal(true)}
           onToggleMobileMenu={() => setIsMobileMenuOpen((prev) => !prev)}
         />
 
@@ -128,6 +145,18 @@ export const App: React.FC = () => {
           {currentTab === 'categories' && <CategorizationManager />}
         </main>
       </div>
+
+      {showAccountModal && (
+        <AccountModal
+          user={currentUser}
+          onClose={() => setShowAccountModal(false)}
+          onUserUpdated={(updated) => setCurrentUser(updated)}
+          onLoggedOutAll={() => {
+            setShowAccountModal(false);
+            setCurrentUser(null);
+          }}
+        />
+      )}
 
       {/* Mobile Bottom Navigation Bar (Phones < 768px) */}
       <nav

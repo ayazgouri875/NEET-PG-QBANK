@@ -2,10 +2,40 @@ export interface UserItem {
   id: number;
   email: string;
   full_name: string;
-  role: 'admin' | 'student';
+  role: 'admin' | 'student' | 'faculty';
   target_exam_year?: number;
   is_active: boolean;
+  email_verified?: boolean;
+  is_verified?: boolean;
+  last_login_at?: string | null;
   created_at?: string;
+}
+
+export interface AuthConfig {
+  google_enabled: boolean;
+  google_client_id: string | null;
+  email_verification_enabled?: boolean;
+  email_otp_enabled: boolean;
+}
+
+export interface RegistrationResponse {
+  status: string;
+  message: string;
+  email: string;
+  email_verified: boolean;
+}
+
+export interface StatusMessageResponse {
+  status: string;
+  message: string;
+}
+
+export interface AuthSessionItem {
+  id: number;
+  user_agent?: string | null;
+  ip_address?: string | null;
+  created_at: string;
+  expires_at: string;
 }
 
 export interface SubjectBreakdown {

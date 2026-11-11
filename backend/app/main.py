@@ -15,7 +15,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.app.api.v1 import admin, analytics, auth, bookmarks, questions, subjects, tests
-from backend.app.core.config import API_V1_STR, DATA_DIR, MEDIA_DIR, PROJECT_NAME
+from backend.app.core.config import API_V1_STR, CORS_ORIGINS, DATA_DIR, MEDIA_DIR, PROJECT_NAME
 from backend.app.core.database import init_db
 
 
@@ -33,13 +33,13 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS Middleware for Flutter Client and React Admin Dashboard
+# Strict CORS Middleware for trusted frontend origins with HttpOnly cookie credentials
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type", "Accept", "X-CSRF-Token"],
 )
 
 # Serve clinical media files (images, diagrams)
