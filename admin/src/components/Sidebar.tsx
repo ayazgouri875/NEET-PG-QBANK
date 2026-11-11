@@ -1,250 +1,196 @@
 import React from 'react';
+import {
+  BarChart3,
+  Bookmark,
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  FolderTree,
+  ListChecks,
+  SlidersHorizontal,
+  Stethoscope,
+  Target,
+} from 'lucide-react';
 
-export type NavTab = 'student' | 'categories';
+export type NavSection =
+  | 'subjects'
+  | 'problems'
+  | 'attempted'
+  | 'generator'
+  | 'bookmarks'
+  | 'analytics'
+  | 'categories';
 
 interface SidebarProps {
-  currentTab: NavTab;
-  onSelectTab: (tab: NavTab) => void;
-  onLogout?: () => void;
-  isOpenMobile?: boolean;
-  onCloseMobile?: () => void;
+  activeSection: NavSection;
+  onSelectSection: (section: NavSection) => void;
+  isCollapsed: boolean;
+  onToggleCollapse: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  currentTab,
-  onSelectTab,
-  onLogout,
-  isOpenMobile = false,
-  onCloseMobile,
+  activeSection,
+  onSelectSection,
+  isCollapsed,
+  onToggleCollapse,
 }) => {
-  const menuItems: { id: NavTab; label: string; icon: string; badge?: string }[] = [
-    { id: 'student', label: 'Student Q-Bank', icon: '🩺', badge: 'Active' },
-    { id: 'categories', label: 'Subject Taxonomy', icon: '🗂️' },
+  const menuItems: { id: NavSection; label: string; icon: React.ReactNode }[] = [
+    { id: 'subjects', label: 'Subjects & Topics', icon: <BookOpen size={18} /> },
+    { id: 'problems', label: 'Question Directory', icon: <ListChecks size={18} /> },
+    { id: 'attempted', label: 'Attempted Q&A', icon: <Target size={18} /> },
+    { id: 'generator', label: 'Custom Test', icon: <SlidersHorizontal size={18} /> },
+    { id: 'bookmarks', label: 'Bookmarks', icon: <Bookmark size={18} /> },
+    { id: 'analytics', label: 'Analytics', icon: <BarChart3 size={18} /> },
+    { id: 'categories', label: 'Subject Taxonomy', icon: <FolderTree size={18} /> },
   ];
 
-  const handleItemClick = (tab: NavTab) => {
-    onSelectTab(tab);
-    if (onCloseMobile) onCloseMobile();
-  };
+  const sidebarWidth = isCollapsed ? '72px' : '248px';
 
   return (
-    <>
-      {/* Mobile Backdrop Overlay */}
-      {isOpenMobile && (
-        <div
-          onClick={onCloseMobile}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(15, 23, 42, 0.65)',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
-            zIndex: 90,
-            transition: 'opacity 0.25s ease',
-          }}
-        />
-      )}
-
-      {/* Sidebar Container - Fixed & Smooth */}
-      <aside
-        style={{
-          width: '260px',
-          background: 'linear-gradient(180deg, #090E1A 0%, #0F172A 60%, #0B132B 100%)',
-          color: '#F8FAFC',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100vh',
-          position: 'fixed',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          flexShrink: 0,
-          borderRight: '1px solid #1E293B',
-          zIndex: 100,
-          transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
-          willChange: 'transform',
-          overflow: 'hidden',
-          boxShadow: '2px 0 12px rgba(0, 0, 0, 0.15)',
-        }}
-        className={`sidebar-root ${isOpenMobile ? 'mobile-open' : ''}`}
-      >
-        {/* Brand Header */}
-        <div style={{
-          padding: '20px 20px',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexShrink: 0,
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{
-              width: '38px',
-              height: '38px',
-              borderRadius: '11px',
-              background: 'linear-gradient(135deg, #0D9488 0%, #2563EB 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '19px',
-              boxShadow: '0 4px 14px rgba(13, 148, 136, 0.35)',
-            }}>
-              🩺
-            </div>
-            <div>
-              <h1 style={{ fontSize: '15px', fontWeight: 800, color: '#FFFFFF', margin: 0, letterSpacing: '-0.3px' }}>
-                NEET PG Master
-              </h1>
-              <span style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500 }}>
-                Medical Q-Bank Platform
-              </span>
-            </div>
+    <aside
+      className="desktop-sidebar"
+      aria-label="Primary navigation"
+      style={{
+        width: sidebarWidth,
+        backgroundColor: 'var(--bg-sidebar)',
+        color: '#F8FAFC',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh',
+        position: 'fixed',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        zIndex: 90,
+        borderRight: '1px solid #1E293B',
+        transition: 'width 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Brand Header */}
+      <div style={{
+        padding: isCollapsed ? '16px 12px' : '16px 16px',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: isCollapsed ? 'center' : 'space-between',
+        gap: '10px',
+        minHeight: '68px',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
+          <div style={{
+            width: '36px',
+            height: '36px',
+            borderRadius: '10px',
+            background: 'linear-gradient(135deg, #0D9488 0%, #2563EB 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#FFFFFF',
+            flexShrink: 0,
+          }}>
+            <Stethoscope size={20} />
           </div>
-
-          {/* Close Button on Mobile */}
-          {onCloseMobile && (
-            <button
-              onClick={onCloseMobile}
-              className="show-on-mobile-tablet"
-              aria-label="Close navigation"
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#94A3B8',
-                fontSize: '18px',
-                cursor: 'pointer',
-                padding: '4px 8px',
-                borderRadius: '6px',
-              }}
-            >
-              ✕
-            </button>
+          {!isCollapsed && (
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFFFFF', whiteSpace: 'nowrap' }}>
+                NEET PG Master
+              </div>
+              <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500, whiteSpace: 'nowrap' }}>
+                Medical Q-Bank
+              </div>
+            </div>
           )}
         </div>
+      </div>
 
-        {/* Navigation Items */}
-        <nav style={{
-          padding: '16px 12px',
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '6px',
-          overflowY: 'auto',
-          scrollbarWidth: 'thin',
-          scrollbarColor: '#334155 transparent',
-        }}>
-          {menuItems.map((item) => {
-            const isActive = currentTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item.id)}
-                className="sidebar-nav-btn"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  width: '100%',
-                  padding: '12px 14px',
-                  borderRadius: '8px',
-                  fontSize: '13px',
-                  fontWeight: isActive ? 700 : 500,
-                  color: isActive ? '#FFFFFF' : '#94A3B8',
-                  backgroundColor: isActive ? '#1E293B' : 'transparent',
-                  border: isActive ? '1px solid #334155' : '1px solid transparent',
-                  cursor: 'pointer',
-                  textAlign: 'left',
-                  transition: 'all 0.18s cubic-bezier(0.16, 1, 0.3, 1)',
-                }}
-              >
-                <span style={{ fontSize: '16px' }}>{item.icon}</span>
-                <span style={{ flex: 1 }}>{item.label}</span>
-                {item.badge && (
-                  <span style={{
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    backgroundColor: '#0D9488',
-                    color: '#FFFFFF',
-                    padding: '2px 6px',
-                    borderRadius: '4px',
-                    textTransform: 'uppercase',
-                  }}>
-                    {item.badge}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </nav>
-
-        {/* Footer Info & Logout */}
-        <div style={{
-          padding: '16px 20px',
-          borderTop: '1px solid #1E293B',
-          fontSize: '12px',
-          color: '#64748B',
-          flexShrink: 0,
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span>NEET PG Curriculum</span>
-            <span style={{ color: '#10B981', fontWeight: 700 }}>● Active</span>
-          </div>
-          <p style={{ margin: 0, fontSize: '11px', color: '#94A3B8' }}>19,225 Verified Medical MCQs</p>
-
-          {onLogout && (
+      {/* Navigation Links */}
+      <nav style={{
+        padding: '16px 10px',
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '4px',
+        overflowY: 'auto',
+      }}>
+        {menuItems.map((item) => {
+          const isActive = activeSection === item.id;
+          return (
             <button
-              onClick={() => {
-                if (onCloseMobile) onCloseMobile();
-                onLogout();
-              }}
+              key={item.id}
+              type="button"
+              onClick={() => onSelectSection(item.id)}
+              title={isCollapsed ? item.label : undefined}
+              aria-label={item.label}
+              aria-current={isActive ? 'page' : undefined}
               style={{
-                width: '100%',
-                padding: '9px 12px',
-                marginTop: '12px',
-                borderRadius: '6px',
-                backgroundColor: '#1E293B',
-                color: '#F87171',
-                border: '1px solid #334155',
-                cursor: 'pointer',
-                fontSize: '12px',
-                fontWeight: 600,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                transition: 'background-color 0.15s ease',
+                justifyContent: isCollapsed ? 'center' : 'flex-start',
+                gap: '12px',
+                width: '100%',
+                padding: isCollapsed ? '10px' : '10px 12px',
+                borderRadius: '8px',
+                fontSize: '13px',
+                fontWeight: isActive ? 700 : 500,
+                color: isActive ? '#FFFFFF' : '#94A3B8',
+                backgroundColor: isActive ? 'rgba(13, 148, 136, 0.22)' : 'transparent',
+                border: isActive ? '1px solid rgba(13, 148, 136, 0.45)' : '1px solid transparent',
+                cursor: 'pointer',
+                textAlign: 'left',
+                transition: 'background-color 0.15s ease, color 0.15s ease',
               }}
             >
-              <span>🚪</span>
-              <span>Sign Out</span>
+              <span style={{ display: 'flex', color: isActive ? '#2DD4BF' : '#94A3B8', flexShrink: 0 }}>
+                {item.icon}
+              </span>
+              {!isCollapsed && (
+                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {item.label}
+                </span>
+              )}
             </button>
-          )}
-        </div>
-      </aside>
+          );
+        })}
+      </nav>
 
-      <style>{`
-        .sidebar-nav-btn:hover {
-          background-color: #1E293B !important;
-          color: #F8FAFC !important;
-        }
-        .sidebar-nav-btn:active {
-          transform: scale(0.98);
-        }
-        @media (max-width: 1024px) {
-          .sidebar-root {
-            width: 280px !important;
-            position: fixed !important;
-            top: 0 !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            transform: translateX(-100%) !important;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-          }
-          .sidebar-root.mobile-open {
-            transform: translateX(0) !important;
-          }
-        }
-      `}</style>
-    </>
+      {/* Collapse Toggle Footer */}
+      <div style={{
+        padding: '12px',
+        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+      }}>
+        {!isCollapsed && (
+          <div style={{ padding: '4px 6px', fontSize: '11px', color: '#94A3B8' }}>
+            19,225 Verified MCQs
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={onToggleCollapse}
+          aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: isCollapsed ? 'center' : 'space-between',
+            width: '100%',
+            padding: '8px 10px',
+            borderRadius: '8px',
+            backgroundColor: '#1E293B',
+            color: '#CBD5E1',
+            border: '1px solid #334155',
+            fontSize: '12px',
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
+          {!isCollapsed && <span>Collapse sidebar</span>}
+          {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+        </button>
+      </div>
+    </aside>
   );
 };

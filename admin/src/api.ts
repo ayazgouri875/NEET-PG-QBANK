@@ -11,6 +11,7 @@ import {
   RegistrationResponse,
   StatusMessageResponse,
   StudentAnalytics,
+  StudySummary,
   SubjectItem,
   SubmitAnswerResult,
   TestSession,
@@ -412,33 +413,60 @@ class AdminApiClient {
     return res.json();
   }
 
+  private cachedFilterMeta: { pyq_years: number[] } | null = null;
+
+  async fetchQuestionFiltersMeta(): Promise<{ pyq_years: number[] }> {
+    if (this.cachedFilterMeta) return this.cachedFilterMeta;
+    const res = await this.authFetch(`${API_BASE}/questions/filters-meta`);
+    if (!res.ok) return { pyq_years: [] };
+    this.cachedFilterMeta = await res.json();
+    return this.cachedFilterMeta!;
+  }
+
   async fetchQuestions(params: {
     page?: number;
     page_size?: number;
     subject_id?: number;
+    subject_ids?: number[];
     topic_id?: number;
     subtopic_id?: number;
     difficulty?: string;
     status_filter?: string;
     is_clinical?: boolean;
     has_images?: boolean;
+    pyq_year?: number;
     q?: string;
   }): Promise<PaginatedQuestions> {
     const query = new URLSearchParams();
     if (params.page) query.append('page', params.page.toString());
     if (params.page_size) query.append('page_size', params.page_size.toString());
     if (params.subject_id) query.append('subject_id', params.subject_id.toString());
+    if (params.subject_ids && params.subject_ids.length > 0) {
+      query.append('subject_ids', params.subject_ids.join(','));
+    }
     if (params.topic_id) query.append('topic_id', params.topic_id.toString());
     if (params.subtopic_id) query.append('subtopic_id', params.subtopic_id.toString());
     if (params.difficulty) query.append('difficulty', params.difficulty);
     if (params.status_filter) query.append('status_filter', params.status_filter);
     if (params.is_clinical !== undefined) query.append('is_clinical', params.is_clinical.toString());
     if (params.has_images !== undefined) query.append('has_images', params.has_images.toString());
+    if (params.pyq_year) query.append('pyq_year', params.pyq_year.toString());
     if (params.q) query.append('q', params.q);
 
     const res = await this.authFetch(`${API_BASE}/questions/?${query.toString()}`);
     if (!res.ok) throw new Error('Failed to fetch questions');
     return res.json();
+  }
+
+  async reportQuestion(questionId: number, reason: string, details?: string): Promise<void> {
+    const res = await this.authFetch(`${API_BASE}/questions/${questionId}/report`, {
+      method: 'POST',
+      body: JSON.stringify({ reason, details: details || undefined }),
+    });
+    if (!res.ok) {
+      const msg = await this.parseErrorMessage(res, 'Failed to submit report');
+      throw new Error(msg);
+    }
   }
 
   async fetchQuestionDetail(id: number): Promise<QuestionItem> {
@@ -532,9 +560,11 @@ class AdminApiClient {
     subject_ids?: number[];
     topic_ids?: number[];
     subtopic_ids?: number[];
+    question_ids?: number[];
     question_count?: number;
     is_timed?: boolean;
     duration_minutes?: number;
+    filter_status?: string;
     difficulty?: string;
   }): Promise<TestSession> {
     const res = await this.authFetch(`${API_BASE}/tests/custom`, {
@@ -546,9 +576,11 @@ class AdminApiClient {
         subject_ids: params.subject_ids || [],
         topic_ids: params.topic_ids || [],
         subtopic_ids: params.subtopic_ids || [],
+        question_ids: params.question_ids || undefined,
         question_count: params.question_count || 10,
         is_timed: params.is_timed ?? false,
         duration_minutes: params.duration_minutes,
+        filter_status: params.filter_status || 'all',
         difficulty: params.difficulty,
       }),
     });
@@ -556,6 +588,14 @@ class AdminApiClient {
       const err = await res.json().catch(() => ({}));
       throw new Error(err.detail || 'Failed to create test session');
     }
+    return res.json();
+  }
+
+  async toggleMarkForReview(sessionId: number, questionId: number): Promise<{ marked: boolean }> {
+    const res = await this.authFetch(`${API_BASE}/tests/${sessionId}/mark/${questionId}`, {
+      method: 'PATCH',
+    });
+    if (!res.ok) throw new Error('Failed to update review mark');
     return res.json();
   }
 
@@ -604,8 +644,18 @@ class AdminApiClient {
     return res.json();
   }
 
-  async fetchBookmarks(): Promise<BookmarkItem[]> {
-    const res = await this.authFetch(`${API_BASE}/bookmarks/`);
+  async saveBookmarkNote(questionId: number, notes: string): Promise<{ status: string; notes: string | null }> {
+    const res = await this.authFetch(`${API_BASE}/bookmarks/note`, {
+      method: 'PUT',
+      body: JSON.stringify({ question_id: questionId, notes }),
+    });
+    if (!res.ok) throw new Error('Failed to save note');
+    return res.json();
+  }
+
+  async fetchBookmarks(subjectId?: number): Promise<BookmarkItem[]> {
+    const url = subjectId ? `${API_BASE}/bookmarks/?subject_id=${subjectId}` : `${API_BASE}/bookmarks/`;
+    const res = await this.authFetch(url);
     if (!res.ok) throw new Error('Failed to fetch bookmarks');
     return res.json();
   }
@@ -616,12 +666,20 @@ class AdminApiClient {
     return res.json();
   }
 
+  async fetchStudySummary(dailyTarget: number = 30): Promise<StudySummary> {
+    const res = await this.authFetch(`${API_BASE}/analytics/study-summary?daily_target=${dailyTarget}`);
+    if (!res.ok) throw new Error('Failed to fetch study summary');
+    return res.json();
+  }
+
   async fetchAttemptedQuestions(params: {
     page?: number;
     page_size?: number;
     status_filter?: string;
     subject_id?: number;
     difficulty?: string;
+    date_from?: string;
+    date_to?: string;
     q?: string;
   }): Promise<PaginatedAttemptedQuestions> {
     const query = new URLSearchParams();
@@ -630,6 +688,8 @@ class AdminApiClient {
     if (params.status_filter) query.append('status_filter', params.status_filter);
     if (params.subject_id) query.append('subject_id', params.subject_id.toString());
     if (params.difficulty) query.append('difficulty', params.difficulty);
+    if (params.date_from) query.append('date_from', params.date_from);
+    if (params.date_to) query.append('date_to', params.date_to);
     if (params.q) query.append('q', params.q);
 
     const res = await this.authFetch(`${API_BASE}/questions/attempted?${query.toString()}`);

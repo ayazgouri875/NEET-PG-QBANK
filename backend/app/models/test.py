@@ -168,3 +168,15 @@ class UserPerformance(Base, TimestampMixin):
         Index("ix_user_subject_topic_perf", "user_id", "subject_id", "topic_id", unique=True),
     )
 
+
+class QuestionReport(Base, TimestampMixin):
+    """Stores student-submitted error/typo reports for specific questions."""
+    __tablename__ = "question_reports"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    question_id: Mapped[int] = mapped_column(ForeignKey("questions.id", ondelete="CASCADE"), nullable=False, index=True)
+    reason: Mapped[str] = mapped_column(String(120), nullable=False)
+    details: Mapped[str | None] = mapped_column(String(1000), nullable=True)
+
+

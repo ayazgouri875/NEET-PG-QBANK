@@ -41,6 +41,7 @@ class SubjectOut(BaseModel):
     display_order: int
     icon_name: str | None = None
     total_questions: int
+    user_progress: TopicUserProgress | None = None
 
     model_config = ConfigDict(from_attributes=True)
 

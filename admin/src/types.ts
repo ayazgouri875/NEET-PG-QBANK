@@ -101,6 +101,7 @@ export interface QuestionUserStatus {
   is_correct: boolean;
   selected_option_index?: number | null;
   answered_at?: string | null;
+  is_bookmarked?: boolean;
 }
 
 export interface QuestionItem {
@@ -140,6 +141,28 @@ export interface SubjectItem {
   category: string;
   display_order: number;
   total_questions: number;
+  user_progress?: TopicUserProgress;
+}
+
+export interface StudySummary {
+  daily_goal: {
+    attempted_today: number;
+    solved_today: number;
+    target: number;
+  };
+  streak_days: number;
+  continue_from: {
+    subject_id: number;
+    subject_name: string;
+    subject_code: string;
+    topic_id: number | null;
+    topic_name: string | null;
+    questions_solved: number;
+    total_subject_questions: number;
+    active_session_id: number | null;
+    active_session_title: string | null;
+    last_activity_at: string | null;
+  } | null;
 }
 
 export interface IntegrityAudit {
@@ -180,7 +203,7 @@ export interface TestSession {
   id: number;
   user_id: number;
   title: string;
-  test_type: 'custom' | 'grand' | 'subject';
+  test_type: 'custom' | 'grand' | 'subject' | 'topic' | 'bookmarked' | 'incorrect';
   test_mode: 'practice' | 'exam';
   status: 'in_progress' | 'completed' | 'abandoned';
   total_questions: number;
@@ -191,9 +214,12 @@ export interface TestSession {
   incorrect_count: number;
   skipped_count: number;
   accuracy_percentage: number;
+  total_time_seconds?: number;
   started_at: string;
   completed_at?: string;
   questions?: QuestionItem[];
+  responses?: (SubmitAnswerResult & { time_spent_seconds?: number })[];
+  marked_question_ids?: number[];
 }
 
 export interface SubmitAnswerResult {
@@ -223,6 +249,23 @@ export interface SubjectAnalyticsItem {
   accuracy: number;
 }
 
+export interface WeakTopicItem {
+  topic_id: number;
+  topic_name: string;
+  subject_id: number;
+  subject_name: string;
+  attempted: number;
+  correct: number;
+  accuracy: number;
+}
+
+export interface DailyActivityItem {
+  date: string;
+  count: number;
+  correct: number;
+  avg_time_seconds: number;
+}
+
 export interface StudentAnalytics {
   total_attempted: number;
   total_correct: number;
@@ -232,6 +275,8 @@ export interface StudentAnalytics {
   avg_seconds_per_question: number;
   weak_subjects: string[];
   subject_breakdown: SubjectAnalyticsItem[];
+  weak_topics?: WeakTopicItem[];
+  daily_activity?: DailyActivityItem[];
 }
 
 export interface AttemptedQuestionItem {
@@ -272,12 +317,20 @@ export interface AttemptedQuestionsStats {
   hard_attempted: number;
 }
 
+export interface AttemptedTrendPoint {
+  date: string;
+  attempted: number;
+  correct: number;
+  accuracy: number;
+}
+
 export interface PaginatedAttemptedQuestions {
   total: number;
   page: number;
   page_size: number;
   stats: AttemptedQuestionsStats;
   items: AttemptedQuestionItem[];
+  trend?: AttemptedTrendPoint[];
 }
 
 export interface OTPResponse {

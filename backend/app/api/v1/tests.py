@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session, joinedload
 from backend.app.api.deps import get_current_user, get_db
 from backend.app.models.question import Question, QuestionOption
 from backend.app.models.test import (
+    Bookmark,
     SessionStatus,
     TestMode,
     TestQuestion,
@@ -23,6 +24,7 @@ from backend.app.schemas.test import (
     TestCreateRequest,
     TestSessionDetailOut,
     TestSessionOut,
+    TestSessionResponseItem,
 )
 
 router = APIRouter(prefix="/tests", tags=["Test Engine & Generator"])
@@ -37,36 +39,54 @@ def create_custom_test(
     """Generates a customized NEET PG MCQ test session without duplicate questions."""
     query = db.query(Question.id).filter(Question.is_active == True)
 
-    if test_in.subject_ids:
-        query = query.filter(Question.subject_id.in_(test_in.subject_ids))
-    if test_in.topic_ids:
-        query = query.filter(Question.topic_id.in_(test_in.topic_ids))
-    if test_in.subtopic_ids:
-        query = query.filter(Question.subtopic_id.in_(test_in.subtopic_ids))
-    if test_in.difficulty:
-        query = query.filter(Question.difficulty == test_in.difficulty)
+    if test_in.question_ids:
+        valid_ids = [
+            r[0]
+            for r in db.query(Question.id)
+            .filter(Question.is_active == True, Question.id.in_(test_in.question_ids))
+            .all()
+        ]
+        if not valid_ids:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="None of the requested questions were found.",
+            )
+        selected_question_ids = valid_ids[: test_in.question_count]
+        sample_size = len(selected_question_ids)
+    else:
+        if test_in.subject_ids:
+            query = query.filter(Question.subject_id.in_(test_in.subject_ids))
+        if test_in.topic_ids:
+            query = query.filter(Question.topic_id.in_(test_in.topic_ids))
+        if test_in.subtopic_ids:
+            query = query.filter(Question.subtopic_id.in_(test_in.subtopic_ids))
+        if test_in.difficulty:
+            query = query.filter(Question.difficulty == test_in.difficulty)
 
-    # Filter status logic
-    if test_in.filter_status == "unattempted":
-        attempted_subq = db.query(UserResponse.question_id).filter(UserResponse.user_id == current_user.id)
-        query = query.filter(~Question.id.in_(attempted_subq))
-    elif test_in.filter_status == "incorrect":
-        incorrect_subq = (
-            db.query(UserResponse.question_id)
-            .filter(UserResponse.user_id == current_user.id, UserResponse.is_correct == False)
-        )
-        query = query.filter(Question.id.in_(incorrect_subq))
+        # Filter status logic
+        if test_in.filter_status == "unattempted":
+            attempted_subq = db.query(UserResponse.question_id).filter(UserResponse.user_id == current_user.id)
+            query = query.filter(~Question.id.in_(attempted_subq))
+        elif test_in.filter_status == "incorrect":
+            incorrect_subq = (
+                db.query(UserResponse.question_id)
+                .filter(UserResponse.user_id == current_user.id, UserResponse.is_correct == False)
+            )
+            query = query.filter(Question.id.in_(incorrect_subq))
+        elif test_in.filter_status == "bookmarked":
+            bm_subq = db.query(Bookmark.question_id).filter(Bookmark.user_id == current_user.id)
+            query = query.filter(Question.id.in_(bm_subq))
 
-    all_matching_ids = [r[0] for r in query.all()]
-    if not all_matching_ids:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="No questions match the selected criteria. Try selecting more subjects or topics.",
-        )
+        all_matching_ids = [r[0] for r in query.all()]
+        if not all_matching_ids:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="No questions match the selected criteria. Try adjusting filters.",
+            )
 
-    # True random sampling avoiding duplicate questions
-    sample_size = min(test_in.question_count, len(all_matching_ids))
-    selected_question_ids = random.sample(all_matching_ids, sample_size)
+        # True random sampling avoiding duplicate questions
+        sample_size = min(test_in.question_count, len(all_matching_ids))
+        selected_question_ids = random.sample(all_matching_ids, sample_size)
 
     # Create TestSession entity
     session = TestSession(
@@ -106,13 +126,87 @@ def create_custom_test(
     return session
 
 
+def _build_session_detail(session: TestSession, db: Session) -> TestSessionDetailOut:
+    """Hydrates ordered questions, explanations, marked IDs, and saved responses for a TestSession."""
+    test_questions = (
+        db.query(TestQuestion)
+        .filter(TestQuestion.test_session_id == session.id)
+        .order_by(TestQuestion.question_order.asc())
+        .all()
+    )
+    q_ids = [tq.question_id for tq in test_questions]
+    marked_ids = [tq.question_id for tq in test_questions if tq.is_marked_for_review]
+
+    questions = (
+        db.query(Question)
+        .options(
+            joinedload(Question.options),
+            joinedload(Question.images),
+            joinedload(Question.tags),
+            joinedload(Question.explanation),
+            joinedload(Question.subject),
+            joinedload(Question.topic),
+            joinedload(Question.subtopic),
+        )
+        .filter(Question.id.in_(q_ids))
+        .all()
+    ) if q_ids else []
+
+    q_map = {}
+    for q in questions:
+        if q.subject:
+            q.subject_name = q.subject.name
+        if q.topic:
+            q.topic_name = q.topic.name
+        if q.subtopic:
+            q.subtopic_name = q.subtopic.name
+        q_map[q.id] = q
+    ordered_questions = [q_map[qid] for qid in q_ids if qid in q_map]
+
+    saved_responses = (
+        db.query(UserResponse)
+        .filter(UserResponse.test_session_id == session.id)
+        .all()
+    )
+    reveal_answers = (session.test_mode == TestMode.PRACTICE) or (session.status == SessionStatus.COMPLETED)
+
+    response_items: list[TestSessionResponseItem] = []
+    for ur in saved_responses:
+        q_obj = q_map.get(ur.question_id)
+        correct_idx = None
+        exp_html = None
+        ref_txt = None
+        if reveal_answers and q_obj:
+            correct_opt = next((o for o in q_obj.options if o.is_correct), None)
+            correct_idx = correct_opt.option_index if correct_opt else 0
+            exp_html = q_obj.explanation.html_content if q_obj.explanation else None
+            ref_txt = q_obj.explanation.references if q_obj.explanation else None
+        response_items.append(
+            TestSessionResponseItem(
+                question_id=ur.question_id,
+                selected_option_index=ur.selected_option_index,
+                is_correct=ur.is_correct,
+                correct_option_index=correct_idx,
+                explanation=exp_html,
+                references=ref_txt,
+                time_spent_seconds=ur.time_spent_seconds,
+            )
+        )
+
+    res = TestSessionDetailOut.model_validate(session)
+    res.questions = ordered_questions
+    res.responses = response_items
+    res.marked_question_ids = marked_ids
+    return res
+
+
 @router.get("/{session_id}", response_model=TestSessionDetailOut)
 def get_test_session(
     session_id: int,
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    """Retrieves an active or completed test session with its ordered questions."""
+    """Retrieves an active or completed test session with ordered questions and auto-saved responses."""
     session = (
         db.query(TestSession)
         .filter(TestSession.id == session_id, TestSession.user_id == current_user.id)
@@ -121,31 +215,36 @@ def get_test_session(
     if not session:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Test session not found")
 
-    test_questions = (
+    return _build_session_detail(session, db)
+
+
+@router.patch("/{session_id}/mark/{question_id}")
+def toggle_mark_for_review(
+    session_id: int,
+    question_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Toggles mark-for-review state on a question inside a test session."""
+    session = (
+        db.query(TestSession)
+        .filter(TestSession.id == session_id, TestSession.user_id == current_user.id)
+        .first()
+    )
+    if not session:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Test session not found")
+
+    tq = (
         db.query(TestQuestion)
-        .filter(TestQuestion.test_session_id == session.id)
-        .order_by(TestQuestion.question_order.asc())
-        .all()
+        .filter(TestQuestion.test_session_id == session.id, TestQuestion.question_id == question_id)
+        .first()
     )
-    q_ids = [tq.question_id for tq in test_questions]
+    if not tq:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Question not in session")
 
-    # Fetch question entities
-    questions = (
-        db.query(Question)
-        .options(
-            joinedload(Question.options),
-            joinedload(Question.images),
-            joinedload(Question.tags),
-        )
-        .filter(Question.id.in_(q_ids))
-        .all()
-    )
-    q_map = {q.id: q for q in questions}
-    ordered_questions = [q_map[qid] for qid in q_ids if qid in q_map]
-
-    res = TestSessionDetailOut.model_validate(session)
-    res.questions = ordered_questions
-    return res
+    tq.is_marked_for_review = not tq.is_marked_for_review
+    db.commit()
+    return {"question_id": question_id, "marked": tq.is_marked_for_review}
 
 
 @router.post("/{session_id}/answer", response_model=SubmitAnswerResponse)
@@ -227,7 +326,7 @@ def submit_question_answer(
     )
 
 
-@router.post("/{session_id}/complete", response_model=TestSessionOut)
+@router.post("/{session_id}/complete", response_model=TestSessionDetailOut)
 def complete_test_session(
     session_id: int,
     current_user: User = Depends(get_current_user),
@@ -306,5 +405,5 @@ def complete_test_session(
 
     db.commit()
     db.refresh(session)
-    return session
+    return _build_session_detail(session, db)
 

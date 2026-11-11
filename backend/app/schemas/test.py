@@ -13,6 +13,7 @@ class TestCreateRequest(BaseModel):
     subject_ids: list[int] = []
     topic_ids: list[int] = []
     subtopic_ids: list[int] = []
+    question_ids: list[int] | None = None
     question_count: int = 25
     is_timed: bool = False
     duration_minutes: int | None = None
@@ -56,13 +57,34 @@ class TestSessionOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+class TestSessionResponseItem(BaseModel):
+    question_id: int
+    selected_option_index: int | None = None
+    is_correct: bool | None = None
+    correct_option_index: int | None = None
+    explanation: str | None = None
+    references: str | None = None
+    time_spent_seconds: int = 0
+    is_marked_for_review: bool = False
+
+    model_config = ConfigDict(from_attributes=True)
+
+
 class TestSessionDetailOut(TestSessionOut):
+    total_time_seconds: int = 0
     questions: list[QuestionOut] = []
+    responses: list[TestSessionResponseItem] = []
+    marked_question_ids: list[int] = []
 
 
 class BookmarkToggleRequest(BaseModel):
     question_id: int
     notes: str | None = None
+
+
+class BookmarkNoteRequest(BaseModel):
+    question_id: int
+    notes: str = ""
 
 
 class BookmarkOut(BaseModel):

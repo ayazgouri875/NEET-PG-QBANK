@@ -15,9 +15,46 @@ router = APIRouter(prefix="/subjects", tags=["Subjects & Topics"])
 
 
 @router.get("/", response_model=list[SubjectOut])
-def list_subjects(db: Session = Depends(get_db)):
-    """Returns all 19 NEET PG subjects ordered by curriculum sequence."""
-    return db.query(Subject).filter(Subject.is_active == True).order_by(Subject.display_order).all()
+def list_subjects(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Returns all 19 NEET PG subjects ordered by curriculum sequence with user progress."""
+    subjects = db.query(Subject).filter(Subject.is_active == True).order_by(Subject.display_order).all()
+
+    subj_stats = (
+        db.query(
+            Question.subject_id,
+            func.count(func.distinct(UserResponse.question_id)).label("attempted"),
+            func.count(
+                func.distinct(case((UserResponse.is_correct == True, UserResponse.question_id), else_=None))
+            ).label("solved"),
+        )
+        .join(Question, UserResponse.question_id == Question.id)
+        .filter(
+            UserResponse.user_id == current_user.id,
+            UserResponse.selected_option_index.is_not(None),
+        )
+        .group_by(Question.subject_id)
+        .all()
+    )
+
+    stats_map = {
+        s_id: TopicUserProgress(
+            attempted=att or 0,
+            solved=sol or 0,
+            incorrect=max(0, (att or 0) - (sol or 0)),
+            accuracy_percentage=round(((sol or 0) / att * 100.0), 1) if att else 0.0,
+        )
+        for s_id, att, sol in subj_stats
+    }
+
+    result = []
+    for subj in subjects:
+        out = SubjectOut.model_validate(subj)
+        out.user_progress = stats_map.get(subj.id, TopicUserProgress())
+        result.append(out)
+    return result
 
 
 @router.get("/{subject_id}", response_model=SubjectDetailOut)

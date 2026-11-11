@@ -27,6 +27,7 @@ from backend.app.models.test import (
     UserResponse,
     Bookmark,
     UserPerformance,
+    QuestionReport,
 )
 from backend.app.models.import_job import ImportStatus, ImportJob, ImportError
 
@@ -59,6 +60,7 @@ __all__ = [
     "UserResponse",
     "Bookmark",
     "UserPerformance",
+    "QuestionReport",
     "ImportStatus",
     "ImportJob",
     "ImportError",

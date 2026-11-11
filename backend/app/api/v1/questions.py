@@ -1,5 +1,6 @@
 """Question Bank Retrieval, LeetCode-style Problem Set, and Attempted Questions Endpoints."""
 
+from collections import defaultdict
 from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session, joinedload
@@ -8,6 +9,8 @@ from backend.app.api.deps import get_current_user, get_db
 from backend.app.models.category import Subject
 from backend.app.models.question import DifficultyLevel, Question
 from backend.app.models.test import (
+    Bookmark,
+    QuestionReport,
     SessionStatus,
     TestMode,
     TestType,
@@ -19,10 +22,12 @@ from backend.app.models.user import User
 from backend.app.schemas.question import (
     AttemptedQuestionItem,
     AttemptedQuestionsStats,
+    AttemptedTrendPoint,
     PaginatedAttemptedQuestions,
     PaginatedQuestions,
     QuestionDetailOut,
     QuestionOut,
+    QuestionReportRequest,
     QuestionUserStatus,
     SolveQuestionRequest,
     SolveQuestionResponse,
@@ -54,15 +59,33 @@ def get_or_create_practice_session(user_id: int, db: Session) -> TestSession:
     return session
 
 
+@router.get("/filters-meta")
+def get_question_filter_metadata(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Returns distinct PYQ years available for filter dropdowns."""
+    years = [
+        r[0]
+        for r in db.query(Question.pyq_year)
+        .filter(Question.is_active == True, Question.pyq_year.is_not(None))
+        .distinct()
+        .order_by(Question.pyq_year.desc())
+        .all()
+    ]
+    return {"pyq_years": years}
+
+
 @router.get("/", response_model=PaginatedQuestions)
 def search_questions(
     page: int = Query(1, ge=1),
-    page_size: int = Query(20, ge=1, le=100),
+    page_size: int = Query(25, ge=1, le=100),
     subject_id: int | None = Query(None),
+    subject_ids: str | None = Query(None, description="Comma-separated list of subject IDs"),
     topic_id: int | None = Query(None),
     subtopic_id: int | None = Query(None),
     difficulty: DifficultyLevel | None = Query(None),
-    status_filter: str | None = Query(None, description="'all', 'attempted', 'solved', 'incorrect', 'unattempted'"),
+    status_filter: str | None = Query(None, description="'all', 'attempted', 'solved', 'incorrect', 'unattempted', 'bookmarked'"),
     is_clinical: bool | None = Query(None),
     has_images: bool | None = Query(None),
     pyq_year: int | None = Query(None),
@@ -70,7 +93,7 @@ def search_questions(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    """Retrieves paginated questions matching medical filter criteria with LeetCode-style user attempt statuses."""
+    """Retrieves paginated questions matching medical filter criteria with user attempt & bookmark statuses."""
     query = (
         db.query(Question)
         .options(
@@ -84,8 +107,17 @@ def search_questions(
         .filter(Question.is_active == True)
     )
 
-    if subject_id:
-        query = query.filter(Question.subject_id == subject_id)
+    parsed_subject_ids: list[int] = []
+    if subject_ids:
+        for tok in subject_ids.split(","):
+            tok = tok.strip()
+            if tok.isdigit():
+                parsed_subject_ids.append(int(tok))
+    if subject_id and subject_id not in parsed_subject_ids:
+        parsed_subject_ids.append(subject_id)
+
+    if parsed_subject_ids:
+        query = query.filter(Question.subject_id.in_(parsed_subject_ids))
     if topic_id:
         query = query.filter(Question.topic_id == topic_id)
     if subtopic_id:
@@ -101,7 +133,6 @@ def search_questions(
     if q:
         query = query.filter(Question.text.ilike(f"%{q}%"))
 
-    # Status filter logic (LeetCode-style solved/attempted/unattempted)
     if status_filter == "attempted":
         attempted_subq = db.query(UserResponse.question_id).filter(UserResponse.user_id == current_user.id)
         query = query.filter(Question.id.in_(attempted_subq))
@@ -118,12 +149,14 @@ def search_questions(
     elif status_filter == "unattempted":
         attempted_subq = db.query(UserResponse.question_id).filter(UserResponse.user_id == current_user.id)
         query = query.filter(~Question.id.in_(attempted_subq))
+    elif status_filter == "bookmarked":
+        bm_subq = db.query(Bookmark.question_id).filter(Bookmark.user_id == current_user.id)
+        query = query.filter(Question.id.in_(bm_subq))
 
     total = query.count()
     offset = (page - 1) * page_size
     items = query.order_by(Question.id.asc()).offset(offset).limit(page_size).all()
 
-    # Populate user_status for each question in this page
     if items:
         q_ids = [item.id for item in items]
         user_responses = (
@@ -131,6 +164,12 @@ def search_questions(
             .filter(UserResponse.user_id == current_user.id, UserResponse.question_id.in_(q_ids))
             .all()
         )
+        bookmarked_ids = {
+            r[0]
+            for r in db.query(Bookmark.question_id)
+            .filter(Bookmark.user_id == current_user.id, Bookmark.question_id.in_(q_ids))
+            .all()
+        }
         resp_map = {r.question_id: r for r in user_responses}
         for item in items:
             if item.subject:
@@ -140,6 +179,7 @@ def search_questions(
             if item.subtopic:
                 item.subtopic_name = item.subtopic.name
 
+            is_bm = item.id in bookmarked_ids
             if item.id in resp_map:
                 r = resp_map[item.id]
                 item.user_status = QuestionUserStatus(
@@ -147,6 +187,7 @@ def search_questions(
                     is_correct=r.is_correct,
                     selected_option_index=r.selected_option_index,
                     answered_at=r.answered_at,
+                    is_bookmarked=is_bm,
                 )
             else:
                 item.user_status = QuestionUserStatus(
@@ -154,6 +195,7 @@ def search_questions(
                     is_correct=False,
                     selected_option_index=None,
                     answered_at=None,
+                    is_bookmarked=is_bm,
                 )
 
     return PaginatedQuestions(
@@ -171,18 +213,20 @@ def get_attempted_questions(
     status_filter: str | None = Query(None, description="'all', 'correct', 'incorrect'"),
     subject_id: int | None = Query(None),
     difficulty: DifficultyLevel | None = Query(None),
+    date_from: str | None = Query(None),
+    date_to: str | None = Query(None),
     q: str | None = Query(None),
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    """Retrieves all questions attempted by the student with submitted answers, correctness, explanations, and stats."""
+    """Retrieves all questions attempted by the student with submitted answers, correctness, explanations, and trend."""
     base_query = (
         db.query(UserResponse)
         .join(Question, UserResponse.question_id == Question.id)
         .filter(UserResponse.user_id == current_user.id)
     )
 
-    # Compute aggregate stats for the user across all attempts
+    # Compute aggregate stats & daily accuracy trend across all attempts
     all_user_responses = (
         db.query(UserResponse, Question)
         .join(Question, UserResponse.question_id == Question.id)
@@ -198,6 +242,23 @@ def get_attempted_questions(
     med_count = sum(1 for ur, q_obj in all_user_responses if q_obj.difficulty == DifficultyLevel.MEDIUM)
     hard_count = sum(1 for ur, q_obj in all_user_responses if q_obj.difficulty == DifficultyLevel.HARD)
 
+    day_buckets: dict[str, list[int]] = defaultdict(lambda: [0, 0])
+    for ur, _ in all_user_responses:
+        if ur.answered_at:
+            d_key = ur.answered_at.strftime("%Y-%m-%d")
+            day_buckets[d_key][0] += 1
+            if ur.is_correct:
+                day_buckets[d_key][1] += 1
+    trend = [
+        AttemptedTrendPoint(
+            date=d_key,
+            attempted=vals[0],
+            correct=vals[1],
+            accuracy=round((vals[1] / vals[0]) * 100.0, 1) if vals[0] > 0 else 0.0,
+        )
+        for d_key, vals in sorted(day_buckets.items())[-14:]
+    ]
+
     stats = AttemptedQuestionsStats(
         total_attempted=total_attempted,
         total_correct=total_correct,
@@ -208,7 +269,7 @@ def get_attempted_questions(
         hard_attempted=hard_count,
     )
 
-    # Filter by status
+    # Filter by status, subject, difficulty, date range, and search
     filtered_query = base_query
     if status_filter in ("correct", "solved"):
         filtered_query = filtered_query.filter(UserResponse.is_correct == True)
@@ -219,6 +280,18 @@ def get_attempted_questions(
         filtered_query = filtered_query.filter(Question.subject_id == subject_id)
     if difficulty:
         filtered_query = filtered_query.filter(Question.difficulty == difficulty)
+    if date_from:
+        try:
+            dt_from = datetime.strptime(date_from, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            filtered_query = filtered_query.filter(UserResponse.answered_at >= dt_from)
+        except ValueError:
+            pass
+    if date_to:
+        try:
+            dt_to = datetime.strptime(date_to, "%Y-%m-%d").replace(hour=23, minute=59, second=59, tzinfo=timezone.utc)
+            filtered_query = filtered_query.filter(UserResponse.answered_at <= dt_to)
+        except ValueError:
+            pass
     if q:
         filtered_query = filtered_query.filter(Question.text.ilike(f"%{q}%"))
 
@@ -295,7 +368,31 @@ def get_attempted_questions(
         page_size=page_size,
         stats=stats,
         items=items,
+        trend=trend,
     )
+
+
+@router.post("/{question_id}/report", status_code=status.HTTP_201_CREATED)
+def report_question_error(
+    question_id: int,
+    report_in: QuestionReportRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Submits a student error/typo report for a question."""
+    question = db.query(Question).filter(Question.id == question_id, Question.is_active == True).first()
+    if not question:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Question not found")
+
+    rep = QuestionReport(
+        user_id=current_user.id,
+        question_id=question_id,
+        reason=report_in.reason.strip()[:120] or "Content error",
+        details=(report_in.details or "").strip()[:1000] or None,
+    )
+    db.add(rep)
+    db.commit()
+    return {"status": "reported", "message": "Thank you. Your error report has been recorded for review."}
 
 
 @router.post("/{question_id}/solve", response_model=SolveQuestionResponse)

@@ -1,19 +1,49 @@
 import React, { useEffect, useState } from 'react';
+import { BarChart3, Bookmark, BookOpen, ListChecks, Stethoscope, User as UserIcon } from 'lucide-react';
 import { adminApi } from './api';
 import { AccountModal } from './components/AccountModal';
 import { Header } from './components/Header';
-import { NavTab, Sidebar } from './components/Sidebar';
+import { NavSection, Sidebar } from './components/Sidebar';
 import { CategorizationManager } from './pages/CategorizationManager';
 import { LoginPage } from './pages/LoginPage';
 import { StudentPractice } from './pages/StudentPractice';
 import { UserItem } from './types';
 
+const getInitialTheme = (): 'light' | 'dark' => {
+  const saved = localStorage.getItem('theme_mode');
+  if (saved === 'light' || saved === 'dark') return saved;
+  if (typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+  return 'light';
+};
+
 export const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<UserItem | null>(() => adminApi.getUser());
-  const [currentTab, setCurrentTab] = useState<NavTab>('student');
+  const [activeSection, setActiveSection] = useState<NavSection>('subjects');
   const [authChecking, setAuthChecking] = useState(true);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(() => {
+    return localStorage.getItem('sidebar_collapsed') === 'true';
+  });
   const [showAccountModal, setShowAccountModal] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme_mode', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
+  const toggleSidebarCollapse = () => {
+    setIsSidebarCollapsed((prev) => {
+      const next = !prev;
+      localStorage.setItem('sidebar_collapsed', String(next));
+      return next;
+    });
+  };
 
   const isAuthTokenRoute = (() => {
     const path = window.location.pathname.toLowerCase();
@@ -25,7 +55,6 @@ export const App: React.FC = () => {
     adminApi.setOnUnauthorized(() => {
       setCurrentUser(null);
       setShowAccountModal(false);
-      setIsMobileMenuOpen(false);
     });
 
     if (isAuthTokenRoute) {
@@ -52,7 +81,6 @@ export const App: React.FC = () => {
 
   const handleLogout = async () => {
     setShowAccountModal(false);
-    setIsMobileMenuOpen(false);
     setCurrentUser(null);
     await adminApi.logout();
   };
@@ -61,63 +89,96 @@ export const App: React.FC = () => {
     return (
       <div style={{
         minHeight: '100vh',
-        backgroundColor: '#0F172A',
+        backgroundColor: 'var(--bg-main)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#FFFFFF',
-        fontSize: '16px',
-        fontWeight: 600,
-        fontFamily: 'Inter, sans-serif',
+        color: 'var(--text-primary)',
       }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '36px', marginBottom: '14px' }}>🩺</div>
-          <div style={{ fontSize: '18px', fontWeight: 700 }}>NEET PG Question Bank</div>
-          <div style={{ fontSize: '13px', color: '#94A3B8', marginTop: '6px' }}>Preparing your medical workspace...</div>
+        <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+          <div style={{
+            width: '48px',
+            height: '48px',
+            borderRadius: '12px',
+            backgroundColor: 'var(--primary-soft)',
+            color: 'var(--primary)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Stethoscope size={24} />
+          </div>
+          <div style={{ fontSize: '18px', fontWeight: 700 }}>NEET PG Master</div>
+          <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Preparing your study workspace...</div>
         </div>
       </div>
     );
   }
 
-  // Render auth portal for unauthenticated users or email verification / password reset deep links
   if (isAuthTokenRoute || !currentUser) {
     return <LoginPage onLoginSuccess={(user) => setCurrentUser(user)} />;
   }
 
-  const getPageTitle = (tab: NavTab) => {
-    switch (tab) {
-      case 'student':
+  const getPageMeta = (section: NavSection) => {
+    switch (section) {
+      case 'subjects':
         return {
-          title: 'NEET PG Student Question Bank',
-          subtitle: 'Interactive practice drills, custom tests, clinical explanations & performance analytics',
+          title: 'Subjects & Curriculum',
+          subtitle: '19 NEET PG subjects grouped by Pre-Clinical, Para-Clinical, and Clinical phases',
+        };
+      case 'problems':
+        return {
+          title: 'Question Directory',
+          subtitle: 'Browse and filter all 19,225 verified high-yield MCQs',
+        };
+      case 'attempted':
+        return {
+          title: 'Attempted Questions & Answers',
+          subtitle: 'Review solved items, mistakes, and detailed textbook explanations',
+        };
+      case 'generator':
+        return {
+          title: 'Custom Test Builder',
+          subtitle: 'Generate practice drills or timed exams across any subject mix',
+        };
+      case 'bookmarks':
+        return {
+          title: 'Saved Bookmarks',
+          subtitle: 'Quick revision queue of your starred MCQs and notes',
+        };
+      case 'analytics':
+        return {
+          title: 'Performance Analytics',
+          subtitle: 'Accuracy breakdown, study consistency, and weak-area insights',
         };
       case 'categories':
         return {
-          title: 'Curriculum & Taxonomy',
-          subtitle: '19 NEET PG subjects, topics, and subtopics management',
+          title: 'Subject Taxonomy',
+          subtitle: 'Curriculum structure across 19 subjects, 283 topics, and 897 subtopics',
         };
     }
   };
 
-  const { title, subtitle } = getPageTitle(currentTab);
+  const { title, subtitle } = getPageMeta(activeSection);
+  const sidebarMargin = isSidebarCollapsed ? '72px' : '248px';
 
-  const bottomNavItems: { id: NavTab; label: string; icon: string }[] = [
-    { id: 'student', label: 'Q-Bank', icon: '🩺' },
-    { id: 'categories', label: 'Subjects', icon: '🗂️' },
+  const mobileNavItems: { id: 'subjects' | 'problems' | 'bookmarks' | 'analytics' | 'profile'; label: string; icon: React.ReactNode }[] = [
+    { id: 'subjects', label: 'Subjects', icon: <BookOpen size={20} /> },
+    { id: 'problems', label: 'Practice', icon: <ListChecks size={20} /> },
+    { id: 'bookmarks', label: 'Bookmarks', icon: <Bookmark size={20} /> },
+    { id: 'analytics', label: 'Analytics', icon: <BarChart3 size={20} /> },
+    { id: 'profile', label: 'Profile', icon: <UserIcon size={20} /> },
   ];
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F8FAFC', width: '100%' }}>
-      {/* Responsive Sidebar (Desktop Fixed + Mobile Off-Canvas Drawer) */}
+    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--bg-main)', width: '100%' }}>
       <Sidebar
-        currentTab={currentTab}
-        onSelectTab={setCurrentTab}
-        onLogout={handleLogout}
-        isOpenMobile={isMobileMenuOpen}
-        onCloseMobile={() => setIsMobileMenuOpen(false)}
+        activeSection={activeSection}
+        onSelectSection={setActiveSection}
+        isCollapsed={isSidebarCollapsed}
+        onToggleCollapse={toggleSidebarCollapse}
       />
 
-      {/* Main Content Area */}
       <div
         className="app-main-layout"
         style={{
@@ -126,25 +187,93 @@ export const App: React.FC = () => {
           flexDirection: 'column',
           minWidth: 0,
           width: '100%',
-          marginLeft: '260px',
+          marginLeft: sidebarMargin,
           minHeight: '100vh',
-          transition: 'margin-left 0.28s ease',
+          transition: 'margin-left 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       >
         <Header
           title={title}
           subtitle={subtitle}
           user={currentUser}
+          theme={theme}
+          onToggleTheme={toggleTheme}
           onLogout={handleLogout}
           onOpenAccount={() => setShowAccountModal(true)}
-          onToggleMobileMenu={() => setIsMobileMenuOpen((prev) => !prev)}
         />
 
-        <main style={{ flex: 1, paddingBottom: '60px' }}>
-          {currentTab === 'student' && <StudentPractice />}
-          {currentTab === 'categories' && <CategorizationManager />}
+        <main style={{ flex: 1, paddingBottom: '24px' }}>
+          {activeSection === 'categories' ? (
+            <CategorizationManager />
+          ) : (
+            <StudentPractice
+              externalSection={activeSection}
+              onSectionChange={(sec) => setActiveSection(sec)}
+            />
+          )}
         </main>
       </div>
+
+      {/* Mobile Bottom Navigation (<768px): Subjects, Practice, Bookmarks, Analytics, Profile */}
+      <nav
+        className="mobile-bottom-nav"
+        aria-label="Mobile navigation"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          backgroundColor: 'var(--bg-card)',
+          borderTop: '1px solid var(--border)',
+          display: 'none',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          height: '64px',
+          zIndex: 80,
+          boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.08)',
+        }}
+      >
+        {mobileNavItems.map((item) => {
+          const isActive =
+            item.id === 'profile'
+              ? showAccountModal
+              : activeSection === item.id;
+          return (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => {
+                if (item.id === 'profile') {
+                  setShowAccountModal(true);
+                } else {
+                  setShowAccountModal(false);
+                  setActiveSection(item.id);
+                }
+              }}
+              style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                minHeight: '44px',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                color: isActive ? 'var(--primary)' : 'var(--text-muted)',
+                gap: '4px',
+                padding: '6px 0',
+              }}
+            >
+              {item.icon}
+              <span style={{ fontSize: '11px', fontWeight: isActive ? 700 : 500 }}>
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
+      </nav>
 
       {showAccountModal && (
         <AccountModal
@@ -157,59 +286,6 @@ export const App: React.FC = () => {
           }}
         />
       )}
-
-      {/* Mobile Bottom Navigation Bar (Phones < 768px) */}
-      <nav
-        className="show-on-mobile-tablet"
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: '#FFFFFF',
-          borderTop: '1px solid #E2E8F0',
-          display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          height: '60px',
-          zIndex: 80,
-          boxShadow: '0 -2px 10px rgba(0,0,0,0.05)',
-        }}
-      >
-        {bottomNavItems.map((item) => {
-          const isActive = currentTab === item.id;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setCurrentTab(item.id)}
-              style={{
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                color: isActive ? '#2563EB' : '#64748B',
-                gap: '2px',
-                padding: '4px 0',
-                transition: 'color 0.15s ease',
-              }}
-            >
-              <span style={{ fontSize: '18px', lineHeight: 1 }}>{item.icon}</span>
-              <span style={{
-                fontSize: '10px',
-                fontWeight: isActive ? 700 : 500,
-                letterSpacing: '-0.2px',
-              }}>
-                {item.label}
-              </span>
-            </button>
-          );
-        })}
-      </nav>
     </div>
   );
 };

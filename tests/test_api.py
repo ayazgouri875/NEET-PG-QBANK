@@ -154,6 +154,20 @@ class TestBackendAPI(unittest.TestCase):
         self.assertIn("Surgery", subject_names)
         self.assertIn("Anatomy", subject_names)
         self.assertIn("Pathology", subject_names)
+        # Phase 1: Verify user_progress is included on each subject
+        self.assertIn("user_progress", subjects[0])
+        self.assertIn("solved", subjects[0]["user_progress"])
+        self.assertIn("accuracy_percentage", subjects[0]["user_progress"])
+
+    def test_study_summary_endpoint(self):
+        res = self.client.get("/api/v1/analytics/study-summary", headers=self.headers)
+        self.assertEqual(res.status_code, 200)
+        data = res.json()
+        self.assertIn("daily_goal", data)
+        self.assertIn("streak_days", data)
+        self.assertIn("continue_from", data)
+        self.assertIn("solved_today", data["daily_goal"])
+        self.assertIn("target", data["daily_goal"])
 
     def test_search_questions_paginated(self):
         res = self.client.get("/api/v1/questions/?page=1&page_size=10", headers=self.headers)
@@ -343,6 +357,115 @@ class TestBackendAPI(unittest.TestCase):
         if matching_q:
             self.assertIsNotNone(matching_q["user_status"])
             self.assertTrue(matching_q["user_status"]["is_attempted"])
+
+    def test_question_filters_meta_and_multi_subject(self):
+        meta_res = self.client.get("/api/v1/questions/filters-meta", headers=self.headers)
+        self.assertEqual(meta_res.status_code, 200)
+        self.assertIn("pyq_years", meta_res.json())
+
+        subj_res = self.client.get("/api/v1/subjects/", headers=self.headers)
+        sids = [str(s["id"]) for s in subj_res.json()[:2]]
+        q_res = self.client.get(
+            f"/api/v1/questions/?subject_ids={','.join(sids)}&page_size=25",
+            headers=self.headers,
+        )
+        self.assertEqual(q_res.status_code, 200)
+        q_data = q_res.json()
+        self.assertLessEqual(len(q_data["items"]), 25)
+        if q_data["items"]:
+            self.assertIn("is_bookmarked", q_data["items"][0]["user_status"])
+
+    def test_report_question_error(self):
+        q_list = self.client.get("/api/v1/questions/?page_size=1", headers=self.headers).json()
+        q_id = q_list["items"][0]["id"]
+        rep_res = self.client.post(
+            f"/api/v1/questions/{q_id}/report",
+            headers=self.headers,
+            json={"reason": "Wrong Answer Key", "details": "Test unit verification"},
+        )
+        self.assertEqual(rep_res.status_code, 201)
+        self.assertEqual(rep_res.json()["status"], "reported")
+
+    def test_mark_for_review_and_question_ids_drill(self):
+        q_list = self.client.get("/api/v1/questions/?page_size=3", headers=self.headers).json()
+        q_ids = [item["id"] for item in q_list["items"]]
+
+        create_res = self.client.post(
+            "/api/v1/tests/custom",
+            headers=self.headers,
+            json={
+                "title": "Targeted Question IDs Drill",
+                "question_ids": q_ids,
+                "question_count": len(q_ids),
+                "test_mode": "practice",
+            },
+        )
+        self.assertEqual(create_res.status_code, 201)
+        sid = create_res.json()["id"]
+        self.assertEqual(create_res.json()["total_questions"], len(q_ids))
+
+        mark_res = self.client.patch(
+            f"/api/v1/tests/{sid}/mark/{q_ids[0]}",
+            headers=self.headers,
+        )
+        self.assertEqual(mark_res.status_code, 200)
+        self.assertTrue(mark_res.json()["marked"])
+
+        sess_res = self.client.get(f"/api/v1/tests/{sid}", headers=self.headers)
+        self.assertEqual(sess_res.status_code, 200)
+        self.assertIn(q_ids[0], sess_res.json()["marked_question_ids"])
+        self.assertIn("responses", sess_res.json())
+
+        comp_res = self.client.post(f"/api/v1/tests/{sid}/complete", headers=self.headers)
+        self.assertEqual(comp_res.status_code, 200)
+        self.assertIn("questions", comp_res.json())
+        self.assertIn("total_time_seconds", comp_res.json())
+
+    def test_bookmark_note_and_bookmarked_custom_test(self):
+        q_list = self.client.get("/api/v1/questions/?page_size=1", headers=self.headers).json()
+        q_id = q_list["items"][0]["id"]
+
+        note_res = self.client.put(
+            "/api/v1/bookmarks/note",
+            headers=self.headers,
+            json={"question_id": q_id, "notes": "Remember triad criteria"},
+        )
+        self.assertEqual(note_res.status_code, 200)
+        self.assertEqual(note_res.json()["notes"], "Remember triad criteria")
+
+        bm_test = self.client.post(
+            "/api/v1/tests/custom",
+            headers=self.headers,
+            json={
+                "title": "Bookmarked Drill",
+                "filter_status": "bookmarked",
+                "question_count": 5,
+                "test_mode": "practice",
+            },
+        )
+        self.assertEqual(bm_test.status_code, 201)
+        self.assertGreaterEqual(bm_test.json()["total_questions"], 1)
+
+        # Clean up bookmark toggle off
+        self.client.post(
+            "/api/v1/bookmarks/toggle",
+            headers=self.headers,
+            json={"question_id": q_id},
+        )
+
+    def test_analytics_and_attempted_trends(self):
+        an_res = self.client.get("/api/v1/analytics/dashboard", headers=self.headers)
+        self.assertEqual(an_res.status_code, 200)
+        an_data = an_res.json()
+        self.assertIn("weak_topics", an_data)
+        self.assertIn("daily_activity", an_data)
+
+        att_res = self.client.get(
+            "/api/v1/questions/attempted?date_from=2020-01-01&date_to=2099-12-31",
+            headers=self.headers,
+        )
+        self.assertEqual(att_res.status_code, 200)
+        self.assertIn("trend", att_res.json())
 
     def test_password_reset_token_flow(self):
         import uuid

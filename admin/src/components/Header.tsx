@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ChevronDown, LogOut, Moon, Sun, User as UserIcon } from 'lucide-react';
 import { UserItem } from '../types';
 
 interface HeaderProps {
   title: string;
   subtitle?: string;
   user: UserItem | null;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
   onLogout: () => void;
-  onOpenAccount?: () => void;
-  onToggleMobileMenu?: () => void;
+  onOpenAccount: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   title,
   subtitle,
   user,
+  theme,
+  onToggleTheme,
   onLogout,
   onOpenAccount,
-  onToggleMobileMenu,
 }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const getInitials = (name?: string, email?: string) => {
     if (name) {
-      const parts = name.trim().split(' ');
+      const parts = name.trim().split(' ').filter(Boolean);
       if (parts.length >= 2) return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
       return name.slice(0, 2).toUpperCase();
     }
@@ -33,156 +49,194 @@ export const Header: React.FC<HeaderProps> = ({
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: '14px 20px',
-      backgroundColor: '#FFFFFF',
-      borderBottom: '1px solid #E2E8F0',
-      boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
+      padding: '12px 24px',
+      backgroundColor: 'var(--bg-card)',
+      borderBottom: '1px solid var(--border)',
+      boxShadow: 'var(--shadow-xs)',
       position: 'sticky',
       top: 0,
-      zIndex: 40,
+      zIndex: 50,
+      minHeight: '68px',
+      gap: '12px',
     }}>
-      {/* Left: Mobile Menu Toggle & Title */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
-        {onToggleMobileMenu && (
-          <button
-            onClick={onToggleMobileMenu}
-            className="show-on-mobile-tablet"
-            title="Open Navigation Menu"
-            style={{
-              padding: '8px 10px',
-              borderRadius: '8px',
-              border: '1px solid #CBD5E1',
-              backgroundColor: '#F8FAFC',
-              color: '#0F172A',
-              fontSize: '18px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              lineHeight: 1,
-            }}
-          >
-            ☰
-          </button>
-        )}
-
-        <div style={{ minWidth: 0 }}>
-          <h2 style={{
-            fontSize: '18px',
-            fontWeight: 800,
-            color: '#0F172A',
-            margin: 0,
+      {/* Left: Page Title */}
+      <div style={{ minWidth: 0 }}>
+        <h1 style={{
+          fontSize: '18px',
+          fontWeight: 800,
+          color: 'var(--text-primary)',
+          margin: 0,
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        }}>
+          {title}
+        </h1>
+        {subtitle && (
+          <p className="hide-on-mobile" style={{
+            fontSize: '12px',
+            color: 'var(--text-muted)',
+            margin: '2px 0 0',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
           }}>
-            {title}
-          </h2>
-          {subtitle && (
-            <p className="hide-on-mobile" style={{
-              fontSize: '12px',
-              color: '#64748B',
-              margin: '2px 0 0',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}>
-              {subtitle}
-            </p>
-          )}
-        </div>
+            {subtitle}
+          </p>
+        )}
       </div>
 
-      {/* Right: User Profile & Actions */}
+      {/* Right: Theme Toggle + Avatar Dropdown */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-        {user && (
-          <button
-            type="button"
-            onClick={onOpenAccount}
-            title="Account & Security Settings"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'none',
-              border: '1px solid transparent',
-              borderRadius: '10px',
-              padding: '4px 8px',
-              cursor: onOpenAccount ? 'pointer' : 'default',
-              transition: 'background-color 0.15s ease, border-color 0.15s ease',
-            }}
-            onMouseEnter={(e) => {
-              if (onOpenAccount) {
-                e.currentTarget.style.backgroundColor = '#F8FAFC';
-                e.currentTarget.style.borderColor = '#E2E8F0';
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.borderColor = 'transparent';
-            }}
-          >
-            {/* User Avatar */}
-            <div style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '50%',
-              backgroundColor: '#EFF6FF',
-              border: '2px solid #BFDBFE',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 700,
-              color: '#1E40AF',
-              fontSize: '12px',
-              boxShadow: '0 1px 3px rgba(37,99,235,0.1)',
-            }}>
-              {getInitials(user.full_name, user.email)}
-            </div>
-
-            {/* User Meta (hidden on small phones to conserve space) */}
-            <div className="hide-on-mobile" style={{ display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
-              <span style={{ fontSize: '12px', fontWeight: 700, color: '#0F172A', lineHeight: 1.2 }}>
-                {user.full_name || 'Medical Doctor'} ▾
-              </span>
-              <span style={{ fontSize: '10px', color: '#64748B', lineHeight: 1.2 }}>
-                {user.email}
-              </span>
-            </div>
-          </button>
-        )}
-
-        {/* Log Out Button */}
         <button
-          onClick={onLogout}
-          title="Sign out of NEET PG Q-Bank"
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: '10px',
+            border: '1px solid var(--border)',
+            backgroundColor: 'var(--bg-subtle)',
+            color: 'var(--text-secondary)',
             display: 'flex',
             alignItems: 'center',
-            gap: '5px',
-            padding: '7px 12px',
-            borderRadius: '8px',
-            border: '1px solid #E2E8F0',
-            backgroundColor: '#F8FAFC',
-            color: '#DC2626',
-            fontSize: '12px',
-            fontWeight: 700,
+            justifyContent: 'center',
             cursor: 'pointer',
-            transition: 'all 0.15s ease',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#FEF2F2';
-            e.currentTarget.style.borderColor = '#FCA5A5';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#F8FAFC';
-            e.currentTarget.style.borderColor = '#E2E8F0';
           }}
         >
-          <span>🚪</span>
-          <span className="hide-on-mobile">Log Out</span>
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
         </button>
+
+        {user && (
+          <div ref={menuRef} style={{ position: 'relative' }}>
+            <button
+              type="button"
+              onClick={() => setDropdownOpen((prev) => !prev)}
+              aria-expanded={dropdownOpen}
+              aria-haspopup="menu"
+              aria-label="Open user account menu"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'var(--bg-subtle)',
+                border: '1px solid var(--border)',
+                borderRadius: '10px',
+                padding: '4px 10px 4px 6px',
+                cursor: 'pointer',
+                color: 'var(--text-primary)',
+              }}
+            >
+              <div style={{
+                width: '30px',
+                height: '30px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--primary-soft)',
+                color: 'var(--primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: 700,
+                fontSize: '12px',
+              }}>
+                {getInitials(user.full_name, user.email)}
+              </div>
+              <span className="hide-on-mobile" style={{ fontSize: '13px', fontWeight: 600 }}>
+                {user.full_name || 'Student'}
+              </span>
+              <ChevronDown size={15} style={{ color: 'var(--text-muted)' }} />
+            </button>
+
+            {dropdownOpen && (
+              <div
+                role="menu"
+                style={{
+                  position: 'absolute',
+                  right: 0,
+                  top: 'calc(100% + 8px)',
+                  width: '240px',
+                  backgroundColor: 'var(--bg-card)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '12px',
+                  boxShadow: 'var(--shadow-lg)',
+                  overflow: 'hidden',
+                  zIndex: 100,
+                }}
+              >
+                <div style={{
+                  padding: '12px 16px',
+                  borderBottom: '1px solid var(--border)',
+                  backgroundColor: 'var(--bg-subtle)',
+                }}>
+                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)' }}>
+                    {user.full_name || 'Medical Student'}
+                  </div>
+                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', wordBreak: 'break-all', marginTop: '2px' }}>
+                    {user.email}
+                  </div>
+                </div>
+
+                <div style={{ padding: '6px' }}>
+                  <button
+                    type="button"
+                    role="menuitem"
+                    onClick={() => {
+                      setDropdownOpen(false);
+                      onOpenAccount();
+                    }}
+                    style={{
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      padding: '10px 12px',
+                      borderRadius: '8px',
+                      border: 'none',
+                      backgroundColor: 'transparent',
+                      color: 'var(--text-primary)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <UserIcon size={16} style={{ color: 'var(--primary)' }} />
+                    <span>Profile & Security</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    role="menuitem"
+                    onClick={() => {
+                      setDropdownOpen(false);
+                      onLogout();
+                    }}
+                    style={{
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      padding: '10px 12px',
+                      borderRadius: '8px',
+                      border: 'none',
+                      backgroundColor: 'transparent',
+                      color: 'var(--danger)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <LogOut size={16} />
+                    <span>Log Out</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </header>
   );

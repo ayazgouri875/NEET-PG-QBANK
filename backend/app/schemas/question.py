@@ -48,6 +48,7 @@ class QuestionUserStatus(BaseModel):
     is_correct: bool = False
     selected_option_index: int | None = None
     answered_at: datetime | None = None
+    is_bookmarked: bool = False
 
 
 class QuestionOut(BaseModel):
@@ -123,12 +124,25 @@ class AttemptedQuestionsStats(BaseModel):
     hard_attempted: int
 
 
+class AttemptedTrendPoint(BaseModel):
+    date: str
+    attempted: int
+    correct: int
+    accuracy: float
+
+
 class PaginatedAttemptedQuestions(BaseModel):
     total: int
     page: int
     page_size: int
     stats: AttemptedQuestionsStats
     items: list[AttemptedQuestionItem]
+    trend: list[AttemptedTrendPoint] = []
+
+
+class QuestionReportRequest(BaseModel):
+    reason: str
+    details: str | None = None
 
 
 class SolveQuestionRequest(BaseModel):
